@@ -6,10 +6,53 @@ bot = commands.Bot(command_prefix='^')
 
 logging.basicConfig(filename="catoBot.log", level=logging.INFO)
 
+ruleList = ['Rule #1: Enacted 8/13/18\n' +
+         'Usage of, “The N-Word”, as well as usage of its variants, is not permitted, with the exception of the variation, “nibba” for humorous purposes.\n',
+         'Rule #2: Enacted 8/13/18\n' +
+         'The video game, “Fortnite”, and all media and other objects related to it must be destroyed.\n',
+         'Rule #3: Enacted 8/13/18\n' +
+         'All barbarian peoples are forbidden from entering the Roman Province.\n',
+         'Rule #4: Enacted 8/13/18\n' +
+         'The city of Carthage, its holdings, and its allies must be destroyed.\n',
+         'Rule #5: Enacted 8/15/18\n' +
+         'Any media deemed, “Not Safe For Work”, may only be posted on the, “NSFW”, channel.\n',
+         'Rule #6: Enacted 8/24/18\n' +
+         'Roman citizens must behave and act in accordance to their status as members of the providence: civilized.\n',
+         'Rule #7: Enacted 8/30/18\n' +
+         'Any Roman citizen apprehended engaging in Fortnite-related activities is to be sentenced to exile from the Roman providence.\n',
+         'Rule #8: Enacted 8/31/18\n' +
+         'In accordance with the ideals of the Pax Romana, all racism within the Empire is forbidden, excluding that which pertains to barbarian peoples.\n',
+         'Rule #9: Enacted 2/9/2018\n' +
+         'All political subjects are confined to #politics due to the controversy that this posses.\n',
+         'Rule #10:Enacted  3/9/2018\n' +
+         'Continued harassment to other members of our community will not be tolerated.\n',
+         'Rule #11: Enacted 14/9/2018\n' +
+         'The act of civil revolts and and instigations of civil war is punishable by death  to protect the safety of the empire.\n',
+         'Rule #12: Enacted 21/9/2018\n' +
+         'Any member of a foreign community in the premises of rome can use the #alliance channel for discussion of international policies\n',
+         'Rule #13: Enacted 29/9/2018\n' +
+         'All political extremism is banned from our glorious empire\n',
+         'Rule #14: Enacted 30/9/10\n' +
+         'The  group known as "reclaimers" (users from r/reclaimtheholyland) are banned to enter the premises of Rome and execute public offices\n',
+         'Rule #15: Enacted 2/10/2018\n' +
+         'Political parties are not allowed in the empire due to the  damage and anarchy they can cause.\n']
+
+
 @bot.event
 async def on_ready():
     print('bot is ready')
     logging.info('bot is ready')
+@bot.command(pass_context = True)
+async def rule(ctx):
+    index = str(ctx.message.content)
+    index = int(index[5:].lstrip()) - 1
+    await bot.say(ruleList[index])
+@bot.command()
+async def rules():
+    output = ''
+    for rule in ruleList:
+        output += rule
+    await bot.say(output)
 @bot.command(pass_context = True)
 async def docs(ctx):
         if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
