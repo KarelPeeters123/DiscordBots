@@ -66,7 +66,9 @@ async def commands(ctx):
             '^ suggestion - gives a suggestion to the bot-owner (f.ex.: \'^ suggestion improve the layout on command x\')\n' +
             '^ conquer - procedure to conquer a discord\n' + 
             '^ absence - procedure for what to do in case of hihger-up absence\n' + 
-            '^ spy - procedure for what to do when a spy is found\n\n')
+            '^ spy - procedure for what to do when a spy is found\n' +
+            '^ rule [X] - shows rule number [X]\n' +
+            '^ rules - gives an overview of all rules')
     if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
             await bot.say( '**secret commands**\n' +
                     '^ docs - gives the link to the docs')            
