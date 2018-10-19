@@ -43,6 +43,57 @@ async def on_ready():
     print('bot is ready')
     logging.info('bot is ready')
 @bot.command(pass_context = True)
+async def motion(ctx):
+    id = 1
+    with open("catoBot.log", 'r') as file:
+        for line in file:
+            if "^motion" in line:
+                id += 1
+    motion = 'motion #' + str(id) + ' | ' + str(ctx.message.author) + ' @ ' + str(ctx.message.timestamp) + ' : ' + str(ctx.message.content)
+    print(motion)
+    logging.info(motion)
+    await bot.say("Motion is noted. view all motions with the [^ motions] command")
+@bot.command(pass_context = True)
+async def resolve(ctx):
+    if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
+            or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+        index = str(ctx.message.content)
+        index = int(index.split(' ')[1])
+        content = ''
+        with open("catoBot.log", 'r') as file:
+            for line in file:
+                if '#' + str(index) in line:
+                    content = line
+        resolve = 'resolved #' + str(index) + ' | ' + str(ctx.message.author) + ' @ ' + str(ctx.message.timestamp) + ' : ' + str(ctx.message.content) + " |\t\t " + content[10:]
+        print(resolve)
+        logging.info(resolve)
+        await bot.say("Motion is resolved.")
+    else:
+        await bot.say("You don't have the authority")
+@bot.command(pass_context = True)
+async def motions(ctx):
+    motions = {}
+    with open("catoBot.log", 'r') as file:
+        for line in file:
+            if "^motion" in line:
+                motions[str(line.split('#')[1].split(' | ')[0])] = line[10:]
+    with open("catoBot.log", 'r') as file:
+        for line in file:
+            if "^resolve" in line:
+                del motions[line.split('#')[1].split(' | ')[0]]
+    for i in motions:
+        await bot.say(motions[i])
+@bot.command(pass_context = True)
+async def resolved():
+    motions = {}
+    with open("catoBot.log", 'r') as file:
+        for line in file:
+            if "^resolve" in line:
+                motions[str(line.split('#')[1].split(' | ')[0])] = line[10:]
+    for i in motions:
+        await bot.say(motions[i])
+
+@bot.command(pass_context = True)
 async def rule(ctx):
     index = str(ctx.message.content)
     index = int(index[5:].lstrip()) - 1
@@ -68,7 +119,10 @@ async def commands(ctx):
             '^ absence - procedure for what to do in case of hihger-up absence\n' + 
             '^ spy - procedure for what to do when a spy is found\n' +
             '^ rule [X] - shows rule number [X]\n' +
-            '^ rules - gives an overview of all rules')
+            '^ rules - gives an overview of all rules\n' +
+            '^ motion - propose a motion to the senate\n' +
+            '^ motions - gives an overview of the currently unresolved motions\n' +
+            '^ resolve [X] - resolves the motion with the ID = [X], it will no longer be visible with [^ motions] but the motion will still be logged. Only Centurions or higher can execute this command')
     if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
             await bot.say( '**secret commands**\n' +
                     '^ docs - gives the link to the docs')            
@@ -79,7 +133,7 @@ async def procedures():
             '^ spy - procedure for what to do when a spy is found\n')
 @bot.command(pass_context = True)
 async def suggestion(ctx):
-        suggestion = str(ctx.message.author) + ' : ' + str(ctx.message.content)
+        suggestion = str(ctx.message.timestamp) + ' @ ' + str(ctx.message.author) + ' : ' + str(ctx.message.content)
         print(suggestion)
         logging.info(suggestion)
         await bot.say('suggestion is noted')
