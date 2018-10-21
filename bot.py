@@ -43,6 +43,51 @@ async def on_ready():
     print('bot is ready')
     logging.info('bot is ready')
 @bot.command(pass_context = True)
+async def register(ctx):
+    msg = str(ctx.message.content)
+    member = str(ctx.message.author)
+    role = msg[10:]
+    text = role + ' : ' + member
+    print('register | ' + text)
+    logging.info('register | ' + text)
+    with open('elections.txt', 'a') as file:
+        file.write(text + '\n')
+    await bot.say('The following candidate has been registered:\n' + text)
+@bot.command(pass_context = True)
+async def unregister(ctx):
+    msg = str(ctx.message.content)
+    member = str(ctx.message.author)
+    role = msg[12:]
+    text = role + ' : ' + member + '\n'
+    newlines = []
+    with open('elections.txt', 'r') as file:
+        lines = file.readlines()
+    with open('elections.txt', 'w') as file:
+        for line in lines:
+            if not line.startswith(text):
+                print(text)
+                print(line)
+                newlines.append(line)
+        file.writelines(newlines)
+    await bot.say(member + ' is no longer running for ' + role)
+@bot.command()
+async def candidates():
+    consuls = '__***consular elections***__\n'
+    senators = '__***senatorial elections***__\n'
+    centurions = '__***centurion elections***__\n'
+    with open('elections.txt', 'r') as file:
+        for line in file.readlines():
+            if line.startswith('consul'):
+                consuls += line[9:]
+            elif line.startswith('senator'):
+                senators += line[10:]
+            else:
+                centurions += line[13:]
+    await bot.say(consuls + '\n' +
+            senators + '\n' +
+            centurions + '\n' +
+            '__***Consuls are only elected every other electoral cycle***__')
+@bot.command(pass_context = True)
 async def motion(ctx):
     id = 1
     with open("catoBot.log", 'r') as file:
@@ -69,7 +114,7 @@ async def resolve(ctx):
         logging.info(resolve)
         await bot.say("Motion is resolved.")
     else:
-        await bot.say("You don't have the authority")
+        await bot.say("You do not have the authority to resolve this motion")
 @bot.command(pass_context = True)
 async def motions(ctx):
     motions = {}
