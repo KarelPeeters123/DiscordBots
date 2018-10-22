@@ -1,5 +1,6 @@
 from discord.ext import commands
 import logging
+import re
 TOKEN = 'NTAyMTgxMzA4NDgzNjMzMTUy.DqkN_Q.y1o0bR4kaMYh2J2-FWtkWBhRokw'
 
 bot = commands.Bot(command_prefix='^')
@@ -43,33 +44,94 @@ async def on_ready():
     print('bot is ready')
     logging.info('bot is ready')
 @bot.command(pass_context = True)
+async def commands(ctx):
+    await bot.say('^ commands - overview of all commands\n' +
+            '^ procedures - overview of all procedures\n' +
+            '^ suggestion - gives a suggestion to the bot-owner (f.ex.: \'^ suggestion improve the layout on command x\')\n' +
+            '^ conquer - procedure to conquer a discord\n' +
+            '^ absence - procedure for what to do in case of hihger-up absence\n' +
+            '^ spy - procedure for what to do when a spy is found\n' +
+            '^ rule [X] - shows rule number [X]\n' +
+            '^ rules - gives an overview of all rules\n' +
+            '^ motion - propose a motion to the senate\n' +
+            '^ motions - gives an overview of the currently unresolved motions\n' +
+            '^ resolve [X] - resolves the motion with the ID = [X], it will no longer be visible with [^ motions] but the motion will still be logged. Only Centurions or higher can execute this command\n' 
+            '^ register [X] -  register yourself for the election of position [X] *use actual positions with lower case letters (centurion, senator, consul)*\n'
+            '^ register [X] [Y] - as a higher-up, register another member [Y] for the elections of position [X]\n'
+            '^ unregister [X] - unregister yourself for the election of postion [X] *only unregister yourself for postions you were previously registered with*\n'
+            '^ unregister [X] [Y] - as a higher-up, unregister another member [Y] who registered for position [X]\n'
+            '^ register all - as a higher-up, unregister all current candidates *to be used sparingly. preferablh only after elections\n'
+            '^ candidates - view all candidates registered for each position\n')
+    if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
+            await bot.say( '**secret commands**\n' +
+                    '^ docs - gives the link to the docs')
+@bot.command()
+async def procedures():
+    await bot.say('^ conquer - procedure to conquer a discord\n' +
+        '^ absence - procedure for what to do in case of higher-up absence\n'
+            '^ spy - procedure for what to do when a spy is found\n')
+@bot.command(pass_context = True)
 async def register(ctx):
     msg = str(ctx.message.content)
-    member = str(ctx.message.author)
-    role = msg[10:]
-    text = role + ' : ' + member
-    print('register | ' + text)
-    logging.info('register | ' + text)
-    with open('elections.txt', 'a') as file:
-        file.write(text + '\n')
-    await bot.say('The following candidate has been registered:\n' + text)
+    if re.search(r'@', msg) and (ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
+            or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion'):
+        member = '<' + msg.split('<')[1]
+        role = msg[10:].split(' ')[0]
+
+        text = role + ' : ' + member
+        print('register | ' + text)
+        logging.info('register | ' + text)
+        with open('elections.txt', 'a') as file:
+            file.write(text + '\n')
+        await bot.say('The following candidate has been registered:\n' + text)
+    elif not re.search(r'@', msg):
+        member = ctx.message.author.mention
+        role = msg[10:]
+
+        text = role + ' : ' + member
+        print('register | ' + text)
+        logging.info('register | ' + text)
+        with open('elections.txt', 'a') as file:
+            file.write(text + '\n')
+        await bot.say('The following candidate has been registered:\n' + text)
+    elif not ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
+            or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+        await bot.say('You are not authorised to register other users for elections')
 @bot.command(pass_context = True)
 async def unregister(ctx):
-    msg = str(ctx.message.content)
-    member = str(ctx.message.author)
-    role = msg[12:]
-    text = role + ' : ' + member + '\n'
-    newlines = []
-    with open('elections.txt', 'r') as file:
-        lines = file.readlines()
-    with open('elections.txt', 'w') as file:
-        for line in lines:
-            if not line.startswith(text):
-                print(text)
-                print(line)
-                newlines.append(line)
-        file.writelines(newlines)
-    await bot.say(member + ' is no longer running for ' + role)
+    if re.search(r'all', str(ctx.message.content)):
+        if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
+                or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+            open('elections.txt', 'w').close()
+            await bot.say('removed all candidates')
+        else:
+            await bot.say('you do not have the authority to unregister other candidates')
+    else:
+        msg = str(ctx.message.content)
+        member = ctx.message.author.mention
+        role = msg[12:].split(' ')[0]
+        error = False
+        if re.search(r'@', str(ctx.message.content)):
+            if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
+                    or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+                member = '<' + msg.split('<')[1]
+            else:
+                error = True
+        if not error:
+            text = role + ' : ' + member + '\n'
+            newlines = []
+            with open('elections.txt', 'r') as file:
+                lines = file.readlines()
+            with open('elections.txt', 'w') as file:
+                for line in lines:
+                    if not line.startswith(text):
+                        print(text)
+                        print(line)
+                        newlines.append(line)
+                file.writelines(newlines)
+            await bot.say(member + ' is no longer running for ' + role)
+        else:
+            await bot.say('you are not authorised to unregister other users')
 @bot.command()
 async def candidates():
     consuls = '__***consular elections***__\n'
@@ -81,8 +143,8 @@ async def candidates():
                 consuls += line[9:]
             elif line.startswith('senator'):
                 senators += line[10:]
-            else:
-                centurions += line[13:]
+            elif line.startswith('centurion'):
+                centurions += line[12:]
     await bot.say(consuls + '\n' +
             senators + '\n' +
             centurions + '\n' +
@@ -155,27 +217,7 @@ async def docs(ctx):
             await bot.say("https://drive.google.com/drive/folders/1W7A4sExEJCjSOEt4UFz-flP7JSH99ORS?usp=sharing")
         else:
             await bot.say("This information is top secret")
-@bot.command(pass_context = True)
-async def commands(ctx):
-    await bot.say('^ commands - overview of all commands\n' +
-            '^ procedures - overview of all procedures\n' +
-            '^ suggestion - gives a suggestion to the bot-owner (f.ex.: \'^ suggestion improve the layout on command x\')\n' +
-            '^ conquer - procedure to conquer a discord\n' + 
-            '^ absence - procedure for what to do in case of hihger-up absence\n' + 
-            '^ spy - procedure for what to do when a spy is found\n' +
-            '^ rule [X] - shows rule number [X]\n' +
-            '^ rules - gives an overview of all rules\n' +
-            '^ motion - propose a motion to the senate\n' +
-            '^ motions - gives an overview of the currently unresolved motions\n' +
-            '^ resolve [X] - resolves the motion with the ID = [X], it will no longer be visible with [^ motions] but the motion will still be logged. Only Centurions or higher can execute this command')
-    if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
-            await bot.say( '**secret commands**\n' +
-                    '^ docs - gives the link to the docs')            
-@bot.command()
-async def procedures():
-    await bot.say('^ conquer - procedure to conquer a discord\n' +
-        '^ absence - procedure for what to do in case of higher-up absence\n'
-            '^ spy - procedure for what to do when a spy is found\n')
+
 @bot.command(pass_context = True)
 async def suggestion(ctx):
         suggestion = str(ctx.message.timestamp) + ' @ ' + str(ctx.message.author) + ' : ' + str(ctx.message.content)
