@@ -75,7 +75,7 @@ async def register(ctx):
     msg = str(ctx.message.content)
     if re.search(r'@', msg) and (ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
             or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion'):
-        member = '<' + msg.split('<')[1]
+        member = (await bot.get_user_info(msg.split('@')[1].split('>')[0])).name
         role = msg[10:].split(' ')[0]
 
         text = role + ' : ' + member
@@ -85,7 +85,7 @@ async def register(ctx):
             file.write(text + '\n')
         await bot.say('The following candidate has been registered:\n' + text)
     elif not re.search(r'@', msg):
-        member = ctx.message.author.mention
+        member = (await bot.get_user_info(str(ctx.message.author.id))).name
         role = msg[10:]
 
         text = role + ' : ' + member
@@ -108,13 +108,13 @@ async def unregister(ctx):
             await bot.say('you do not have the authority to unregister other candidates')
     else:
         msg = str(ctx.message.content)
-        member = ctx.message.author.mention
+        member = (await bot.get_user_info(str(ctx.message.author.id))).name
         role = msg[12:].split(' ')[0]
         error = False
         if re.search(r'@', str(ctx.message.content)):
             if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
                     or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
-                member = '<' + msg.split('<')[1]
+                member = (await bot.get_user_info(msg.split('@')[1].split('>')[0])).name
             else:
                 error = True
         if not error:
