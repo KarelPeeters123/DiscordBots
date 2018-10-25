@@ -60,7 +60,7 @@ async def commands(ctx):
             '^ register [X] [Y] - as a higher-up, register another member [Y] for the elections of position [X]\n'
             '^ unregister [X] - unregister yourself for the election of postion [X] *only unregister yourself for postions you were previously registered with*\n'
             '^ unregister [X] [Y] - as a higher-up, unregister another member [Y] who registered for position [X]\n'
-            '^ register all - as a higher-up, unregister all current candidates *to be used sparingly. preferablh only after elections\n'
+            '^ register all - as a higher-up, unregister all current candidates *to be used sparingly. preferably only after elections\n'
             '^ candidates - view all candidates registered for each position\n')
     if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
             await bot.say( '**secret commands**\n' +
