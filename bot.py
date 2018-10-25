@@ -70,6 +70,12 @@ async def procedures():
     await bot.say('^ conquer - procedure to conquer a discord\n' +
         '^ absence - procedure for what to do in case of higher-up absence\n'
             '^ spy - procedure for what to do when a spy is found\n')
+@bot.event
+async def on_member_update(before, after):
+    if str(after.game) == 'Fortnite':
+        for channel in after.server.channels:
+            if channel.name == 'general':
+                await bot.send_message(channel, after.mention + ' has been playing fortnite!\n@everyone')
 @bot.command(pass_context = True)
 async def register(ctx):
     msg = str(ctx.message.content)
@@ -149,6 +155,7 @@ async def candidates():
             senators + '\n' +
             centurions + '\n' +
             '__***Consuls are only elected every other electoral cycle***__')
+
 @bot.command(pass_context = True)
 async def motion(ctx):
     id = 1
