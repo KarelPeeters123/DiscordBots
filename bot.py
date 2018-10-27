@@ -92,7 +92,7 @@ async def vote(ctx):
             for line in file:
                 if "^motion" in line:
                     print(line)
-                    if '#' + str(id) in line:
+                    if ' #' + str(id) + ' ' in line:
                         motion = line.split('^motion')[1]
                         print(motion)
         values = dict(question = motion, a0 = 'Aye', a1 = 'Nay')
