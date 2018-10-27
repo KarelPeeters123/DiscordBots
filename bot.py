@@ -63,7 +63,9 @@ async def commands(ctx):
             '^ unregister [X] - unregister yourself for the election of postion [X] *only unregister yourself for postions you were previously registered with*\n'
             '^ unregister [X] [Y] - as a higher-up, unregister another member [Y] who registered for position [X]\n'
             '^ register all - as a higher-up, unregister all current candidates *to be used sparingly. preferably only after elections\n'
-            '^ candidates - view all candidates registered for each position\n')
+            '^ candidates - view all candidates registered for each position\n'
+            '^ elections [X] - creates a strawpoll for the elections of role [X]\n'
+            '^ vote [X] - vote Aye or Nay on the motion with id [X]')
     if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
             await bot.say( '**secret commands**\n' +
                     '^ docs - gives the link to the docs')
