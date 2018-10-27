@@ -90,9 +90,11 @@ async def vote(ctx):
         motion = ''
         with open("catoBot.log", 'r') as file:
             for line in file:
-                if "^motion" in line and re.search(str(id), line):
-                    motion = line.split('^motion')[1]
-                    print(motion)
+                if "^motion" in line:
+                    print(line)
+                    if '#' + str(id) in line:
+                        motion = line.split('^motion')[1]
+                        print(motion)
         values = dict(question = motion, a0 = 'Aye', a1 = 'Nay')
         url = 'https://strawpoll.com/new'
         data = parse.urlencode(values)
