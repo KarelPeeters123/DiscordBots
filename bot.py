@@ -82,61 +82,71 @@ async def on_member_update(before, after):
                 await bot.send_message(channel, after.mention + ' has been playing fortnite!\n@everyone')
 @bot.command(pass_context = True)
 async def vote(ctx):
-    id = int(str(ctx.message.content)[6:].lstrip())
-    print(str(ctx.message.content))
-    print(str(ctx.message.content)[6:].lstrip())
-    motion = ''
-    with open("catoBot.log", 'r') as file:
-        for line in file:
-            if "^motion" in line and re.search(str(id), line):
-                motion = line.split('^motion')[1]
-    values = dict(question = motion, a0 = 'Aye', a1 = 'Nay')
-    url = 'https://strawpoll.com/new'
-    data = parse.urlencode(values)
-    data = data.encode('utf-8')
-    req = request.Request(url, data)
-    req.add_header("Content-type", "application/x-www-form-urlencoded")
-    with request.urlopen(req) as response:
-        the_page = response.read().decode('utf-8')
-    list = re.findall(r'https://strawpoll.com/.*\"', the_page)
-    await bot.say(list[0][:-1])
+    if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
+            or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+        id = int(str(ctx.message.content)[6:].lstrip())
+        print(str(ctx.message.content))
+        print(str(ctx.message.content)[6:].lstrip())
+        motion = ''
+        with open("catoBot.log", 'r') as file:
+            for line in file:
+                if "^motion" in line and re.search(str(id), line):
+                    motion = line.split('^motion')[1]
+        values = dict(question = motion, a0 = 'Aye', a1 = 'Nay')
+        url = 'https://strawpoll.com/new'
+        data = parse.urlencode(values)
+        data = data.encode('utf-8')
+        req = request.Request(url, data)
+        req.add_header("Content-type", "application/x-www-form-urlencoded")
+        with request.urlopen(req) as response:
+            the_page = response.read().decode('utf-8')
+        list = re.findall(r'https://strawpoll.com/.*\"', the_page)
+        await bot.say(list[0][:-1])
+    else:
+        await bot.say('You are not authorised to organise a vote. Speak to a higher-up to organise a vote')
+
 @bot.command(pass_context = True)
 async def elections(ctx):
-    consuls = []
-    senators = []
-    centurions = []
-    with open('elections.txt', 'r') as file:
-        for line in file.readlines():
-            if line.startswith('consul'):
-                consuls.append(line[9:])
-            elif line.startswith('senator'):
-                senators.append(line[10:])
-            elif line.startswith('centurion'):
-                centurions.append(line[12:])
-    msg = str(ctx.message.content)
-    if re.search(r'consul', msg):
-        role = 'consul'
-        list = consuls
-    if re.search(r'senator', msg):
-        role = 'senator'
-        list = senators
-    if re.search(r'centurion', msg):
-        role = 'centurion'
-        list = centurions
-    values = dict(question="Vote for you next candidate for " + role)
-    for i in range(0, len(list)):
-        name = 'a' + str(i)
-        value = list[i]
-        values[name] = value
-    url = 'https://strawpoll.com/new'
-    data = parse.urlencode(values)
-    data = data.encode('utf-8')
-    req = request.Request(url, data)
-    req.add_header("Content-type", "application/x-www-form-urlencoded")
-    with request.urlopen(req) as response:
-        the_page = response.read().decode('utf-8')
-    list = re.findall(r'https://strawpoll.com/.*\"', the_page)
-    await bot.say(list[0][:-1])
+    if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
+    or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+        consuls = []
+        senators = []
+        centurions = []
+        with open('elections.txt', 'r') as file:
+            for line in file.readlines():
+                if line.startswith('consul'):
+                    consuls.append(line[9:])
+                elif line.startswith('senator'):
+                    senators.append(line[10:])
+                elif line.startswith('centurion'):
+                    centurions.append(line[12:])
+        msg = str(ctx.message.content)
+        if re.search(r'consul', msg):
+            role = 'consul'
+            list = consuls
+        if re.search(r'senator', msg):
+            role = 'senator'
+            list = senators
+        if re.search(r'centurion', msg):
+            role = 'centurion'
+            list = centurions
+        values = dict(question="Vote for you next candidate for " + role)
+        for i in range(0, len(list)):
+            name = 'a' + str(i)
+            value = list[i]
+            values[name] = value
+        url = 'https://strawpoll.com/new'
+        data = parse.urlencode(values)
+        data = data.encode('utf-8')
+        req = request.Request(url, data)
+        req.add_header("Content-type", "application/x-www-form-urlencoded")
+        with request.urlopen(req) as response:
+            the_page = response.read().decode('utf-8')
+        list = re.findall(r'https://strawpoll.com/.*\"', the_page)
+        await bot.say(list[0][:-1])
+    else:
+        await bot.say('You are not authorised to organise a vote. Speak to a higher-up to organise a vote')
+
 @bot.command(pass_context = True)
 async def register(ctx):
     msg = str(ctx.message.content)
