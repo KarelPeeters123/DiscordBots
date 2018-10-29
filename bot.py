@@ -1,4 +1,5 @@
 from discord.ext import commands
+import datetime
 import logging
 import re
 from urllib import parse
@@ -239,7 +240,8 @@ async def motion(ctx):
         for line in file:
             if "^motion" in line:
                 id += 1
-    motion = 'motion #' + str(id) + ' | ' + str(ctx.message.author) + ' @ ' + str(ctx.message.timestamp) + ' : ' + str(ctx.message.content)
+    motion = 'motion #' + str(id) + ' | ' + str(ctx.message.author) + ' @ ' + ctx.message.timestamp.strftime('%d/%m/%Y %H:%M:%S') + \
+             ' : ' + str(ctx.message.content)
     print(motion)
     logging.info(motion)
     await bot.say("Motion is noted. view all motions with the [^ motions] command")
@@ -254,7 +256,7 @@ async def resolve(ctx):
             for line in file:
                 if '#' + str(index) in line:
                     content = line
-        resolve = 'resolved #' + str(index) + ' | ' + str(ctx.message.author) + ' @ ' + str(ctx.message.timestamp) + ' : ' + str(ctx.message.content) + " |\t\t " + content[10:]
+        resolve = 'resolved #' + str(index) + ' | ' + str(ctx.message.author) + ' @ ' + ctx.message.timestamp.strftime('%d/%m/%Y %H:%M:%S') + ' : ' + str(ctx.message.content) + " |\t\t " + content[10:]
         print(resolve)
         logging.info(resolve)
         await bot.say("Motion is resolved.")
@@ -305,7 +307,7 @@ async def docs(ctx):
 
 @bot.command(pass_context = True)
 async def suggestion(ctx):
-        suggestion = str(ctx.message.timestamp) + ' @ ' + str(ctx.message.author) + ' : ' + str(ctx.message.content)
+        suggestion = ctx.message.timestamp.strftime('%d/%m/%Y %H:%M:%S') + ' @ ' + str(ctx.message.author) + ' : ' + str(ctx.message.content)
         print(suggestion)
         logging.info(suggestion)
         await bot.say('suggestion is noted')
