@@ -10,21 +10,21 @@ bot = commands.Bot(command_prefix='^')
 
 logging.basicConfig(filename="catoBot.log", level=logging.INFO)
 
-ruleList = ['Rule #1: Enacted 8/13/18\n' +
+ruleList = ['Rule #1: Enacted 13/8/18\n' +
             'Usage of, “The N-Word”, as well as usage of its variants, is not permitted, with the exception of the variation, “nibba” for humorous purposes.\n',
-            'Rule #2: Enacted 8/13/18\n' +
+            'Rule #2: Enacted 13/8/18\n' +
             'The video game, “Fortnite”, and all media and other objects related to it must be destroyed.\n',
-            'Rule #3: Enacted 8/13/18\n' +
+            'Rule #3: Enacted 13/8/18\n' +
             'All barbarian peoples are forbidden from entering the Roman Province.\n',
-            'Rule #4: Enacted 8/13/18\n' +
+            'Rule #4: Enacted 13/8/18\n' +
             'The city of Carthage, its holdings, and its allies must be destroyed.\n',
-            'Rule #5: Enacted 8/15/18\n' +
+            'Rule #5: Enacted 15/8/18\n' +
             'Any media deemed, “Not Safe For Work”, may only be posted on the, “NSFW”, channel.\n',
-            'Rule #6: Enacted 8/24/18\n' +
+            'Rule #6: Enacted 24/8/18\n' +
             'Roman citizens must behave and act in accordance to their status as members of the providence: civilized.\n',
-            'Rule #7: Enacted 8/30/18\n' +
+            'Rule #7: Enacted 30/8/18\n' +
             'Any Roman citizen apprehended engaging in Fortnite-related activities is to be sentenced to exile from the Roman providence.\n',
-            'Rule #8: Enacted 8/31/18\n' +
+            'Rule #8: Enacted 31/8/18\n' +
             'In accordance with the ideals of the Pax Romana, all racism within the Empire is forbidden, excluding that which pertains to barbarian peoples.\n',
             'Rule #9: Enacted 2/9/2018\n' +
             'All political subjects are confined to #politics due to the controversy that this posses.\n',
