@@ -38,7 +38,7 @@ ruleList = ['Rule #1: Enacted 8/13/18\n' +
             'Rule #14: Enacted 30/9/10\n' +
             'The  group known as "reclaimers" (users from r/reclaimtheholyland) are banned to enter the premises of Rome and execute public offices\n',
             'Rule #15: Enacted 2/10/2018\n' +
-            'Political parties are not allowed in the empire due to the  damage and anarchy they can cause.\n' +
+            'Political parties are not allowed in the empire due to the  damage and anarchy they can cause.\n',
             'Rule #16: Enacted 29/10/2018\n'
             'The time zone that is to be used for official  matters will be GMT and Senate meetings will be held every Saturday at 8pm GMT']
 
