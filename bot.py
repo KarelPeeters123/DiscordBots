@@ -314,7 +314,7 @@ async def docs(ctx):
 @bot.command(pass_context = True)
 async def suggestion(ctx):
     msg = str(ctx.message.content)
-    suggestion = 'suggestion for ' + msg[12:].split(' ')[0] + ' : ' + msg[12:].split(' ')[1]
+    suggestion = 'suggestion for ' + msg[12:].split(' ')[0] + ' : ' + msg[12:].split(' ')[1:]
     print(suggestion)
     with open('suggestions.txt', 'a') as file:
         file.write(suggestion + '\n')
