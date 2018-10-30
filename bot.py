@@ -52,7 +52,6 @@ async def on_ready():
 async def commands(ctx):
     await bot.say('^ commands - overview of all commands\n' +
             '^ procedures - overview of all procedures\n' +
-            '^ suggestion - gives a suggestion to the bot-owner (f.ex.: \'^ suggestion improve the layout on command x\')\n' +
             '^ conquer - procedure to conquer a discord\n' +
             '^ absence - procedure for what to do in case of hihger-up absence\n' +
             '^ spy - procedure for what to do when a spy is found\n' +
@@ -68,10 +67,12 @@ async def commands(ctx):
             '^ register all - as a higher-up, unregister all current candidates *to be used sparingly. preferably only after elections\n'
             '^ candidates - view all candidates registered for each position\n'
             '^ elections [X] - creates a strawpoll for the elections of role [X]\n'
-            '^ vote [X] - vote Aye or Nay on the motion with id [X]')
+            '^ vote [X] - vote Aye or Nay on the motion with id [X]\n'
+            '^ suggestion [X] - make a suggestion to a higher-up, specify the name of the higher up (original name, without @ or the identifier at the end). alternatively, write [everyone] to adress all higher-ups')
     if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
             await bot.say( '**secret commands**\n' +
-                    '^ docs - gives the link to the docs')
+                    '^ docs - gives the link to the docs'
+                    '^ suggestions - returns all suggestions meant for you')
 @bot.command()
 async def procedures():
     await bot.say('^ conquer - procedure to conquer a discord\n' +
@@ -305,17 +306,32 @@ async def rules():
     await bot.say(output)
 @bot.command(pass_context = True)
 async def docs(ctx):
-        if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
-            await bot.say("https://drive.google.com/drive/folders/1W7A4sExEJCjSOEt4UFz-flP7JSH99ORS?usp=sharing")
-        else:
-            await bot.say("This information is top secret")
+    if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
+        await bot.say("https://drive.google.com/drive/folders/1W7A4sExEJCjSOEt4UFz-flP7JSH99ORS?usp=sharing")
+    else:
+        await bot.say("This information is top secret")
 
 @bot.command(pass_context = True)
 async def suggestion(ctx):
-        suggestion = ctx.message.timestamp.strftime('%d/%m/%Y %H:%M:%S') + ' @ ' + str(ctx.message.author) + ' : ' + str(ctx.message.content)
-        print(suggestion)
-        logging.info(suggestion)
-        await bot.say('suggestion is noted')
+    msg = str(ctx.message.content)
+    suggestion = 'suggestion for ' + msg[12:].split(' ')[0] + ' : ' + msg[12:].split(' ')[1]
+    print(suggestion)
+    with open('suggestions.txt', 'a') as file:
+        file.write(suggestion + '\n')
+    await bot.say('suggestion is noted')
+
+@bot.command(pass_context = True)
+async def suggestions(ctx):
+    mySuggestions = ''
+    author = ctx.message.author.name
+    with open('suggestions.txt', 'r') as file:
+        lines = file.readlines()
+        for line in lines:
+            if re.search('[everyone]', line):
+                mySuggestions += line
+            if re.search(author, line):
+                mySuggestions += line
+    await bot.say(mySuggestions)
 
 @bot.command()
 async def conquer():
