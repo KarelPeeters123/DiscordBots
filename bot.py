@@ -327,7 +327,7 @@ async def suggestions(ctx):
     with open('suggestions.txt', 'r') as file:
         lines = file.readlines()
         for line in lines:
-            if re.search('[everyone]', line):
+            if re.search('\[everyone]', line):
                 mySuggestions += line
             if re.search(author, line):
                 mySuggestions += line
