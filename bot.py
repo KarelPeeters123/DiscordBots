@@ -332,7 +332,7 @@ async def suggestions(ctx):
         for line in lines:
             if re.search('\[everyone]', line):
                 mySuggestions += line
-            if re.search(author.split[0], line):
+            if re.search(author.split(' ')[0], line):
                 mySuggestions += line
     await bot.say(mySuggestions)
 
