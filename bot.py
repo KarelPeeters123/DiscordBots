@@ -143,6 +143,7 @@ async def elections(ctx):
             role = 'centurion'
             list = centurions
         values = dict(question="Vote for you next candidate for " + role)
+        values['ma'] = '1'
         for i in range(0, len(list)):
             name = 'a' + str(i)
             value = list[i]
@@ -358,9 +359,8 @@ async def absence():
 
     await bot.say('**In case there are no plans for return:**\n'
                   '\tImperator    ->    the imperator will always have an heir. Current order of succession:\n' +
-                  '\t\tCreative Human\n' +
+                  '\t\tUncreative Human\n' +
                   '\t\tPesa\n' +
-                  '\t\tJustinian\n' +
                   '\tConsul       ->     consular elections are planned instantly (preferably within 24 hours). The residing co-consul will oversee the elections. 1 new consul will be elected to serve alongside the remaining co-consul until the end of his consular term (even if this is only a week).' +
                   'If the consular term ends in less than 48 hours, there will be no election until the end of the term. In this case the residing co-consul will be the de facto leader alongside the imperator.\n' +
                   '\tSenator      ->   No action will be taken unless only half of the senatorial seats are filled. If this is the case, the spots will be filled with the current centurions (which centurions take the positions will be decided amongst the higher-ups)')
