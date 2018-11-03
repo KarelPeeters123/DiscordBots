@@ -5,8 +5,8 @@ import re
 from urllib import parse
 from urllib import request
 TOKEN = 'NTAyMTgxMzA4NDgzNjMzMTUy.DqkN_Q.y1o0bR4kaMYh2J2-FWtkWBhRokw'
-
-bot = commands.Bot(command_prefix='^')
+commandPrefix = '*'
+bot = commands.Bot(command_prefix=commandPrefix)
 
 logging.basicConfig(filename="catoBot.log", level=logging.INFO)
 
@@ -43,41 +43,43 @@ ruleList = ['Rule #1: Enacted 13/8/18\n' +
             'Rule #16: Enacted 29/10/2018\n'
             'The time zone that is to be used for official  matters will be GMT and Senate meetings will be held every Saturday at 8pm GMT']
 
-
 @bot.event
 async def on_ready():
     print('bot is ready')
     logging.info('bot is ready')
 @bot.command(pass_context = True)
 async def commands(ctx):
-    await bot.say('^ commands - overview of all commands\n' +
-            '^ procedures - overview of all procedures\n' +
-            '^ conquer - procedure to conquer a discord\n' +
-            '^ absence - procedure for what to do in case of hihger-up absence\n' +
-            '^ spy - procedure for what to do when a spy is found\n' +
-            '^ rule [X] - shows rule number [X]\n' +
-            '^ rules - gives an overview of all rules\n' +
-            '^ motion - propose a motion to the senate\n' +
-            '^ motions - gives an overview of the currently unresolved motions\n' +
-            '^ resolve [X] - resolves the motion with the ID = [X], it will no longer be visible with [^ motions] but the motion will still be logged. Only Centurions or higher can execute this command\n' 
-            '^ register [X] -  register yourself for the election of position [X] *use actual positions with lower case letters (centurion, senator, consul)*\n'
-            '^ register [X] [Y] - as a higher-up, register another member [Y] for the elections of position [X]\n'
-            '^ unregister [X] - unregister yourself for the election of postion [X] *only unregister yourself for postions you were previously registered with*\n'
-            '^ unregister [X] [Y] - as a higher-up, unregister another member [Y] who registered for position [X]\n'
-            '^ register all - as a higher-up, unregister all current candidates *to be used sparingly. preferably only after elections\n'
-            '^ candidates - view all candidates registered for each position\n'
-            '^ elections [X] - creates a strawpoll for the elections of role [X]\n'
-            '^ vote [X] - vote Aye or Nay on the motion with id [X]\n'
-            '^ suggestion [X] - make a suggestion to a higher-up, specify the name of the higher up (original name, without @ or the identifier at the end). alternatively, write [everyone] to adress all higher-ups')
+    await bot.say(commandPrefix + 'commands - overview of all commands\n' +
+            commandPrefix + 'procedures - overview of all procedures\n' +
+            commandPrefix + 'conquer - procedure to conquer a discord\n' +
+            commandPrefix + 'absence - procedure for what to do in case of hihger-up absence\n' +
+            commandPrefix + 'spy - procedure for what to do when a spy is found\n' +
+            commandPrefix + 'rule [X] - shows rule number [X]\n' +
+            commandPrefix + 'rules - gives an overview of all rules\n' +
+            commandPrefix + 'motion - propose a motion to the senate\n' +
+            commandPrefix + 'motions - gives an overview of the currently unresolved motions\n' +
+            commandPrefix + 'resolve [X] - resolves the motion with the ID = [X], it will no longer be visible with [^ motions] but the motion will still be logged. Only Centurions or higher can execute this command\n'
+            commandPrefix + 'register [X] -  register yourself for the election of position [X] *use actual positions with lower case letters (centurion, senator, consul)*\n'
+            commandPrefix + 'register [X] [Y] - as a higher-up, register another member [Y] for the elections of position [X]\n'
+            commandPrefix + 'unregister [X] - unregister yourself for the election of postion [X] *only unregister yourself for postions you were previously registered with*\n'
+            commandPrefix + 'unregister [X] [Y] - as a higher-up, unregister another member [Y] who registered for position [X]\n'
+            commandPrefix + 'register all - as a higher-up, unregister all current candidates *to be used sparingly. preferably only after elections\n'
+            commandPrefix + 'candidates - view all candidates registered for each position\n'
+            commandPrefix + 'elections [X] - creates a strawpoll for the elections of role [X]\n'
+            commandPrefix + 'vote [X] - vote Aye or Nay on the motion with id [X]\n'
+            commandPrefix + 'suggestion [X] - make a suggestion to a higher-up, specify the name of the higher up (original name, without @ or the identifier at the end). alternatively, write [everyone] to adress all higher-ups')
     if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
             await bot.say( '**secret commands**\n' +
                     '^ docs - gives the link to the docs'
                     '^ suggestions - returns all suggestions meant for you')
 @bot.command()
 async def procedures():
-    await bot.say('^ conquer - procedure to conquer a discord\n' +
-        '^ absence - procedure for what to do in case of higher-up absence\n'
-            '^ spy - procedure for what to do when a spy is found\n')
+    await bot.say(commandPrefix  + 'conquer - procedure to conquer a discord\n' +
+        commandPrefix + 'absence - procedure for what to do in case of higher-up absence\n'
+            commandPrefix + 'spy - procedure for what to do when a spy is found\n')
+
+@bot.command(pass_context = True)
+async def gmt()
 @bot.event
 async def on_member_update(before, after):
     if str(after.game) == 'Fortnite':
