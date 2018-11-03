@@ -105,7 +105,7 @@ async def vote(ctx):
                 if "motion" in line:
                     print(line)
                     if ' #' + str(id) + ' ' in line:
-                        motion = line.split('motion')[1]
+                        motion = line.split('motion')[2]
                         print(motion)
         values = dict(question = motion, a0 = 'Aye', a1 = 'Nay')
         url = 'https://strawpoll.com/new'
