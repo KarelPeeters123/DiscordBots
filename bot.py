@@ -58,28 +58,29 @@ async def commands(ctx):
             commandPrefix + 'rules - gives an overview of all rules\n' +
             commandPrefix + 'motion - propose a motion to the senate\n' +
             commandPrefix + 'motions - gives an overview of the currently unresolved motions\n' +
-            commandPrefix + 'resolve [X] - resolves the motion with the ID = [X], it will no longer be visible with [^ motions] but the motion will still be logged. Only Centurions or higher can execute this command\n'
-            commandPrefix + 'register [X] -  register yourself for the election of position [X] *use actual positions with lower case letters (centurion, senator, consul)*\n'
-            commandPrefix + 'register [X] [Y] - as a higher-up, register another member [Y] for the elections of position [X]\n'
-            commandPrefix + 'unregister [X] - unregister yourself for the election of postion [X] *only unregister yourself for postions you were previously registered with*\n'
-            commandPrefix + 'unregister [X] [Y] - as a higher-up, unregister another member [Y] who registered for position [X]\n'
-            commandPrefix + 'register all - as a higher-up, unregister all current candidates *to be used sparingly. preferably only after elections\n'
-            commandPrefix + 'candidates - view all candidates registered for each position\n'
-            commandPrefix + 'elections [X] - creates a strawpoll for the elections of role [X]\n'
-            commandPrefix + 'vote [X] - vote Aye or Nay on the motion with id [X]\n'
-            commandPrefix + 'suggestion [X] - make a suggestion to a higher-up, specify the name of the higher up (original name, without @ or the identifier at the end). alternatively, write [everyone] to adress all higher-ups')
+            commandPrefix + 'resolve [X] - resolves the motion with the ID = [X], it will no longer be visible with [' + commandPrefix + 'motions] but the motion will still be logged. Only Centurions or higher can execute this command\n' +
+            commandPrefix + 'register [X] -  register yourself for the election of position [X] use actual positions with lower case letters (centurion, senator, consul)\n' +
+            commandPrefix + 'register [X] [Y] - as a higher-up, register another member [Y] for the elections of position [X]\n' +
+            commandPrefix + 'unregister [X] - unregister yourself for the election of postion [X] *only unregister yourself for postions you were previously registered with*\n' +
+            commandPrefix + 'unregister [X] [Y] - as a higher-up, unregister another member [Y] who registered for position [X]\n' +
+            commandPrefix + 'register all - as a higher-up, unregister all current candidates *to be used sparingly. preferably only after elections\n' +
+            commandPrefix + 'candidates - view all candidates registered for each position\n' +
+            commandPrefix + 'elections [X] - creates a strawpoll for the elections of role [X]\n' +
+            commandPrefix + 'vote [X] - vote Aye or Nay on the motion with id [X]\n' +
+            commandPrefix + 'suggestion [X] - make a suggestion to a higher-up, specify the name of the higher up ' +
+                            '(original name, without @ or the identifier at the end). ' +
+                            'alternatively, write [everyone] to adress all higher-ups')
+
     if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
             await bot.say( '**secret commands**\n' +
-                    '^ docs - gives the link to the docs'
-                    '^ suggestions - returns all suggestions meant for you')
+                    commandPrefix + 'docs - gives the link to the docs\n' +
+                    commandPrefix + 'suggestions - returns all suggestions meant for you')
 @bot.command()
 async def procedures():
     await bot.say(commandPrefix  + 'conquer - procedure to conquer a discord\n' +
-        commandPrefix + 'absence - procedure for what to do in case of higher-up absence\n'
+        commandPrefix + 'absence - procedure for what to do in case of higher-up absence\n' +
             commandPrefix + 'spy - procedure for what to do when a spy is found\n')
 
-@bot.command(pass_context = True)
-async def gmt()
 @bot.event
 async def on_member_update(before, after):
     if str(after.game) == 'Fortnite':
@@ -101,10 +102,10 @@ async def vote(ctx):
         motion = ''
         with open("catoBot.log", 'r') as file:
             for line in file:
-                if "^motion" in line:
+                if "motion" in line:
                     print(line)
                     if ' #' + str(id) + ' ' in line:
-                        motion = line.split('^motion')[1]
+                        motion = line.split('motion')[1]
                         print(motion)
         values = dict(question = motion, a0 = 'Aye', a1 = 'Nay')
         url = 'https://strawpoll.com/new'
@@ -247,13 +248,13 @@ async def motion(ctx):
     id = 1
     with open("catoBot.log", 'r') as file:
         for line in file:
-            if "^motion" in line:
+            if "motion" in line:
                 id += 1
     motion = 'motion #' + str(id) + ' | ' + str(ctx.message.author) + ' @ ' + ctx.message.timestamp.strftime('%d/%m/%Y %H:%M:%S') + \
              ' : ' + str(ctx.message.content)
     print(motion)
     logging.info(motion)
-    await bot.say("Motion is noted. view all motions with the [^ motions] command")
+    await bot.say("Motion is noted. view all motions with the [*motions] command")
 @bot.command(pass_context = True)
 async def resolve(ctx):
     if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
@@ -276,11 +277,11 @@ async def motions(ctx):
     motions = {}
     with open("catoBot.log", 'r') as file:
         for line in file:
-            if "^motion" in line:
+            if "motion" in line:
                 motions[str(line.split('#')[1].split(' | ')[0])] = line[10:]
     with open("catoBot.log", 'r') as file:
         for line in file:
-            if "^resolve" in line:
+            if "resolve" in line:
                 del motions[line.split('#')[1].split(' | ')[0]]
     if len(motions) == 0:
         await bot.say('There are no standing motions right now')
@@ -291,7 +292,7 @@ async def resolved():
     motions = {}
     with open("catoBot.log", 'r') as file:
         for line in file:
-            if "^resolve" in line:
+            if "resolve" in line:
                 motions[str(line.split('#')[1].split(' | ')[0])] = line[10:]
     for i in motions:
         await bot.say(motions[i])
