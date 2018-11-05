@@ -82,11 +82,11 @@ async def procedures():
             commandPrefix + 'spy - procedure for what to do when a spy is found\n')
 
 @bot.event
-async def on_member_update(before, after):
+async def on_member_update(before, after): 
     if str(after.game) == 'Fortnite':
         for channel in after.server.channels:
             if channel.name == 'general':
-                with open('fortnite.txt', 'a') as file:
+                with open('fortnite.txt', 'r') as file:
                     lines = file.readlines()
                     if not after.mention in lines:
                             await bot.send_message(channel, after.mention + ' has been playing fortnite!\n@everyone')

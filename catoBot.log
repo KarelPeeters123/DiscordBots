@@ -1,133 +1,32 @@
 INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:on_member_update has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:on_member_update has successfully been registered as an event
 INFO:discord.client:logging in using static token
 INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
 INFO:discord.gateway:sent the identify payload to create the websocket
 INFO:root:bot is ready
 INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:on_member_update has successfully been registered as an event
 INFO:discord.client:logging in using static token
 INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
 INFO:discord.gateway:sent the identify payload to create the websocket
 INFO:root:bot is ready
-WARNING:discord.gateway:We have stopped responding to the gateway.
-INFO:websockets.protocol:Failing the WebSocket connection: 1011 
-INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
-INFO:discord.client:Got ResumeWebsocket
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the resume payload to create the websocket
-INFO:root:bot is ready
-WARNING:discord.gateway:We have stopped responding to the gateway.
-INFO:websockets.protocol:Failing the WebSocket connection: 1011 
-INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
-INFO:discord.client:Got ResumeWebsocket
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the resume payload to create the websocket
-INFO:root:bot is ready
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-WARNING:discord.gateway:We have stopped responding to the gateway.
-INFO:websockets.protocol:Failing the WebSocket connection: 1011 
-INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
-INFO:discord.client:Got ResumeWebsocket
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the resume payload to create the websocket
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-INFO:root:register | senator : 2Girls1Lane#2760
-INFO:root:register | centurion : 2Girls1Lane#2760
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-INFO:root:register | consul : 2Girls1Lane#2760
-INFO:root:register | senator : 2Girls1Lane#2760
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-WARNING:discord.gateway:We have stopped responding to the gateway.
-INFO:discord.gateway:Websocket closed with None (), attempting a reconnect.
-INFO:discord.client:Got ResumeWebsocket
-ERROR:asyncio:Fatal read error on socket transport
-protocol: <asyncio.sslproto.SSLProtocol object at 0x1013d8da0>
-transport: <_SelectorSocketTransport fd=12 read=polling write=<idle, bufsize=0>>
-Traceback (most recent call last):
-  File "/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/selector_events.py", line 812, in _read_ready__data_received
-    data = self._sock.recv(self.max_size)
-TimeoutError: [Errno 60] Operation timed out
-ERROR:asyncio:Fatal read error on socket transport
-protocol: <asyncio.sslproto.SSLProtocol object at 0x1013c6da0>
-transport: <_SelectorSocketTransport fd=11 read=polling write=<idle, bufsize=0>>
-Traceback (most recent call last):
-  File "/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/selector_events.py", line 812, in _read_ready__data_received
-    data = self._sock.recv(self.max_size)
-TimeoutError: [Errno 60] Operation timed out
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the resume payload to create the websocket
-INFO:root:bot is ready
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-INFO:root:register | senator : 2Girls1Lane#2760
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-INFO:discord.client:on_ready has successfully been registered as an event
-INFO:discord.client:logging in using static token
-INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
-INFO:discord.gateway:sent the identify payload to create the websocket
-INFO:root:bot is ready
-INFO:root:register | consul : 2Girls1Lane#2760
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:root:motion #1 | KennyWilson#6411 @ 04/11/2018 18:21:27 : *motion
+INFO:root:resolved #1 | Pesa#8701 @ 04/11/2018 18:21:55 : *resolve 1 |		 motion #1 | KennyWilson#6411 @ 04/11/2018 18:21:27 : *motion
+
+INFO:root:motion #3 | Fizzlecracks1991#7827 @ 04/11/2018 18:22:51 : *motion Appoint a Centurion to head each of the three military branches.
+INFO:root:motion #4 | Pesa#8701 @ 04/11/2018 19:05:48 : *motion make a triumph command for Rome not
+INFO:root:resolved #1 | Pesa#8701 @ 04/11/2018 19:17:04 : *resolve 1 |		 resolved #1 | Pesa#8701 @ 04/11/2018 18:21:55 : *resolve 1 |		 motion #1 | KennyWilson#6411 @ 04/11/2018 18:21:27 : *motion
+
+INFO:root:motion #6 | Pesa#8701 @ 04/11/2018 19:17:20 : *motion make a triumph command for Rome Bot
