@@ -245,15 +245,15 @@ async def candidates():
 
 @bot.command(pass_context = True)
 async def motion(ctx):
-    id = 1
-    with open("catoBot.log", 'r') as file:
-        for line in file:
-            if "motion" in line:
-                id += 1
-    motion = 'motion #' + str(id) + ' | ' + str(ctx.message.author) + ' @ ' + ctx.message.timestamp.strftime('%d/%m/%Y %H:%M:%S') + \
-             ' : ' + str(ctx.message.content)
+    msg = str(ctx.message.content)[8:]
+    num_lines = sum(1 for line in open('motions.txt'))
+    id = num_lines + 1
+    motion = '#' + str(id) + ' | ' + str(ctx.message.author) + ' @ ' + \
+             ctx.message.timestamp.strftime('%d/%m/%Y %H:%M:%S') + ' : ' + msg + '\n'
+    with open('motions.txt', 'a') as file:
+        file.write(motion)
     print(motion)
-    logging.info(motion)
+    # logging.info(motion)
     await bot.say("Motion is noted. view all motions with the [*motions] command")
 @bot.command(pass_context = True)
 async def resolve(ctx):
@@ -261,41 +261,35 @@ async def resolve(ctx):
             or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
         index = str(ctx.message.content)
         index = int(index.split(' ')[1])
-        content = ''
-        with open("catoBot.log", 'r') as file:
+        lines = []
+        with open('motions.txt', 'r') as file:
             for line in file:
-                if '#' + str(index) in line:
-                    content = line
-        resolve = 'resolved #' + str(index) + ' | ' + str(ctx.message.author) + ' @ ' + ctx.message.timestamp.strftime('%d/%m/%Y %H:%M:%S') + ' : ' + str(ctx.message.content) + " |\t\t " + content[10:]
-        print(resolve)
-        logging.info(resolve)
+                if '#' + str(index) not in line:
+                    lines.append(line)
+        with open('motions.txt', 'w') as file:
+            file.writelines(lines)
         await bot.say("Motion is resolved.")
     else:
         await bot.say("You do not have the authority to resolve this motion")
 @bot.command(pass_context = True)
 async def motions(ctx):
     motions = {}
-    with open("catoBot.log", 'r') as file:
+    with open("motions.txt", 'r') as file:
         for line in file:
-            if "motion" in line:
-                motions[str(line.split('#')[1].split(' | ')[0])] = line[10:]
-    with open("catoBot.log", 'r') as file:
-        for line in file:
-            if "resolve" in line:
-                del motions[line.split('#')[1].split(' | ')[0]]
+            motions[str(line[1:].split(' | ')[0])] = line
     if len(motions) == 0:
         await bot.say('There are no standing motions right now')
     for i in motions:
         await bot.say(motions[i])
-@bot.command(pass_context = True)
-async def resolved():
-    motions = {}
-    with open("catoBot.log", 'r') as file:
-        for line in file:
-            if "resolve" in line:
-                motions[str(line.split('#')[1].split(' | ')[0])] = line[10:]
-    for i in motions:
-        await bot.say(motions[i])
+# @bot.command(pass_context = True)
+# async def resolved():
+#     motions = {}
+#     with open("catoBot.log", 'r') as file:
+#         for line in file:
+#             if "resolve" in line:
+#                 motions[str(line.split('#')[1].split(' | ')[0])] = line[10:]
+#     for i in motions:
+#         await bot.say(motions[i])
 
 @bot.command(pass_context = True)
 async def rule(ctx):
