@@ -247,6 +247,7 @@ async def candidates():
 async def motion(ctx):
     msg = str(ctx.message.content)[8:]
     num_lines = sum(1 for line in open('motions.txt'))
+    num_lines += sum(1 for line in open('resolved.txt'))
     id = num_lines + 1
     motion = '#' + str(id) + ' | ' + str(ctx.message.author) + ' @ ' + \
              ctx.message.timestamp.strftime('%d/%m/%Y %H:%M:%S') + ' : ' + msg + '\n'
@@ -266,6 +267,9 @@ async def resolve(ctx):
             for line in file:
                 if '#' + str(index) not in line:
                     lines.append(line)
+                if '#' + str(index) in line:
+                    with open('resolved.txt', 'a') as file:
+                        file.write(line)
         with open('motions.txt', 'w') as file:
             file.writelines(lines)
         await bot.say("Motion is resolved.")
