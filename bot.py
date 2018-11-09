@@ -97,16 +97,15 @@ async def vote(ctx):
     if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
             or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
         id = int(str(ctx.message.content)[6:].lstrip())
-        print(str(ctx.message.content))
-        print(str(ctx.message.content)[6:].lstrip())
+        print(id)
         motion = ''
-        with open("catoBot.log", 'r') as file:
+        with open("motions.txt", 'r') as file:
             for line in file:
-                if "motion" in line:
-                    print(line)
-                    if ' #' + str(id) + ' ' in line:
-                        motion = line.split('motion')[2]
-                        print(motion)
+                print(line)
+                print('#' + str(id) + ' ')
+                if '#' + str(id) + ' ' in line:
+                    motion = line.split(' : ')[1]
+                    print(motion)
         values = dict(question = motion, a0 = 'Aye', a1 = 'Nay')
         url = 'https://strawpoll.com/new'
         data = parse.urlencode(values)
