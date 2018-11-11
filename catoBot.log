@@ -30,3 +30,76 @@ INFO:root:motion #4 | Pesa#8701 @ 04/11/2018 19:05:48 : *motion make a triumph c
 INFO:root:resolved #1 | Pesa#8701 @ 04/11/2018 19:17:04 : *resolve 1 |		 resolved #1 | Pesa#8701 @ 04/11/2018 18:21:55 : *resolve 1 |		 motion #1 | KennyWilson#6411 @ 04/11/2018 18:21:27 : *motion
 
 INFO:root:motion #6 | Pesa#8701 @ 04/11/2018 19:17:20 : *motion make a triumph command for Rome Bot
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:on_member_update has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:discord.gateway:Unhandled event PRESENCES_REPLACE
+INFO:root:bot is ready
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:on_member_update has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+WARNING:discord.gateway:We have stopped responding to the gateway.
+INFO:discord.gateway:Websocket closed with None (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:on_member_update has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:discord.gateway:Unhandled event PRESENCES_REPLACE
+INFO:root:bot is ready
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:on_member_update has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:on_member_update has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Unhandled event WEBHOOKS_UPDATE
+INFO:discord.gateway:Unhandled event WEBHOOKS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.gateway:Unhandled event WEBHOOKS_UPDATE
+INFO:discord.gateway:Unhandled event WEBHOOKS_UPDATE
+INFO:discord.gateway:Unhandled event WEBHOOKS_UPDATE
+INFO:discord.gateway:Unhandled event WEBHOOKS_UPDATE
+INFO:discord.gateway:Unhandled event WEBHOOKS_UPDATE
+INFO:discord.gateway:Unhandled event WEBHOOKS_UPDATE
+INFO:discord.gateway:Unhandled event WEBHOOKS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 4.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:488877962662379520:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 4.0).
