@@ -50,7 +50,7 @@ async def on_ready():
 
 @bot.event
 async def on_reaction_add(reaction, user):
-    if user.id == '285795786619486208':
+    if user.id == '502181308483633152':
         with open('userids.json') as f:
             userids = json.load(f)
         channel = reaction.message.channel
