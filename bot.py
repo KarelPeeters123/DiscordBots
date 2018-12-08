@@ -81,7 +81,6 @@ async def on_reaction_add(reaction, user):
                             '```')
                 with open('results.json', 'w') as f:
                     json.dump(results, f)
-        print(reaction.emoji)
 
 @bot.command(pass_context = True)
 async def commands(ctx):
