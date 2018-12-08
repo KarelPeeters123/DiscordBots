@@ -1,5 +1,5 @@
 from discord.ext import commands
-import datetime
+import json
 import logging
 import re
 from urllib import parse
@@ -47,6 +47,42 @@ ruleList = ['Rule #1: Enacted 13/8/18\n' +
 async def on_ready():
     print('bot is ready')
     logging.info('bot is ready')
+
+@bot.event
+async def on_reaction_add(reaction, user):
+    if user.id == '285795786619486208':
+        with open('userids.json') as f:
+            userids = json.load(f)
+        channel = reaction.message.channel
+        with open('voteID.txt', 'r') as f:
+            voteId = f.read()
+        if voteId == reaction.message.id:
+            print(userids.keys())
+            if user.id not in userids.keys():
+                print(user.id)
+                with open('userids.json', 'w') as f:
+                    userids[user.id] = 1
+                    json.dump(userids, f)
+                with open('results.json') as f:
+                    results = json.load(f)
+                if reaction.emoji == '✅':
+                    results['aye'] = results['aye'] + 1
+                    await bot.remove_reaction(reaction.message, reaction.emoji, user)
+                    await bot.edit_message(await bot.get_message(channel, voteId), '```python\n' +
+                            str(results['aye']) + ' romans have voted AYE. (✅)\n' +
+                            str(results['nay']) + ' romans have voted NAY. (❎)\n'
+                            '```')
+                elif reaction.emoji == '❎':
+                    results['nay'] = results['nay'] + 1
+                    await bot.remove_reaction(reaction.message, reaction.emoji, user)
+                    await bot.edit_message(await bot.get_message(channel, voteId), '```python\n' +
+                            str(results['aye']) + ' romans have voted AYE. (✅)\n' +
+                            str(results['nay']) + ' romans have voted NAY. (❎)\n'
+                            '```')
+                with open('results.json', 'w') as f:
+                    json.dump(results, f)
+        print(reaction.emoji)
+
 @bot.command(pass_context = True)
 async def commands(ctx):
     await bot.say(commandPrefix + 'commands - overview of all commands\n' +
@@ -92,32 +128,6 @@ async def procedures():
 #                             await bot.send_message(channel, after.mention + ' has been playing fortnite!\n@everyone')
 #         with open('fortnite.txt', 'a') as file:
 #             file.write(after.mention + '\n')
-@bot.command(pass_context = True)
-async def vote(ctx):
-    if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
-            or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
-        id = int(str(ctx.message.content)[6:].lstrip())
-        print(id)
-        motion = ''
-        with open("motions.txt", 'r') as file:
-            for line in file:
-                print(line)
-                print('#' + str(id) + ' ')
-                if '#' + str(id) + ' ' in line:
-                    motion = line.split(' : ')[1]
-                    print(motion)
-        values = dict(question = motion, a0 = 'Aye', a1 = 'Nay')
-        url = 'https://strawpoll.com/new'
-        data = parse.urlencode(values)
-        data = data.encode('utf-8')
-        req = request.Request(url, data)
-        req.add_header("Content-type", "application/x-www-form-urlencoded")
-        with request.urlopen(req) as response:
-            the_page = response.read().decode('utf-8')
-        list = re.findall(r'https://strawpoll.com/.*\"', the_page)
-        await bot.say(list[0][:-1])
-    else:
-        await bot.say('You are not authorised to organise a vote. Speak to a higher-up to organise a vote')
 
 @bot.command(pass_context = True)
 async def elections(ctx):
@@ -241,6 +251,39 @@ async def candidates():
             senators + '\n' +
             centurions + '\n' +
             '__***Consuls are only elected every other electoral cycle***__')
+
+@bot.command(pass_context = True)
+async def vote(ctx):
+    if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
+            or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+        id = int(str(ctx.message.content)[6:].lstrip())
+        print(id)
+        motion = ''
+        with open("motions.txt", 'r') as file:
+            for line in file:
+                print(line)
+                print('#' + str(id) + ' ')
+                if '#' + str(id) + ' ' in line:
+                    motion = line.split(' : ')[1]
+                    print(motion)
+        emptyDict = {}
+        emptyResultsDict = {"aye": 0, "nay": 0}
+        with open('userids.json', 'w') as f:
+            json.dump(emptyDict, f)
+        with open('results.json', 'w') as f:
+            json.dump(emptyResultsDict, f)
+        await bot.say('__***' + motion + '***__')
+        msg = await bot.say('```python\n' +
+                            '0 romans have voted AYE. (✅)\n' +
+                            '0 romans have voted NAY. (❎)\n'
+                            '```')
+        voteId = msg.id
+        with open('voteID.txt', 'w') as f:
+            f.write(voteId)
+        await bot.add_reaction(msg, '✅')
+        await bot.add_reaction(msg, '❎')
+    else:
+        await bot.say('You are not authorised to organise a vote. Speak to a higher-up to organise a vote')
 
 @bot.command(pass_context = True)
 async def motion(ctx):
@@ -374,3 +417,16 @@ async def spy():
                   '**5.** In case he is proven innocent, he will be awarded his old ranks back and will receive a formal apology from the suspecting roman, the higher-up who demoted him and the consul who oversaw the case. If he is proven guilty, he will be banned from the discord\n' +
                   '**6.** If it is revealed who the culprit is spying for, they will be added to potential future war targets if they aren’t already. No rash decisions will be taken on the matter. Only the senate may declare war. It is a very real possibility that the spy was acting as a rogue agent')
 bot.run(TOKEN)
+
+# values = dict(question = motion, a0 = 'Aye', a1 = 'Nay')
+#         url = 'https://strawpoll.com/new'
+#         data = parse.urlencode(values)
+#         data = data.encode('utf-8')
+#         req = request.Request(url, data)
+#         req.add_header("Content-type", "application/x-www-form-urlencoded")
+#         with request.urlopen(req) as response:
+#             the_page = response.read().decode('utf-8')
+#         list = re.findall(r'https://strawpoll.com/.*\"', the_page)
+#         await bot.say(list[0][:-1])
+#     else:
+#         await bot.say('You are not authorised to organise a vote. Speak to a higher-up to organise a vote')
