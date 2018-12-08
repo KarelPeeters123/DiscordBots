@@ -103,3 +103,1764 @@ INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430
 INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
 INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
 INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 4.0).
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:510927877844238336:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:510927877844238336:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:510927877844238336:None:/channels/{channel_id}/messages, retry: 4.0).
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:websockets.protocol:Failing the WebSocket connection: 1006 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Websocket closed with 1001 (CloudFlare WebSocket proxy restarting), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:websockets.protocol:Failing the WebSocket connection: 1006 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:discord.gateway:Websocket closed with 1001 (CloudFlare WebSocket proxy restarting), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Websocket closed with 1001 (CloudFlare WebSocket proxy restarting), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:websockets.protocol:Failing the WebSocket connection: 1006 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1006 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Websocket closed with 1001 (CloudFlare WebSocket proxy restarting), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:488877962662379520:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.gateway:Websocket closed with 1001 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+WARNING:discord.gateway:We have stopped responding to the gateway.
+INFO:discord.gateway:Websocket closed with None (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:488877962662379520:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 4.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 2.0).
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:discord.gateway:Websocket closed with 1001 (CloudFlare WebSocket proxy restarting), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:root:register | consul : Gaius Pesa Iudaiucus
+INFO:root:register | consul : Eyecatcher
+INFO:root:register | centurion : canadianplaya007
+INFO:root:register | Consul : /*doubt*/
+INFO:root:register | consul : 2Girls1Lane
+INFO:root:register | centurion : Dialent
+INFO:root:register | centurion : Alzer
+INFO:root:register | senator : Thomas The Siege Engine
+INFO:root:register | senator : Paraguay_Stronk
+INFO:root:register | consul : Aulus
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:root:register | centurion : Fizzlecracks1991
+INFO:root:register | centurion : memeydreamy
+INFO:root:register | senator : ryango9
+WARNING:discord.gateway:We have stopped responding to the gateway.
+INFO:discord.gateway:Websocket closed with None (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:root:register | senator : Ojakoo
+INFO:root:register | centurion : Julius Caesar
+INFO:root:register | senator : cosmo
+INFO:websockets.protocol:Failing the WebSocket connection: 1006 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:root:register | senator : SparklyChain
+INFO:root:register | centurion : Banana
+INFO:root:register | consul : Patel25
+INFO:root:register | centurion : Patel25
+INFO:root:register | centurion : Arthas
+INFO:root:register | consul : /*doubt*/
+INFO:websockets.protocol:Failing the WebSocket connection: 1006 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.gateway:Websocket closed with 1001 (CloudFlare WebSocket proxy restarting), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Websocket closed with 1001 (CloudFlare WebSocket proxy restarting), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Websocket closed with 1001 (CloudFlare WebSocket proxy restarting), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:root:register | centurion : LostSonofPluto
+INFO:websockets.protocol:Failing the WebSocket connection: 1006 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:websockets.protocol:Failing the WebSocket connection: 1006 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:root:register | consul : Pesa
+INFO:websockets.protocol:Failing the WebSocket connection: 1006 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Websocket closed with 1001 (CloudFlare WebSocket proxy restarting), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1006 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1006 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476248486472318998:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 4.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476248486472318998:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 4.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:488877962662379520:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:root:register | senator : Aulus
+INFO:root:register | senator : Eyecatcher
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:root:register | Centurion : is
+WARNING:discord.gateway:We have stopped responding to the gateway.
+INFO:discord.gateway:Websocket closed with None (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:root:bot is ready
+INFO:root:register | centurion : Thomas The Siege Engine
+INFO:discord.gateway:Websocket closed with 1001 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:websockets.protocol:Failing the WebSocket connection: 1006 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x75fa28f0>
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 6.0).
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:websockets.protocol:Failing the WebSocket connection: 1006 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Websocket closed with 1001 (CloudFlare WebSocket proxy restarting), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.gateway:Websocket closed with 1001 (CloudFlare WebSocket proxy restarting), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Websocket closed with 1001 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.gateway:Websocket closed with 1001 (CloudFlare WebSocket proxy restarting), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:488877962662379520:None:/channels/{channel_id}/messages, retry: 6.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:488877962662379520:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Websocket closed with 1001 (CloudFlare WebSocket proxy restarting), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 4.0).
+INFO:root:register | senator : Senpai Trotsky
+INFO:root:register | senator : Imperator Constintine
+INFO:root:register | senator : Fizzlecracks1991
+INFO:root:register | senator : Eyecatcher
+INFO:root:register | senator : rai1
+INFO:root:register | centurion : Thomas The Siege Engine
+INFO:root:register | centurion : memeydreamy
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:488877962662379520:None:/channels/{channel_id}/messages, retry: 3.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:488877962662379520:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:488877962662379520:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 4.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+WARNING:discord.gateway:We have stopped responding to the gateway.
+INFO:discord.gateway:Websocket closed with None (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.gateway:Unhandled event CHANNEL_PINS_UPDATE
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 4.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 1.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:502183430583484418:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.gateway:Unhandled event PRESENCES_REPLACE
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.client:on_ready has successfully been registered as an event
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the identify payload to create the websocket
+INFO:root:bot is ready
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476248486472318998:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476248486472318998:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:websockets.protocol:Failing the WebSocket connection: 1011 
+INFO:discord.gateway:Websocket closed with 1006 (), attempting a reconnect.
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+INFO:discord.client:Got ResumeWebSocket
+INFO:discord.gateway:Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6
+INFO:discord.gateway:sent the resume payload to create the websocket
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished coro=<WebSocketCommonProtocol.run() done, defined at /home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py:428> exception=ConnectionResetError(104, 'Connection reset by peer')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 434, in run
+    msg = yield from self.read_message()
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 456, in read_message
+    frame = yield from self.read_data_frame(max_size=self.max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 511, in read_data_frame
+    frame = yield from self.read_frame(max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/protocol.py", line 546, in read_frame
+    self.reader.readexactly, is_masked, max_size=max_size)
+  File "/home/pi/.local/lib/python3.5/site-packages/websockets/framing.py", line 86, in read_frame
+    data = yield from reader(2)
+  File "/usr/lib/python3.5/asyncio/streams.py", line 668, in readexactly
+    yield from self._wait_for_data('readexactly')
+  File "/usr/lib/python3.5/asyncio/streams.py", line 458, in _wait_for_data
+    yield from self._waiter
+  File "/usr/lib/python3.5/asyncio/futures.py", line 380, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 304, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 293, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 723, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [Errno 104] Connection reset by peer
+INFO:root:bot is ready
+INFO:discord.gateway:Unhandled event PRESENCES_REPLACE
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 4.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 5.0).
+INFO:discord.http:A rate limit bucket has been exhausted (bucket: POST:476871636277264385:None:/channels/{channel_id}/messages, retry: 6.0).
