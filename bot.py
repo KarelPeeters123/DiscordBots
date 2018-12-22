@@ -119,6 +119,8 @@ async def on_reaction_add(reaction, user):
                         userids[user.id].append('aye')
                         json.dump(userids, f)
                 elif reaction.emoji == '❎':
+                    with open('results.json') as f:
+                        results = json.load(f)
                     results['nay'] = results['nay'] + 1
                     await bot.remove_reaction(reaction.message, reaction.emoji, user)
                     await bot.edit_message(await bot.get_message(channel, voteId), '```python\n' +
