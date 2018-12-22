@@ -10,6 +10,15 @@ bot = commands.Bot(command_prefix=commandPrefix)
 
 logging.basicConfig(filename="catoBot.log", level=logging.INFO)
 
+maxVotes = {"vote": 1,
+            "consul": 2,
+            "senator": 3,
+            "centurion": 4}
+emojis = ['🇦', '🇧', '🇨', '🇩', '🇪', '🇫',
+          '🇬', '🇭', 'ℹ', '🇯', '🇰', '🇱',
+          '🇲', '🇳', '🇴', '🇵', '🇶', '🇷',
+          '🇸', '🇹']
+
 ruleList = ['Rule #1: Enacted 13/8/18\n' +
             'Usage of, “The N-Word”, as well as usage of its variants, is not permitted, with the exception of the variation, “nibba” for humorous purposes.\n',
             'Rule #2: Enacted 13/8/18\n' +
@@ -36,12 +45,14 @@ ruleList = ['Rule #1: Enacted 13/8/18\n' +
             'Any member of a foreign community in the premises of rome can use the #alliance channel for discussion of international policies\n',
             'Rule #13: Enacted 29/9/2018\n' +
             'All political extremism is banned from our glorious empire\n',
-            'Rule #14: Enacted 30/9/10\n' +
-            'The  group known as "reclaimers" (users from r/reclaimtheholyland) are banned to enter the premises of Rome and execute public offices\n',
-            'Rule #15: Enacted 2/10/2018\n' +
+            'Rule #14: Enacted 2/10/2018\n' +
             'Political parties are not allowed in the empire due to the  damage and anarchy they can cause.\n',
-            'Rule #16: Enacted 29/10/2018\n'
-            'The time zone that is to be used for official  matters will be GMT and Senate meetings will be held every Saturday at 8pm GMT']
+            'Rule #15: Enacted 29/10/2018\n'
+            'The time zone that is to be used for official  matters will be GMT and Senate meetings will be held every Saturday at 8pm GMT.\n',
+            'Rule #16: Enacted 17/11/2018\n'
+            'Unsolicited advertising of gens will not be allowed through private channels, such as DMs.\n',
+            'Rule #17: Enacted 8/12/2018\n'
+            'Any citizen proposing insincere motions will be demoted by one rank.']
 
 @bot.event
 async def on_ready():
@@ -50,28 +61,60 @@ async def on_ready():
 
 @bot.event
 async def on_reaction_add(reaction, user):
+    print(reaction.emoji)
     if not user.id == '502181308483633152':
         with open('userids.json') as f:
             userids = json.load(f)
         channel = reaction.message.channel
         with open('voteID.txt', 'r') as f:
-            voteId = f.read()
+            text = f.read()
+            voteId = text.split('|')[0]
+            voteType = text.split('|')[1]
+        candidates = []
+        with open('elections.txt', 'r') as file:
+            for line in file.readlines():
+                if line.startswith(voteType):
+                    candidates.append(line[(len(voteType)+3):].strip('\n'))
         if voteId == reaction.message.id:
             print(userids.keys())
             if user.id not in userids.keys():
                 print(user.id)
                 with open('userids.json', 'w') as f:
-                    userids[user.id] = 1
+                    userids[user.id] = []
                     json.dump(userids, f)
-                with open('results.json') as f:
-                    results = json.load(f)
+            for i in range(len(emojis)):
+                if reaction.emoji == emojis[i]:
+
+                    if candidates[i] not in userids[user.id] and len(userids[user.id]) < maxVotes[voteType]:
+                        print('reached this point')
+                        with open('results.json') as f:
+                            results = json.load(f)
+                        results[candidates[i]] = results[candidates[i]] + 1
+                        await bot.remove_reaction(reaction.message, reaction.emoji, user)
+                        with open('userids.json', 'w') as f:
+                            print(candidates[i])
+                            userids[user.id].append(candidates[i])
+                            json.dump(userids, f)
+                        scoreboard = '```python\n'
+                        for i in range(len(candidates)):
+                            scoreboard = scoreboard + candidates[i] + ' has ' + str(results[candidates[i]]) + ' votes. (' + emojis[i] + ')\n'
+                        scoreboard = scoreboard + '```'
+                        await bot.edit_message(await bot.get_message(channel, voteId), scoreboard)
+                        with open('results.json', 'w') as f:
+                            json.dump(results, f)
+            if voteType == 'vote' and len(userids[user.id]) < 1:
                 if reaction.emoji == '✅':
+                    with open('results.json') as f:
+                        results = json.load(f)
                     results['aye'] = results['aye'] + 1
                     await bot.remove_reaction(reaction.message, reaction.emoji, user)
                     await bot.edit_message(await bot.get_message(channel, voteId), '```python\n' +
                             str(results['aye']) + ' romans have voted AYE. (✅)\n' +
                             str(results['nay']) + ' romans have voted NAY. (❎)\n'
                             '```')
+                    with open('userids.json', 'w') as f:
+                        userids[user.id].append('aye')
+                        json.dump(userids, f)
                 elif reaction.emoji == '❎':
                     results['nay'] = results['nay'] + 1
                     await bot.remove_reaction(reaction.message, reaction.emoji, user)
@@ -79,6 +122,9 @@ async def on_reaction_add(reaction, user):
                             str(results['aye']) + ' romans have voted AYE. (✅)\n' +
                             str(results['nay']) + ' romans have voted NAY. (❎)\n'
                             '```')
+                    with open('userids.json', 'w') as f:
+                        userids[user.id].append('nay')
+                        json.dump(userids, f)
                 with open('results.json', 'w') as f:
                     json.dump(results, f)
 
@@ -132,42 +178,37 @@ async def procedures():
 async def elections(ctx):
     if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
     or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
-        consuls = []
-        senators = []
-        centurions = []
+        msg = ctx.message.content
+        voteType = ''
+        if re.search(r'consul', msg):
+            voteType = 'consul'
+        if re.search(r'senator', msg):
+            voteType = 'senator'
+        if re.search(r'centurion', msg):
+            voteType = 'centurion'
+        candidates = []
         with open('elections.txt', 'r') as file:
             for line in file.readlines():
-                if line.startswith('consul'):
-                    consuls.append(line[9:])
-                elif line.startswith('senator'):
-                    senators.append(line[10:])
-                elif line.startswith('centurion'):
-                    centurions.append(line[12:])
-        msg = str(ctx.message.content)
-        if re.search(r'consul', msg):
-            role = 'consul'
-            list = consuls
-        if re.search(r'senator', msg):
-            role = 'senator'
-            list = senators
-        if re.search(r'centurion', msg):
-            role = 'centurion'
-            list = centurions
-        values = dict(question="Vote for you next candidate for " + role)
-        values['ma'] = '1'
-        for i in range(0, len(list)):
-            name = 'a' + str(i)
-            value = list[i]
-            values[name] = value
-        url = 'https://strawpoll.com/new'
-        data = parse.urlencode(values)
-        data = data.encode('utf-8')
-        req = request.Request(url, data)
-        req.add_header("Content-type", "application/x-www-form-urlencoded")
-        with request.urlopen(req) as response:
-            the_page = response.read().decode('utf-8')
-        list = re.findall(r'https://strawpoll.com/.*\"', the_page)
-        await bot.say(list[0][:-1])
+                if line.startswith(voteType):
+                    candidates.append(line[(len(voteType) + 3):].strip('\n'))
+        emptyDict = {}
+        emptyResultsDict = {}
+        for candidate in candidates:
+            emptyResultsDict[candidate] = 0
+        with open('userids.json', 'w') as f:
+            json.dump(emptyDict, f)
+        with open('results.json', 'w') as f:
+            json.dump(emptyResultsDict, f)
+        scoreboard = '```python\n'
+        for candidate in candidates:
+            scoreboard = scoreboard + candidate + ' has 0 votes. (A)\n'
+        scoreboard = scoreboard + '```'
+        msg = await bot.say(scoreboard)
+        voteId = msg.id + '|' + voteType
+        with open('voteID.txt', 'w') as f:
+            f.write(voteId)
+        for i in range(len(candidates)):
+            await bot.add_reaction(msg, emojis[i])
     else:
         await bot.say('You are not authorised to organise a vote. Speak to a higher-up to organise a vote')
 
@@ -256,12 +297,9 @@ async def vote(ctx):
     if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
             or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
         id = int(str(ctx.message.content)[6:].lstrip())
-        print(id)
         motion = ''
         with open("motions.txt", 'r') as file:
             for line in file:
-                print(line)
-                print('#' + str(id) + ' ')
                 if '#' + str(id) + ' ' in line:
                     motion = line.split(' : ')[1]
                     print(motion)
@@ -276,7 +314,7 @@ async def vote(ctx):
                             '0 romans have voted AYE. (✅)\n' +
                             '0 romans have voted NAY. (❎)\n'
                             '```')
-        voteId = msg.id
+        voteId = msg.id + '|vote'
         with open('voteID.txt', 'w') as f:
             f.write(voteId)
         await bot.add_reaction(msg, '✅')
