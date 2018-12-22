@@ -327,7 +327,7 @@ async def motions(ctx):
     allMotions = ""
     for i in motions:
         allMotions += motions[i]
-    await bot.say(motions[i])
+    await bot.say(allMotions)
 # @bot.command(pass_context = True)
 # async def resolved():
 #     motions = {}
