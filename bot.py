@@ -18,6 +18,10 @@ emojis = ['🇦', '🇧', '🇨', '🇩', '🇪', '🇫',
           '🇬', '🇭', 'ℹ', '🇯', '🇰', '🇱',
           '🇲', '🇳', '🇴', '🇵', '🇶', '🇷',
           '🇸', '🇹']
+letters = ['A', 'B', 'C', 'D', 'E', 'F',
+           'G', 'H', 'I', 'J', 'K', 'L',
+           'M', 'N', 'O', 'P', 'Q', 'R',
+           'S', 'T']
 
 ruleList = ['Rule #1: Enacted 13/8/18\n' +
             'Usage of, “The N-Word”, as well as usage of its variants, is not permitted, with the exception of the variation, “nibba” for humorous purposes.\n',
@@ -97,7 +101,7 @@ async def on_reaction_add(reaction, user):
                             json.dump(userids, f)
                         scoreboard = '```python\n'
                         for i in range(len(candidates)):
-                            scoreboard = scoreboard + candidates[i] + ' has ' + str(results[candidates[i]]) + ' votes. (' + emojis[i] + ')\n'
+                            scoreboard = scoreboard + candidates[i] + ' has ' + str(results[candidates[i]]) + ' votes. (' + letters[i] + ')\n'
                         scoreboard = scoreboard + '```'
                         await bot.edit_message(await bot.get_message(channel, voteId), scoreboard)
                         with open('results.json', 'w') as f:
@@ -200,8 +204,8 @@ async def elections(ctx):
         with open('results.json', 'w') as f:
             json.dump(emptyResultsDict, f)
         scoreboard = '```python\n'
-        for candidate in candidates:
-            scoreboard = scoreboard + candidate + ' has 0 votes. (A)\n'
+        for i in range(len(candidates)):
+            scoreboard = scoreboard + candidates[i] + ' has 0 votes. (' + letters[i] + ')\n'
         scoreboard = scoreboard + '```'
         msg = await bot.say(scoreboard)
         voteId = msg.id + '|' + voteType
