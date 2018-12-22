@@ -324,8 +324,10 @@ async def motions(ctx):
             motions[str(line[1:].split(' | ')[0])] = line
     if len(motions) == 0:
         await bot.say('There are no standing motions right now')
+    allMotions = ""
     for i in motions:
-        await bot.say(motions[i])
+        allMotions += motions[i]
+    await bot.say(motions[i])
 # @bot.command(pass_context = True)
 # async def resolved():
 #     motions = {}
