@@ -13,7 +13,7 @@ logging.basicConfig(filename="catoBot.log", level=logging.INFO)
 maxVotes = {"vote": 1,
             "consul": 2,
             "senator": 3,
-            "centurion": 4}
+            "centurion": 5}
 emojis = ['🇦', '🇧', '🇨', '🇩', '🇪', '🇫',
           '🇬', '🇭', 'ℹ', '🇯', '🇰', '🇱',
           '🇲', '🇳', '🇴', '🇵', '🇶', '🇷',
@@ -65,7 +65,6 @@ async def on_ready():
 
 @bot.event
 async def on_reaction_add(reaction, user):
-    print(reaction.emoji)
     if not user.id == '502181308483633152':
         with open('userids.json') as f:
             userids = json.load(f)
