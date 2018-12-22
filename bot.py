@@ -215,7 +215,7 @@ async def unregister(ctx):
         if re.search(r'.* .* .*', msg):
             if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
                     or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
-                member = msg[12:].split(' ')[1]
+                member = msg[12:].split(' ')[1:]
             else:
                 error = True
         if not error:
