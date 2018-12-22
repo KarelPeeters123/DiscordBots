@@ -325,7 +325,7 @@ async def motions(ctx):
         await bot.say('There are no standing motions right now')
     allMotions = ""
     keyList = motions.keys()
-    keyList = keyList.sort()
+    keyList = sorted(keyList)
     for i in keyList:
         allMotions += motions[i]
     await bot.say(allMotions)
