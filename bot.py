@@ -218,31 +218,56 @@ async def elections(ctx):
 
 @bot.command(pass_context = True)
 async def register(ctx):
-    msg = str(ctx.message.content)
-    if re.search(r'@', msg) and (ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
-            or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion'):
-        member = (await bot.get_user_info(msg.split('@')[1].split('>')[0])).name
-        role = msg[10:].split(' ')[0]
+    if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
+            or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion'\
+            or ctx.message.author.top_role.name == 'Explorator' or ctx.message.author.top_role.name == 'Marinus'\
+            or ctx.message.author.top_role.name == 'Legionnaire' or ctx.message.author.top_role.name == 'Roman Citizen'\
+            or ctx.message.author.top_role.name == 'Cabbage Farmer':
+        msg = str(ctx.message.content)
+        if re.search(r'@', msg) and (ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
+                or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion'):
+            member = (await bot.get_user_info(msg.split('@')[1].split('>')[0])).name
+            role = msg[10:].split(' ')[0]
 
-        text = role + ' : ' + member
-        print('register | ' + text)
-        logging.info('register | ' + text)
-        with open('elections.txt', 'a') as file:
-            file.write(text + '\n')
-        await bot.say('The following candidate has been registered:\n' + text)
-    elif not re.search(r'@', msg):
-        member = (await bot.get_user_info(str(ctx.message.author.id))).name
-        role = msg[10:]
-
-        text = role + ' : ' + member
-        print('register | ' + text)
-        logging.info('register | ' + text)
-        with open('elections.txt', 'a') as file:
-            file.write(text + '\n')
-        await bot.say('The following candidate has been registered:\n' + text)
-    elif not ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
+            text = role + ' : ' + member
+            print('register | ' + text)
+            logging.info('register | ' + text)
+            if role == 'consul':
+                if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
             or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
-        await bot.say('You are not authorised to register other users for elections')
+                    canregister = True
+                else:
+                    canregister = False
+            elif role == 'senator':
+                if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
+                        or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion' \
+                        or ctx.message.author.top_role.name == 'Explorator' or ctx.message.author.top_role.name == 'Marinus' \
+                        or ctx.message.author.top_role.name == 'Legionnaire':
+                    canregister = True
+                else:
+                    canregister = False
+            else:
+                canregister = True
+            if canregister:
+                with open('elections.txt', 'a') as file:
+                    file.write(text + '\n')
+                await bot.say('The following candidate has been registered:\n' + text)
+            else:
+                await bot.say('You are not eligible for this position!')
+
+        elif not re.search(r'@', msg):
+            member = (await bot.get_user_info(str(ctx.message.author.id))).name
+            role = msg[10:]
+
+            text = role + ' : ' + member
+            print('register | ' + text)
+            logging.info('register | ' + text)
+            with open('elections.txt', 'a') as file:
+                file.write(text + '\n')
+            await bot.say('The following candidate has been registered:\n' + text)
+        elif not ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
+                or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+            await bot.say('You are not authorised to register other users for elections')
 @bot.command(pass_context = True)
 async def unregister(ctx):
     if re.search(r'all', str(ctx.message.content)):
