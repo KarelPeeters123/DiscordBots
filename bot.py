@@ -232,6 +232,17 @@ async def register(ctx):
             text = role + ' : ' + member
             print('register | ' + text)
             logging.info('register | ' + text)
+            with open('elections.txt', 'a') as file:
+                file.write(text + '\n')
+            await bot.say('The following candidate has been registered:\n' + text)
+
+        elif not re.search(r'@', msg):
+            member = (await bot.get_user_info(str(ctx.message.author.id))).name
+            role = msg[10:]
+
+            text = role + ' : ' + member
+            print('register | ' + text)
+            logging.info('register | ' + text)
             if role == 'consul':
                 if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
             or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
@@ -254,20 +265,12 @@ async def register(ctx):
                 await bot.say('The following candidate has been registered:\n' + text)
             else:
                 await bot.say('You are not eligible for this position!')
-
-        elif not re.search(r'@', msg):
-            member = (await bot.get_user_info(str(ctx.message.author.id))).name
-            role = msg[10:]
-
-            text = role + ' : ' + member
-            print('register | ' + text)
-            logging.info('register | ' + text)
-            with open('elections.txt', 'a') as file:
-                file.write(text + '\n')
-            await bot.say('The following candidate has been registered:\n' + text)
         elif not ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
                 or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
             await bot.say('You are not authorised to register other users for elections')
+    else:
+        await bot.say('You are not eligible for this position!')
+
 @bot.command(pass_context = True)
 async def unregister(ctx):
     if re.search(r'all', str(ctx.message.content)):
