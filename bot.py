@@ -1,4 +1,5 @@
 from discord.ext import commands
+from discord.utils import get
 import json
 import logging
 import re
@@ -62,6 +63,11 @@ ruleList = ['Rule #1: Enacted 13/8/18\n' +
 async def on_ready():
     print('bot is ready')
     logging.info('bot is ready')
+
+@bot.event
+async def on_member_join(member):
+    role = get(member.server.roles, name="Roman Subject")
+    await bot.add_roles(member, role)
 
 @bot.event
 async def on_reaction_add(reaction, user):
