@@ -172,6 +172,27 @@ async def procedures():
     await bot.say(commandPrefix  + 'conquer - procedure to conquer a discord\n' +
         commandPrefix + 'absence - procedure for what to do in case of higher-up absence\n' +
             commandPrefix + 'spy - procedure for what to do when a spy is found\n')
+
+@bot.command(pass_context = True)
+async def gens(ctx):
+    members = ctx.message.server.members
+    resultMsg = ''
+    gens = {}
+    for member in members:
+        for role in member.roles:
+            if role.name.startswith('Gens'):
+                if role.name not in gens.keys():
+                    gens[role.name] = []
+                newMembers = gens[role.name]
+                newMembers.append(member.name)
+                gens[role.name] = newMembers
+    for key in gens.keys():
+        resultMsg += '__***' + key + '***__\n'
+        for familyMember in gens[key]:
+            resultMsg += familyMember + '\n'
+    await bot.say(resultMsg)
+
+
 # @bot.event
 # async def on_member_update(before, after):
 #     if str(after.game) == 'Fortnite':
