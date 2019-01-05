@@ -143,7 +143,8 @@ async def on_reaction_add(reaction, user):
 
 @bot.command(pass_context = True)
 async def commands(ctx):
-    await bot.say(commandPrefix + 'commands - overview of all commands\n' +
+    await bot.say('```\n' +
+            commandPrefix + 'commands - overview of all commands\n' +
             commandPrefix + 'procedures - overview of all procedures\n' +
             commandPrefix + 'conquer - procedure to conquer a discord\n' +
             commandPrefix + 'absence - procedure for what to do in case of hihger-up absence\n' +
@@ -152,7 +153,7 @@ async def commands(ctx):
             commandPrefix + 'rules - gives an overview of all rules\n' +
             commandPrefix + 'motion - propose a motion to the senate\n' +
             commandPrefix + 'motions - gives an overview of the currently unresolved motions\n' +
-            commandPrefix + 'resolve [X] - resolves the motion with the ID = [X], it will no longer be visible with [' + commandPrefix + 'motions] but the motion will still be logged. Only Centurions or higher can execute this command\n' +
+            commandPrefix + 'resolve [X] - resolves the motion with the ID = [X], it will no longer be visible with `' + commandPrefix + 'motions` but the motion will still be logged. Only Centurions or higher can execute this command\n' +
             commandPrefix + 'resolve all - resolves all standing motions. Only to be used at the end of senate meeting by higher ups\n' +
             commandPrefix + 'register [X] -  register yourself for the election of position [X] use actual positions with lower case letters (centurion, senator, consul)\n' +
             commandPrefix + 'register [X] [Y] - as a higher-up, register another member [Y] for the elections of position [X]\n' +
@@ -162,9 +163,7 @@ async def commands(ctx):
             commandPrefix + 'candidates - view all candidates registered for each position\n' +
             commandPrefix + 'elections [X] - creates a vote for the elections of role [X]\n' +
             commandPrefix + 'vote [X] - vote Aye or Nay on the motion with id [X]\n' +
-            commandPrefix + 'suggestion [X] - make a suggestion to a higher-up, specify the name of the higher up ' +
-                            '(original name, without @ or the identifier at the end). ' +
-                            'alternatively, write [everyone] to adress all higher-ups')
+            commandPrefix + 'gens - gives a list of all members in each gens')
 
     if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
             await bot.say( '**secret commands**\n' +
@@ -175,6 +174,10 @@ async def procedures():
     await bot.say(commandPrefix  + 'conquer - procedure to conquer a discord\n' +
         commandPrefix + 'absence - procedure for what to do in case of higher-up absence\n' +
             commandPrefix + 'spy - procedure for what to do when a spy is found\n')
+@bot.command()
+async def triumph():
+    await bot.say('**A Triumph through rome!**\n'
+                  'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/The_Triumph_of_Aemilius_Paulus_%28detail%29.jpg/1200px-The_Triumph_of_Aemilius_Paulus_%28detail%29.jpg')
 
 @bot.command(pass_context = True)
 async def gens(ctx):
