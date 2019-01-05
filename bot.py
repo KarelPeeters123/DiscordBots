@@ -174,10 +174,10 @@ async def procedures():
     await bot.say(commandPrefix  + 'conquer - procedure to conquer a discord\n' +
         commandPrefix + 'absence - procedure for what to do in case of higher-up absence\n' +
             commandPrefix + 'spy - procedure for what to do when a spy is found\n')
-@bot.command()
-async def triumph():
-    await bot.say('**A Triumph through rome!**\n'
-                  'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/The_Triumph_of_Aemilius_Paulus_%28detail%29.jpg/1200px-The_Triumph_of_Aemilius_Paulus_%28detail%29.jpg')
+# @bot.command()
+# async def triumph():
+#     await bot.say('**A Triumph through Rome!**\n'
+#                   'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/The_Triumph_of_Aemilius_Paulus_%28detail%29.jpg/1200px-The_Triumph_of_Aemilius_Paulus_%28detail%29.jpg')
 
 @bot.command(pass_context = True)
 async def gens(ctx):
