@@ -57,7 +57,9 @@ ruleList = ['Rule #1: Enacted 13/8/18\n' +
             'Rule #16: Enacted 17/11/2018\n'
             'Unsolicited advertising of gens will not be allowed through private channels, such as DMs.\n',
             'Rule #17: Enacted 8/12/2018\n'
-            'Any citizen proposing insincere motions will be demoted by one rank.']
+            'Any citizen proposing insincere motions will be demoted by one rank.\n',
+            'Rule #18: Enacted 3/1/2019\n'
+            'Any attempt of electoral fraud is strictly forbidden.']
 
 @bot.event
 async def on_ready():
@@ -151,13 +153,14 @@ async def commands(ctx):
             commandPrefix + 'motion - propose a motion to the senate\n' +
             commandPrefix + 'motions - gives an overview of the currently unresolved motions\n' +
             commandPrefix + 'resolve [X] - resolves the motion with the ID = [X], it will no longer be visible with [' + commandPrefix + 'motions] but the motion will still be logged. Only Centurions or higher can execute this command\n' +
+            commandPrefix + 'resolve all - resolves all standing motions. Only to be used at the end of senate meeting by higher ups\n' +
             commandPrefix + 'register [X] -  register yourself for the election of position [X] use actual positions with lower case letters (centurion, senator, consul)\n' +
             commandPrefix + 'register [X] [Y] - as a higher-up, register another member [Y] for the elections of position [X]\n' +
             commandPrefix + 'unregister [X] - unregister yourself for the election of postion [X] *only unregister yourself for postions you were previously registered with*\n' +
-            commandPrefix + 'unregister [X] [Y] - as a higher-up, unregister another member [Y] who registered for position [X]\n' +
-            commandPrefix + 'register all - as a higher-up, unregister all current candidates *to be used sparingly. preferably only after elections\n' +
+            commandPrefix + 'unregister [X] "[Y]" - as a higher-up, unregister another member [Y] who registered for position [X]. make sure to put `"` around the name and don\'t @ them\n' +
+            commandPrefix + 'unregister all - as a higher-up, unregister all current candidates *to be used sparingly. preferably only after elections\n' +
             commandPrefix + 'candidates - view all candidates registered for each position\n' +
-            commandPrefix + 'elections [X] - creates a strawpoll for the elections of role [X]\n' +
+            commandPrefix + 'elections [X] - creates a vote for the elections of role [X]\n' +
             commandPrefix + 'vote [X] - vote Aye or Nay on the motion with id [X]\n' +
             commandPrefix + 'suggestion [X] - make a suggestion to a higher-up, specify the name of the higher up ' +
                             '(original name, without @ or the identifier at the end). ' +
@@ -399,18 +402,32 @@ async def resolve(ctx):
     if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
             or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
         index = str(ctx.message.content)
-        index = int(index.split(' ')[1])
-        lines = []
-        with open('motions.txt', 'r') as file:
-            for line in file:
-                if '#' + str(index) not in line:
-                    lines.append(line)
-                if '#' + str(index) in line:
-                    with open('resolved.txt', 'a') as file:
-                        file.write(line)
-        with open('motions.txt', 'w') as file:
-            file.writelines(lines)
-        await bot.say("Motion is resolved.")
+        index = index.split(' ')[1]
+        if index == 'all':
+            lines = []
+            with open('motions.txt', 'r') as file:
+                for line in file:
+                    if '#' not in line:
+                        lines.append(line)
+                    if '#' in line:
+                        with open('resolved.txt', 'a') as file:
+                            file.write(line)
+            with open('motions.txt', 'w') as file:
+                file.writelines(lines)
+            await bot.say('All motions are resolved.')
+        else:
+            index = int(index)
+            lines = []
+            with open('motions.txt', 'r') as file:
+                for line in file:
+                    if '#' + str(index) not in line:
+                        lines.append(line)
+                    if '#' + str(index) in line:
+                        with open('resolved.txt', 'a') as file:
+                            file.write(line)
+            with open('motions.txt', 'w') as file:
+                file.writelines(lines)
+            await bot.say("Motion is resolved.")
     else:
         await bot.say("You do not have the authority to resolve this motion")
 @bot.command(pass_context = True)
