@@ -66,6 +66,8 @@ async def on_ready():
     print('bot is ready')
     logging.info('bot is ready')
 
+def isHigherUp(role):
+    return  role == 'Imperator' or role == 'Consul' or role == 'Senator' or role == 'Centurion' or role == 'Heir to the Emperorship' or role == 'Dictator' or role == 'Praefectus'
 @bot.event
 async def on_member_join(member):
     role = get(member.server.roles, name="Roman Subject")
@@ -174,10 +176,6 @@ async def procedures():
     await bot.say(commandPrefix  + 'conquer - procedure to conquer a discord\n' +
         commandPrefix + 'absence - procedure for what to do in case of higher-up absence\n' +
             commandPrefix + 'spy - procedure for what to do when a spy is found\n')
-# @bot.command()
-# async def triumph():
-#     await bot.say('**A Triumph through Rome!**\n'
-#                   'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/The_Triumph_of_Aemilius_Paulus_%28detail%29.jpg/1200px-The_Triumph_of_Aemilius_Paulus_%28detail%29.jpg')
 
 @bot.command(pass_context = True)
 async def gens(ctx):
@@ -198,23 +196,9 @@ async def gens(ctx):
             resultMsg += familyMember + '\n'
     await bot.say(resultMsg)
 
-
-# @bot.event
-# async def on_member_update(before, after):
-#     if str(after.game) == 'Fortnite':
-#         for channel in after.server.channels:
-#             if channel.name == 'general':
-#                 with open('fortnite.txt', 'r') as file:
-#                     lines = file.readlines()
-#                     if not after.mention in lines:
-#                             await bot.send_message(channel, after.mention + ' has been playing fortnite!\n@everyone')
-#         with open('fortnite.txt', 'a') as file:
-#             file.write(after.mention + '\n')
-
 @bot.command(pass_context = True)
 async def elections(ctx):
-    if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
-    or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+    if isHigherUp(ctx.message.author.top_role.name):
         msg = ctx.message.content
         voteType = ''
         if re.search(r'consul', msg):
@@ -251,14 +235,11 @@ async def elections(ctx):
 
 @bot.command(pass_context = True)
 async def register(ctx):
-    if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
-            or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion'\
-            or ctx.message.author.top_role.name == 'Explorator' or ctx.message.author.top_role.name == 'Marinus'\
-            or ctx.message.author.top_role.name == 'Legionnaire' or ctx.message.author.top_role.name == 'Roman Citizen'\
-            or ctx.message.author.top_role.name == 'Cabbage Farmer':
+    top_role = ctx.message.author.top_role.name
+    if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire' \
+            or top_role == 'Roman Citizen' or top_role == 'Cabbage Farmer':
         msg = str(ctx.message.content)
-        if re.search(r'@', msg) and (ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
-                or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion'):
+        if re.search(r'@', msg) and (isHigherUp(top_role)):
             member = (await bot.get_user_info(msg.split('@')[1].split('>')[0])).name
             role = msg[10:].split(' ')[0]
 
@@ -277,16 +258,12 @@ async def register(ctx):
             print('register | ' + text)
             logging.info('register | ' + text)
             if role == 'consul':
-                if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
-            or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+                if isHigherUp(top_role):
                     canregister = True
                 else:
                     canregister = False
             elif role == 'senator':
-                if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
-                        or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion' \
-                        or ctx.message.author.top_role.name == 'Explorator' or ctx.message.author.top_role.name == 'Marinus' \
-                        or ctx.message.author.top_role.name == 'Legionnaire':
+                if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire':
                     canregister = True
                 else:
                     canregister = False
@@ -298,17 +275,16 @@ async def register(ctx):
                 await bot.say('The following candidate has been registered:\n' + text)
             else:
                 await bot.say('You are not eligible for this position!')
-        elif not ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
-                or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+        elif not isHigherUp(top_role):
             await bot.say('You are not authorised to register other users for elections')
     else:
         await bot.say('You are not eligible for this position!')
 
 @bot.command(pass_context = True)
 async def unregister(ctx):
+    top_role = ctx.message.author.top_role.name
     if re.search(r'all', str(ctx.message.content)):
-        if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
-                or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+        if isHigherUp(top_role):
             open('elections.txt', 'w').close()
             await bot.say('removed all candidates')
         else:
@@ -319,8 +295,7 @@ async def unregister(ctx):
         role = msg[12:].split(' ')[0]
         error = False
         if re.search(r'"', msg):
-            if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
-                    or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+            if isHigherUp(top_role):
                 member = msg[12:].split('"')[1].split('"')[0]
             else:
                 error = True
@@ -359,8 +334,8 @@ async def candidates():
 
 @bot.command(pass_context = True)
 async def vote(ctx):
-    if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
-            or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+    top_role = ctx.message.author.top_role.name
+    if isHigherUp(top_role):
         id = int(str(ctx.message.content)[6:].lstrip())
         motion = ''
         with open("motions.txt", 'r') as file:
@@ -402,8 +377,8 @@ async def motion(ctx):
     await bot.say("Motion is noted. view all motions with the [*motions] command")
 @bot.command(pass_context = True)
 async def resolve(ctx):
-    if ctx.message.author.top_role.name == 'Imperator' or ctx.message.author.top_role.name == 'Consul' \
-            or ctx.message.author.top_role.name == 'Senator' or ctx.message.author.top_role.name == 'Centurion':
+    top_role = ctx.message.author.top_role.name
+    if isHigherUp(top_role):
         index = str(ctx.message.content)
         index = index.split(' ')[1]
         if index == 'all':
