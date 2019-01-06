@@ -67,7 +67,7 @@ async def on_ready():
     logging.info('bot is ready')
 
 def isHigherUp(role):
-    return  role == 'Imperator' or role == 'Consul' or role == 'Senator' or role == 'Centurion' or role == 'Heir to the Emperorship' or role == 'Dictator' or role == 'Praefectus'
+    return  role == 'Imperator' or role == 'Consul' or role == 'Senator' or role == 'Centurion' or role == 'Heir to the Emperorship' or role == 'Dictator' or role == 'Praefectus' or role == 'Legatus'
 @bot.event
 async def on_member_join(member):
     role = get(member.server.roles, name="Roman Subject")
