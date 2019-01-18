@@ -378,38 +378,42 @@ async def motion(ctx):
 @bot.command(pass_context = True)
 async def resolve(ctx):
     top_role = ctx.message.author.top_role.name
-    if isHigherUp(top_role):
-        index = str(ctx.message.content)
-        index = index.split(' ')[1]
-        if index == 'all':
-            lines = []
-            with open('motions.txt', 'r') as file:
-                for line in file:
-                    if '#' not in line:
-                        lines.append(line)
-                    if '#' in line:
-                        with open('resolved.txt', 'a') as file:
-                            file.write(line)
-            with open('motions.txt', 'w') as file:
-                file.writelines(lines)
-            await bot.say('All motions are resolved.')
-        else:
-            index = int(index)
-            lines = []
-            with open('motions.txt', 'r') as file:
-                for line in file:
-                    if '#' + str(index) not in line:
-                        lines.append(line)
-                    if '#' + str(index) in line:
-                        with open('resolved.txt', 'a') as file:
-                            file.write(line)
+    index = str(ctx.message.content)
+    index = index.split(' ')[1]
+    if index == 'all':
+        lines = []
+        with open('motions.txt', 'r') as file:
+            for line in file:
+                if '#' not in line:
+                    lines.append(line)
+                if '#' in line:
+                    with open('resolved.txt', 'a') as file:
+                        file.write(line)
+        with open('motions.txt', 'w') as file:
+            file.writelines(lines)
+        await bot.say('All motions are resolved.')
+    else:
+        resolvedMotion = ''
+        index = int(index)
+        lines = []
+        with open('motions.txt', 'r') as file:
+            for line in file:
+                if '#' + str(index) not in line:
+                    lines.append(line)
+                if '#' + str(index) in line:
+                    resolvedMotion = line
+        owner = resolvedMotion.split(' ')[2]
+        user = str(ctx.message.author)
+        if isHigherUp(top_role) or owner == user:
+            with open('resolved.txt', 'a') as file:
+                file.write(resolvedMotion)
             with open('motions.txt', 'w') as file:
                 file.writelines(lines)
             await bot.say("Motion is resolved.")
-    else:
-        await bot.say("You do not have the authority to resolve this motion")
-@bot.command(pass_context = True)
-async def motions(ctx):
+        else:
+            await bot.say("You do not have the authority to resolve this motion")
+@bot.command()
+async def motions():
     motions = {}
     with open("motions.txt", 'r') as file:
         for line in file:
