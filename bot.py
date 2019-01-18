@@ -3,9 +3,10 @@ from discord.utils import get
 import json
 import logging
 import re
+import os
 from urllib import parse
 from urllib import request
-TOKEN = 'NTAyMTgxMzA4NDgzNjMzMTUy.DqkN_Q.y1o0bR4kaMYh2J2-FWtkWBhRokw'
+# TOKEN = 'NTAyMTgxMzA4NDgzNjMzMTUy.DqkN_Q.y1o0bR4kaMYh2J2-FWtkWBhRokw'
 commandPrefix = '*'
 bot = commands.Bot(command_prefix=commandPrefix)
 
@@ -511,7 +512,8 @@ async def spy():
                   '**4.** His case will be held in #courts as soon as a consul hears about the issue where he may defend himself.\n' +
                   '**5.** In case he is proven innocent, he will be awarded his old ranks back and will receive a formal apology from the suspecting roman, the higher-up who demoted him and the consul who oversaw the case. If he is proven guilty, he will be banned from the discord\n' +
                   '**6.** If it is revealed who the culprit is spying for, they will be added to potential future war targets if they aren’t already. No rash decisions will be taken on the matter. Only the senate may declare war. It is a very real possibility that the spy was acting as a rogue agent')
-bot.run(TOKEN)
+# bot.run(TOKEN)
+bot.run(os.environ.get('TOKEN'))
 
 # values = dict(question = motion, a0 = 'Aye', a1 = 'Nay')
 #         url = 'https://strawpoll.com/new'
