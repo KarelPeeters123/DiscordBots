@@ -263,7 +263,7 @@ async def register(ctx):
                 else:
                     canregister = False
             elif role == 'senator':
-                if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire':
+                if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire' or top_role == 'Cabbage Farmer':
                     canregister = True
                 else:
                     canregister = False
