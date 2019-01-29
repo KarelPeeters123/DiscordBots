@@ -1,6 +1,7 @@
 from discord.ext import commands
 from discord.utils import get
 import asyncio
+import datetime
 import json
 import logging
 import re
@@ -69,10 +70,13 @@ async def on_ready():
 
 async def my_background_task():
     await bot.wait_until_ready()
-    channel = bot.get_channel('538819684724637696')
+    channel = bot.get_channel('476871636277264385')
     while not bot.is_closed:
-        await bot.send_message(channel, "vote for caligula")
-        await asyncio.sleep(3600)
+        if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "21:00:00":
+            await bot.send_message(channel, "@everyone our weekly senate meeting commences now")
+            await asyncio.sleep(1)
+        else:
+            await asyncio.sleep(1)
 
 def isHigherUp(role):
     return  role == 'Imperator' or role == 'Consul' or role == 'Senator' or role == 'Centurion' or role == 'Heir to the Emperorship' or role == 'Dictator' or role == 'Praefectus' or role == 'Legatus'
@@ -163,12 +167,12 @@ async def commands(ctx):
             commandPrefix + 'rules - gives an overview of all rules\n' +
             commandPrefix + 'motion - propose a motion to the senate\n' +
             commandPrefix + 'motions - gives an overview of the currently unresolved motions\n' +
-            commandPrefix + 'resolve [X] - resolves the motion with the ID = [X], it will no longer be visible with `' + commandPrefix + 'motions` but the motion will still be logged. Only Centurions or higher can execute this command\n' +
+            commandPrefix + 'resolve [X] - resolves the motion with the ID = [X], it will no longer be visible with "' + commandPrefix + 'motions" but the motion will still be logged. Only Centurions or higher can execute this command\n' +
             commandPrefix + 'resolve all - resolves all standing motions. Only to be used at the end of senate meeting by higher ups\n' +
             commandPrefix + 'register [X] -  register yourself for the election of position [X] use actual positions with lower case letters (centurion, senator, consul)\n' +
             commandPrefix + 'register [X] [Y] - as a higher-up, register another member [Y] for the elections of position [X]\n' +
             commandPrefix + 'unregister [X] - unregister yourself for the election of postion [X] *only unregister yourself for postions you were previously registered with*\n' +
-            commandPrefix + 'unregister [X] "[Y]" - as a higher-up, unregister another member [Y] who registered for position [X]. make sure to put `"` around the name and don\'t @ them\n' +
+            commandPrefix + 'unregister [X] "[Y]" - as a higher-up, unregister another member [Y] who registered for position [X]. make sure to put " around the name and don\'t @ them\n' +
             commandPrefix + 'unregister all - as a higher-up, unregister all current candidates *to be used sparingly. preferably only after elections\n' +
             commandPrefix + 'candidates - view all candidates registered for each position\n' +
             commandPrefix + 'elections [X] - creates a vote for the elections of role [X]\n' +
