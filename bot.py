@@ -65,6 +65,17 @@ ruleList = ['Rule #1: Enacted 13/8/18\n' +
 @bot.event
 async def on_ready():
     print('bot is ready')
+    await my_background_task()
+
+async def my_background_task():
+    await bot.wait_until_ready()
+    channel = bot.get_channel('476871636277264385')
+    while not bot.is_closed:
+        if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "21:00:00":
+            await bot.send_message(channel, "@everyone our weekly senate meeting commences now")
+            await asyncio.sleep(1)
+        else:
+            await asyncio.sleep(1)
 def isHigherUp(role):
     return  role == 'Imperator' or role == 'Consul' or role == 'Senator' or role == 'Centurion' or role == 'Heir to the Emperorship' or role == 'Dictator' or role == 'Praefectus' or role == 'Legatus'
 @bot.event
