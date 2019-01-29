@@ -176,7 +176,8 @@ async def commands(ctx):
             commandPrefix + 'candidates - view all candidates registered for each position\n' +
             commandPrefix + 'elections [X] - creates a vote for the elections of role [X]\n' +
             commandPrefix + 'vote [X] - vote Aye or Nay on the motion with id [X]\n' +
-            commandPrefix + 'gens - gives a list of all members in each gens')
+            commandPrefix + 'gens - gives a list of all members in each gens\n'
+                            '```')
 
     if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
             await bot.say( '**secret commands**\n' +
@@ -451,13 +452,13 @@ async def motions():
 async def rule(ctx):
     index = str(ctx.message.content)
     index = int(index[5:].lstrip()) - 1
-    await bot.say(ruleList[index])
+    await bot.say("```python" + ruleList[index] + "```")
 @bot.command()
 async def rules():
     output = ''
     for rule in ruleList:
         output += rule
-    await bot.say(output)
+    await bot.say("```python\n" + output + "```")
 @bot.command(pass_context = True)
 async def docs(ctx):
     if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
