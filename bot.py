@@ -1,5 +1,6 @@
 from discord.ext import commands
 from discord.utils import get
+import asyncio
 import json
 import logging
 import re
@@ -64,8 +65,6 @@ ruleList = ['Rule #1: Enacted 13/8/18\n' +
 @bot.event
 async def on_ready():
     print('bot is ready')
-    logging.info('bot is ready')
-
 def isHigherUp(role):
     return  role == 'Imperator' or role == 'Consul' or role == 'Senator' or role == 'Centurion' or role == 'Heir to the Emperorship' or role == 'Dictator' or role == 'Praefectus' or role == 'Legatus'
 @bot.event
