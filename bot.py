@@ -1,5 +1,6 @@
 from discord.ext import commands
 from discord.utils import get
+import asyncio
 import json
 import logging
 import re
@@ -64,7 +65,14 @@ ruleList = ['Rule #1: Enacted 13/8/18\n' +
 @bot.event
 async def on_ready():
     print('bot is ready')
-    logging.info('bot is ready')
+    await my_background_task()
+
+async def my_background_task():
+    await bot.wait_until_ready()
+    channel = bot.get_channel('538819684724637696')
+    while not bot.is_closed:
+        await bot.send_message(channel, "vote for caligula")
+        await asyncio.sleep(3600)
 
 def isHigherUp(role):
     return  role == 'Imperator' or role == 'Consul' or role == 'Senator' or role == 'Centurion' or role == 'Heir to the Emperorship' or role == 'Dictator' or role == 'Praefectus' or role == 'Legatus'
