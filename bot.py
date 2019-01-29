@@ -452,7 +452,7 @@ async def motions():
 async def rule(ctx):
     index = str(ctx.message.content)
     index = int(index[5:].lstrip()) - 1
-    await bot.say("```python" + ruleList[index] + "```")
+    await bot.say("```python\n" + ruleList[index] + "```")
 @bot.command()
 async def rules():
     output = ''
