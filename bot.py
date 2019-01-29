@@ -26,41 +26,41 @@ letters = ['A', 'B', 'C', 'D', 'E', 'F',
            'M', 'N', 'O', 'P', 'Q', 'R',
            'S', 'T']
 
-ruleList = ['Rule #1: Enacted 13/8/18\n' +
+ruleList = ['Rule 1: Enacted 13/8/18\n' +
             'Usage of, “The N-Word”, as well as usage of its variants, is not permitted, with the exception of the variation, “nibba” for humorous purposes.\n',
-            'Rule #2: Enacted 13/8/18\n' +
+            'Rule 2: Enacted 13/8/18\n' +
             'The video game, “Fortnite”, and all media and other objects related to it must be destroyed.\n',
-            'Rule #3: Enacted 13/8/18\n' +
+            'Rule 3: Enacted 13/8/18\n' +
             'All barbarian peoples are forbidden from entering the Roman Province.\n',
-            'Rule #4: Enacted 13/8/18\n' +
+            'Rule 4: Enacted 13/8/18\n' +
             'The city of Carthage, its holdings, and its allies must be destroyed.\n',
-            'Rule #5: Enacted 15/8/18\n' +
+            'Rule 5: Enacted 15/8/18\n' +
             'Any media deemed, “Not Safe For Work”, may only be posted on the, “NSFW”, channel.\n',
-            'Rule #6: Enacted 24/8/18\n' +
+            'Rule 6: Enacted 24/8/18\n' +
             'Roman citizens must behave and act in accordance to their status as members of the providence: civilized.\n',
-            'Rule #7: Enacted 30/8/18\n' +
+            'Rule 7: Enacted 30/8/18\n' +
             'Any Roman citizen apprehended engaging in Fortnite-related activities is to be sentenced to exile from the Roman providence.\n',
-            'Rule #8: Enacted 31/8/18\n' +
+            'Rule 8: Enacted 31/8/18\n' +
             'In accordance with the ideals of the Pax Romana, all racism within the Empire is forbidden, excluding that which pertains to barbarian peoples.\n',
-            'Rule #9: Enacted 2/9/2018\n' +
+            'Rule 9: Enacted 2/9/2018\n' +
             'All political subjects are confined to #politics due to the controversy that this posses.\n',
-            'Rule #10:Enacted  3/9/2018\n' +
+            'Rule 10: Enacted  3/9/2018\n' +
             'Continued harassment to other members of our community will not be tolerated.\n',
-            'Rule #11: Enacted 14/9/2018\n' +
+            'Rule 11: Enacted 14/9/2018\n' +
             'The act of civil revolts and and instigations of civil war is punishable by death  to protect the safety of the empire.\n',
-            'Rule #12: Enacted 21/9/2018\n' +
+            'Rule 12: Enacted 21/9/2018\n' +
             'Any member of a foreign community in the premises of rome can use the #alliance channel for discussion of international policies\n',
-            'Rule #13: Enacted 29/9/2018\n' +
+            'Rule 13: Enacted 29/9/2018\n' +
             'All political extremism is banned from our glorious empire\n',
-            'Rule #14: Enacted 2/10/2018\n' +
+            'Rule 14: Enacted 2/10/2018\n' +
             'Political parties are not allowed in the empire due to the  damage and anarchy they can cause.\n',
-            'Rule #15: Enacted 29/10/2018\n'
+            'Rule 15: Enacted 29/10/2018\n'
             'The time zone that is to be used for official  matters will be GMT and Senate meetings will be held every Saturday at 8pm GMT.\n',
-            'Rule #16: Enacted 17/11/2018\n'
+            'Rule 16: Enacted 17/11/2018\n'
             'Unsolicited advertising of gens will not be allowed through private channels, such as DMs.\n',
-            'Rule #17: Enacted 8/12/2018\n'
+            'Rule 17: Enacted 8/12/2018\n'
             'Any citizen proposing insincere motions will be demoted by one rank.\n',
-            'Rule #18: Enacted 3/1/2019\n'
+            'Rule 18: Enacted 3/1/2019\n'
             'Any attempt of electoral fraud is strictly forbidden.']
 
 @bot.event
