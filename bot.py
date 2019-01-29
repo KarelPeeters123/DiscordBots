@@ -77,7 +77,6 @@ async def my_background_task():
             await asyncio.sleep(1)
         else:
             await asyncio.sleep(1)
-
 def isHigherUp(role):
     return  role == 'Imperator' or role == 'Consul' or role == 'Senator' or role == 'Centurion' or role == 'Heir to the Emperorship' or role == 'Dictator' or role == 'Praefectus' or role == 'Legatus'
 @bot.event
