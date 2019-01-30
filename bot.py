@@ -77,6 +77,72 @@ async def my_background_task():
             await asyncio.sleep(1)
         else:
             await asyncio.sleep(1)
+
+@bot.event
+async def on_message(msg):
+    content = msg.content
+    response = ''
+    words = content.split(' ')
+    if not msg.author.id == '518797552305307649' and re.search(r'[0-9]+ .*', content):
+        for i in range(1, len(words)):
+            if re.search(r'inch', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i-1]):
+                value = convert(words[i], float(words[i-1]))
+                response += words[i-1] + " " + words[i] + ' -> ' + str(value)[:5] + ' m.\n'
+            if re.match(r'f(ee)?t', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i-1]):
+                value = convert(words[i], float(words[i - 1]))
+                response += words[i - 1] + " " + words[i] + ' -> ' + str(value)[:5] + ' m.\n'
+            if re.match(r'[fF]', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
+                value = convert(words[i], float(words[i - 1]))
+                response += words[i - 1] + " " + words[i] + ' -> ' + str(value)[:5] + ' C.\n'
+            if re.match(r'(lb|pounds)', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
+                value = convert(words[i], float(words[i - 1]))
+                response += words[i - 1] + " " + words[i] + ' -> ' + str(value)[:5] + ' kg.\n'
+            if re.match(r'mile', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
+                value = convert(words[i], float(words[i - 1]))
+                response += words[i - 1] + " " + words[i] + ' -> ' + str(value)[:5] + ' km.\n'
+        await bot.send_message(msg.channel, response)
+    elif not msg.author.id == '518797552305307649' and re.search(r'[0-9]+(a|A|p|P)[mM] [a-zA-Z]', content):
+        for i in range(1, len(words)):
+            if re.match(r'(CET|cet)', words[i]) and re.match(r'[0-9]+(a|A|p|P)[mM]', words[i - 1]):
+                value = convertTimezone(words[i], words[i - 1])
+                response += words[i - 1] + " " + words[i] + ' -> ' + value + ' UTC.\n'
+            if re.match(r'(CST|cst)', words[i]) and re.match(r'[0-9]+(a|A|p|P)[mM]', words[i - 1]):
+                value = convertTimezone(words[i], words[i - 1])
+                response += words[i - 1] + " " + words[i] + ' -> ' + value + ' UTC.\n'
+            if re.match(r'(EST|est)', words[i]) and re.match(r'[0-9]+(a|A|p|P)[mM]', words[i - 1]):
+                value = convertTimezone(words[i], words[i - 1])
+                response += words[i - 1] + " " + words[i] + ' -> ' + value + ' UTC.\n'
+        await bot.send_message(msg.channel, response)
+    else:
+        await bot.process_commands(msg)
+
+def convert(freedomUnit, value):
+    if re.match(r'inch', freedomUnit):
+        return value/39.370
+    if re.match(r'f(ee)?t', freedomUnit):
+        return value*0.3048
+    if re.match(r'[fF]', freedomUnit):
+        return (value - 32.0) / 1.8
+    if re.match(r'(lb|pounds)', freedomUnit):
+        return value/ 2.2046
+    if re.match(r'mile', freedomUnit):
+        return value / 0.62137
+
+def convertTimezone(zone, value):
+    time24h = 0
+    if re.match(r'(p|P)[mM]', value[len(value)-2:]):
+        time24h = int(value[:1]) + 12
+    else:
+        time24h = int(value[:1])
+    if re.match(r'(CET|cet)', zone):
+        time24h -= 1
+    if re.match(r'(CST|cst)', zone):
+        time24h += 6
+    if re.match(r'(EST|est)', zone):
+        time24h += 5
+
+    return str(time24h) + ':00'
+
 def isHigherUp(role):
     return  role == 'Imperator' or role == 'Consul' or role == 'Senator' or role == 'Centurion' or role == 'Heir to the Emperorship' or role == 'Dictator' or role == 'Praefectus' or role == 'Legatus'
 @bot.event
