@@ -83,7 +83,7 @@ async def on_message(msg):
     content = msg.content
     response = ''
     words = content.split(' ')
-    if not msg.author.id == '518797552305307649' and re.search(r'[0-9]+ .*', content):
+    if not msg.author.id == '502181308483633152' and re.search(r'[0-9]+ .*', content):
         for i in range(1, len(words)):
             if re.search(r'inch', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i-1]):
                 value = convert(words[i], float(words[i-1]))
