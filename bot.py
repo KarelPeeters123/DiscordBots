@@ -87,11 +87,11 @@ async def on_message(msg):
         for i in range(1, len(words)):
             if re.search(r'inch', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i-1]):
                 value = convert(words[i], float(words[i-1]))
-                response += words[i-1] + " " + words[i] + ' -> ' + str(value)[:5] + ' m.\n'
+                response += words[i-1] + " " + words[i] + ' -> ' + str(value)[:5] + ' cm.\n'
             if re.match(r'f(ee)?t', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i-1]):
                 value = convert(words[i], float(words[i - 1]))
                 response += words[i - 1] + " " + words[i] + ' -> ' + str(value)[:5] + ' m.\n'
-            if re.match(r'[fF]', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
+            if re.match(r'[fF] ', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
                 value = convert(words[i], float(words[i - 1]))
                 response += words[i - 1] + " " + words[i] + ' -> ' + str(value)[:5] + ' C.\n'
             if re.match(r'(lb|pounds)', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
@@ -101,7 +101,7 @@ async def on_message(msg):
                 value = convert(words[i], float(words[i - 1]))
                 response += words[i - 1] + " " + words[i] + ' -> ' + str(value)[:5] + ' km.\n'
         await bot.send_message(msg.channel, response)
-    elif not msg.author.id == '518797552305307649' and re.search(r'[0-9]+(a|A|p|P)[mM] [a-zA-Z]', content):
+    elif not msg.author.id == '502181308483633152' and re.search(r'[0-9]+(a|A|p|P)[mM] [a-zA-Z]', content):
         for i in range(1, len(words)):
             if re.match(r'(CET|cet)', words[i]) and re.match(r'[0-9]+(a|A|p|P)[mM]', words[i - 1]):
                 value = convertTimezone(words[i], words[i - 1])
@@ -118,7 +118,7 @@ async def on_message(msg):
 
 def convert(freedomUnit, value):
     if re.match(r'inch', freedomUnit):
-        return value/39.370
+        return value/0.39370
     if re.match(r'f(ee)?t', freedomUnit):
         return value*0.3048
     if re.match(r'[fF]', freedomUnit):
