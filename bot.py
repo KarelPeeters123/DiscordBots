@@ -1,5 +1,6 @@
 from discord.ext import commands
 from discord.utils import get
+import random
 import asyncio
 import datetime
 import json
@@ -100,6 +101,11 @@ async def on_message(msg):
             if re.match(r'mile', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
                 value = convert(words[i], float(words[i - 1]))
                 response += words[i - 1] + " " + words[i] + ' -> ' + str(value)[:5] + ' km.\n'
+            if re.match(r'freedom units', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
+                value = random.randint(1, 100000)
+                units = ['m', 'kg', 'V', 'C', 'mol', 's']
+                index = random.randint(0, 5)
+                response += words[i - 1] + " " + words[i] + ' -> ' + str(value)[:5] + ' ' + units[index] + '.\n'
         await bot.send_message(msg.channel, response)
     elif not msg.author.id == '502181308483633152' and re.search(r'[0-9]+(a|A|p|P)[mM] [a-zA-Z]', content):
         for i in range(1, len(words)):
