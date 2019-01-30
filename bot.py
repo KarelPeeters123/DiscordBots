@@ -91,7 +91,7 @@ async def on_message(msg):
             if re.match(r'f(ee)?t', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i-1]):
                 value = convert(words[i], float(words[i - 1]))
                 response += words[i - 1] + " " + words[i] + ' -> ' + str(value)[:5] + ' m.\n'
-            if re.match(r'(f|F) ', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
+            if re.match(r'(f|F)', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
                 value = convert(words[i], float(words[i - 1]))
                 response += words[i - 1] + " " + words[i] + ' -> ' + str(value)[:5] + ' C.\n'
             if re.match(r'(lb|pounds)', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
@@ -121,7 +121,7 @@ def convert(freedomUnit, value):
         return value/0.39370
     if re.match(r'f(ee)?t', freedomUnit):
         return value*0.3048
-    if re.match(r'(fF) ', freedomUnit):
+    if re.match(r'(f|F)', freedomUnit):
         return (value - 32.0) / 1.8
     if re.match(r'(lb|pounds)', freedomUnit):
         return value/ 2.2046
