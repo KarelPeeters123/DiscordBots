@@ -101,7 +101,7 @@ async def on_message(msg):
             if re.match(r'mile', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
                 value = convert(words[i], float(words[i - 1]))
                 response += words[i - 1] + " " + words[i] + ' -> ' + str(value)[:5] + ' km.\n'
-            if re.match(r'freedom units', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
+            if re.match(r'freedom', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i - 1]):
                 value = random.randint(1, 100000)
                 units = ['m', 'kg', 'V', 'C', 'mol', 's']
                 index = random.randint(0, 5)
