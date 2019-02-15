@@ -339,9 +339,8 @@ async def register(ctx):
         elif not re.search(r'@', msg):
             member = (await bot.get_user_info(str(ctx.message.author.id))).name
             role = msg[10:]
-
             text = role + ' : ' + member
-            print('register | ' + text)
+            canregister = False
             if role == 'consul':
                 if isHigherUp(top_role):
                     canregister = True
