@@ -73,7 +73,7 @@ async def my_background_task():
     await bot.wait_until_ready()
     channel = bot.get_channel('476871636277264385')
     while not bot.is_closed:
-        if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "21:00:00":
+        if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "20:00:00":
             await bot.send_message(channel, "@everyone our weekly senate meeting commences now")
             await asyncio.sleep(1)
         else:
@@ -339,9 +339,8 @@ async def register(ctx):
         elif not re.search(r'@', msg):
             member = (await bot.get_user_info(str(ctx.message.author.id))).name
             role = msg[10:]
-
             text = role + ' : ' + member
-            print('register | ' + text)
+            canregister = False
             if role == 'consul':
                 if isHigherUp(top_role):
                     canregister = True
