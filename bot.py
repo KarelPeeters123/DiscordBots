@@ -151,6 +151,7 @@ def convertTimezone(zone, value):
 
 def isHigherUp(role):
     return  role == 'Imperator' or role == 'Consul' or role == 'Senator' or role == 'Centurion' or role == 'Heir to the Emperorship' or role == 'Dictator' or role == 'Praefectus' or role == 'Legatus'
+
 @bot.event
 async def on_member_join(member):
     role = get(member.server.roles, name="Roman Subject")
@@ -328,19 +329,19 @@ async def register(ctx):
             role = msg[10:].split(' ')[0]
 
             text = role + ' : ' + member
-            print('register | ' + text)
-            logging.info('register | ' + text)
-            with open('elections.txt', 'a') as file:
-                file.write(text + '\n')
-            await bot.say('The following candidate has been registered:\n' + text)
-
+            if role == 'consul' or role == 'senator' or role == 'centurion':
+                with open('elections.txt', 'a') as file:
+                    file.write(text + '\n')
+                await bot.say('The following candidate has been registered:\n' + text)
+            else:
+                await bot.say('That\'s not a viable role!\n'
+                              'Type `*register consul`, `*register senator` or `*register centurion`')
         elif not re.search(r'@', msg):
             member = (await bot.get_user_info(str(ctx.message.author.id))).name
             role = msg[10:]
 
             text = role + ' : ' + member
             print('register | ' + text)
-            logging.info('register | ' + text)
             if role == 'consul':
                 if isHigherUp(top_role):
                     canregister = True
@@ -351,12 +352,16 @@ async def register(ctx):
                     canregister = True
                 else:
                     canregister = False
-            else:
+            elif role == 'centurion':
                 canregister = True
             if canregister:
-                with open('elections.txt', 'a') as file:
-                    file.write(text + '\n')
-                await bot.say('The following candidate has been registered:\n' + text)
+                if role == 'consul' or role == 'senator' or role == 'centurion':
+                    with open('elections.txt', 'a') as file:
+                        file.write(text + '\n')
+                    await bot.say('The following candidate has been registered:\n' + text)
+                else:
+                    await bot.say('That\'s not a viable role!\n'
+                                  'Type `*register consul`, `*register senator` or `*register centurion`')
             else:
                 await bot.say('You are not eligible for this position!')
         elif not isHigherUp(top_role):
