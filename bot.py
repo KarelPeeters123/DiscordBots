@@ -321,8 +321,9 @@ async def elections(ctx):
 @bot.command(pass_context = True)
 async def register(ctx):
     top_role = ctx.message.author.top_role.name
+    print(top_role)
     if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire' \
-            or top_role == 'Roman Citizen' or top_role == 'Cabbage Farmer' or top_role == 'Frumentarius':
+            or top_role == 'Roman Citizen' or top_role == 'Cabbage Farmer':
         msg = str(ctx.message.content)
         if re.search(r'@', msg) and (isHigherUp(top_role)):
             member = (await bot.get_user_info(msg.split('@')[1].split('>')[0])).name
@@ -347,11 +348,12 @@ async def register(ctx):
                 else:
                     canregister = False
             elif role == 'senator':
-                if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire' or top_role == 'Cabbage Farmer' or top_role == 'Frumentarius':
+                if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire' or top_role == 'Cabbage Farmer':
                     canregister = True
                 else:
                     canregister = False
             elif role == 'centurion':
+                print("centurion")
                 canregister = True
             if canregister:
                 if role == 'consul' or role == 'senator' or role == 'centurion':
@@ -364,6 +366,7 @@ async def register(ctx):
             else:
                 await bot.say('You are not eligible for this position!')
         elif not isHigherUp(top_role):
+            print('this shouldn\'t happen')
             await bot.say('You are not authorised to register other users for elections')
     else:
         await bot.say('You are not eligible for this position!')
