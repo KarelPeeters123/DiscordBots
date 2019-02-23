@@ -322,7 +322,7 @@ async def elections(ctx):
 async def register(ctx):
     top_role = ctx.message.author.top_role.name
     if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire' \
-            or top_role == 'Roman Citizen' or top_role == 'Cabbage Farmer':
+            or top_role == 'Roman Citizen' or top_role == 'Cabbage Farmer' or top_role == 'Frumentarius':
         msg = str(ctx.message.content)
         if re.search(r'@', msg) and (isHigherUp(top_role)):
             member = (await bot.get_user_info(msg.split('@')[1].split('>')[0])).name
@@ -347,7 +347,7 @@ async def register(ctx):
                 else:
                     canregister = False
             elif role == 'senator':
-                if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire' or top_role == 'Cabbage Farmer':
+                if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire' or top_role == 'Cabbage Farmer' or top_role == 'Frumentarius':
                     canregister = True
                 else:
                     canregister = False
