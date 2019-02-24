@@ -160,8 +160,10 @@ async def power(ctx):
             for role in member.roles:
                 if role.name.startswith('Imperator') or role.name.startswith('Consul') \
                     or role.name.startswith('Senator') or role.name.startswith('Centurion'):
+                    print('i\'m imperator')
                     for gens in member.roles:
-                        if role.name.startswith('Gens'):
+                        if gens.name.startswith('Gens'):
+                            print('i\'m in a gens')
                             if gens.name not in power.keys():
                                 power[gens.name] = 0
                             power[gens.name] = power[gens.name] + 1
