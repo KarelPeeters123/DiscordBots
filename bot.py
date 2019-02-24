@@ -150,7 +150,7 @@ async def votechart(ctx):
     makeChart(results, "Vote")
     await bot.send_file(ctx.message.channel, "foo.png")
 
-@bot.command(pass_conext = True)
+@bot.command(pass_context = True)
 async def power(ctx):
     power = {}
     message = ctx.message.content
