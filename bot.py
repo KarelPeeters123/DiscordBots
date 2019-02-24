@@ -1,5 +1,6 @@
 from discord.ext import commands
 from discord.utils import get
+from pylab import *
 import random
 import asyncio
 import datetime
@@ -119,6 +120,26 @@ async def on_message(msg):
         await bot.send_message(msg.channel, response)
     else:
         await bot.process_commands(msg)
+
+def makeChart(data, h1):
+    figure(1, figsize=(6, 6))
+    clf()
+    ax = axes([0.1, 0.1, 0.8, 0.8])
+
+    # The slices will be ordered and plotted counter-clockwise.
+    labels = data.keys()
+    fracs = data.values()
+
+    pie(fracs, labels=labels,
+        autopct='%1.1f%%', shadow=False, startangle=90)
+    # The default startangle is 0, which would start
+    # the Frogs slice on the x-axis.  With startangle=90,
+    # everything is rotated counter-clockwise by 90 degrees,
+    # so the plotting starts on the positive y-axis.
+
+    title(h1, bbox={'facecolor': '0.8', 'pad': 5})
+
+    savefig("foo.png")
 
 def convert(freedomUnit, value):
     if re.match(r'inch', freedomUnit):
