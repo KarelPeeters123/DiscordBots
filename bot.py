@@ -141,6 +141,13 @@ def makeChart(data, h1):
 
     savefig("foo.png")
 
+@bot.command(pass_context = True)
+async def votechart(ctx):
+    with open('results.json') as f:
+        results = json.load(f)
+    makeChart(results, "Vote")
+    bot.send_file(ctx.message.channel, "foo.jpg")
+
 def convert(freedomUnit, value):
     if re.match(r'inch', freedomUnit):
         return value/0.39370
