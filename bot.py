@@ -150,7 +150,7 @@ async def votechart(ctx):
     test = {"me":1,
             "you":2}
     makeChart(test, "Vote")
-    await bot.send_file(ctx.message.channel, "foo.jpg")
+    await bot.send_file(ctx.message.channel, "foo.png")
 
 def convert(freedomUnit, value):
     if re.match(r'inch', freedomUnit):
