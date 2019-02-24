@@ -147,7 +147,9 @@ def makeChart(data, h1):
 async def votechart(ctx):
     with open('results.json') as f:
         results = json.load(f)
-    makeChart(results, "Vote")
+    test = {"me":1,
+            "you":2}
+    makeChart(test, "Vote")
     bot.send_file(ctx.message.channel, "foo.jpg")
 
 def convert(freedomUnit, value):
