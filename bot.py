@@ -123,16 +123,16 @@ async def on_message(msg):
     else:
         await bot.process_commands(msg)
 
-def makeChart(data, h1):
+def makeChart(input, h1):
     figure(1, figsize=(6, 6))
     clf()
     ax = axes([0.1, 0.1, 0.8, 0.8])
 
     # The slices will be ordered and plotted counter-clockwise.
-    labels = data.keys()
-    fracs = data.values()
+    labels = input.keys()
+    fracs = input.values()
 
-    pie(fracs, labels=labels,
+    pie([float(f) for f in fracs], labels=[float(l) for l in labels],
         autopct='%1.1f%%', shadow=False, startangle=90)
     # The default startangle is 0, which would start
     # the Frogs slice on the x-axis.  With startangle=90,
