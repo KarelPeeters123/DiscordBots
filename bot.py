@@ -150,6 +150,29 @@ async def votechart(ctx):
     makeChart(results, "Vote")
     await bot.send_file(ctx.message.channel, "foo.png")
 
+@bot.command(pass_conext = True)
+async def power(ctx):
+    power = {}
+    message = ctx.message.content
+    members = ctx.message.server.members
+    if message == '*power':
+        for member in members:
+            for role in member.roles:
+                if role.name.startswith('Imperator') or role.name.startswith('Consul') \
+                    or role.name.startswith('Senator') or role.name.startswith('Centurion'):
+                    for gens in member.roles:
+                        if role.name.startswith('Gens'):
+                            if gens.name not in power.keys():
+                                power[gens.name] = 0
+                            power[gens.name] = power[gens.name] + 1
+        makeChart(power, "Distribution of higher ups")
+        await bot.send_file("foo.png")
+    # role = message[7:]
+    # print(role)
+    # for member in members:
+    #     for role in member.roles:
+    #         if role.name.startswith('Gens'):
+
 def convert(freedomUnit, value):
     if re.match(r'inch', freedomUnit):
         return value/0.39370
