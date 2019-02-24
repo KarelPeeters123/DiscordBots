@@ -166,7 +166,7 @@ async def power(ctx):
                                 power[gens.name] = 0
                             power[gens.name] = power[gens.name] + 1
         makeChart(power, "Distribution of higher ups")
-        await bot.send_file("foo.png")
+        await bot.send_file(ctx.message.channel, "foo.png")
     # role = message[7:]
     # print(role)
     # for member in members:
