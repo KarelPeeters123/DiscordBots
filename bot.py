@@ -132,7 +132,7 @@ def makeChart(input, h1):
     labels = input.keys()
     fracs = input.values()
 
-    pie(fracs, labels=[float(l) for l in labels],
+    pie([float(f) for f in fracs], labels=labels,
         autopct='%1.1f%%', shadow=False, startangle=90)
     # The default startangle is 0, which would start
     # the Frogs slice on the x-axis.  With startangle=90,
