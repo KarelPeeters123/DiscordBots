@@ -1,5 +1,6 @@
 import matplotlib
 matplotlib.use('Agg')
+import discord
 from discord.ext import commands
 from discord.utils import get
 from pylab import *
@@ -160,10 +161,8 @@ async def power(ctx):
             for role in member.roles:
                 if role.name.startswith('Imperator') or role.name.startswith('Consul') \
                     or role.name.startswith('Senator') or role.name.startswith('Centurion'):
-                    print('i\'m imperator')
                     for gens in member.roles:
                         if gens.name.startswith('Gens'):
-                            print('i\'m in a gens')
                             if gens.name not in power.keys():
                                 power[gens.name] = 0
                             power[gens.name] = power[gens.name] + 1
@@ -240,6 +239,8 @@ async def on_reaction_add(reaction, user):
                         with open('results.json') as f:
                             results = json.load(f)
                         results[candidates[i]] = results[candidates[i]] + 1
+                        with open('results.json', 'w') as f:
+                            json.dump(results, f)
                         await bot.remove_reaction(reaction.message, reaction.emoji, user)
                         with open('userids.json', 'w') as f:
                             print(candidates[i])
@@ -249,7 +250,13 @@ async def on_reaction_add(reaction, user):
                         for i in range(len(candidates)):
                             scoreboard = scoreboard + candidates[i] + ' has ' + str(results[candidates[i]]) + ' votes. (' + letters[i] + ')\n'
                         scoreboard = scoreboard + '```'
-                        await bot.edit_message(await bot.get_message(channel, voteId), scoreboard)
+                        # with open('results.json') as f:
+                        #     results = json.load(f)
+                        makeChart(results, "Vote")
+                        chartmsg = await bot.send_file(bot.get_channel('549991724026691584'), "foo.png")
+                        embed = discord.Embed(title="Votes", description="", color=0x00ff00)
+                        embed.set_image(url=chartmsg.attachments[0]['url'])
+                        await bot.edit_message(await bot.get_message(channel, voteId), scoreboard, embed=embed)
                         with open('results.json', 'w') as f:
                             json.dump(results, f)
             if voteType == 'vote' and len(userids[user.id]) < 1:
@@ -257,11 +264,19 @@ async def on_reaction_add(reaction, user):
                     with open('results.json') as f:
                         results = json.load(f)
                     results['aye'] = results['aye'] + 1
+                    with open('results.json', 'w') as f:
+                        json.dump(results, f)
                     await bot.remove_reaction(reaction.message, reaction.emoji, user)
+                    # with open('results.json') as f:
+                    #     results = json.load(f)
+                    makeChart(results, "Vote")
+                    chartmsg = await bot.send_file(bot.get_channel('549991724026691584'), "foo.png")
+                    embed = discord.Embed(title="Votes", description="", color=0x00ff00)
+                    embed.set_image(url=chartmsg.attachments[0]['url'])
                     await bot.edit_message(await bot.get_message(channel, voteId), '```python\n' +
                             str(results['aye']) + ' romans have voted AYE. (✅)\n' +
                             str(results['nay']) + ' romans have voted NAY. (❎)\n'
-                            '```')
+                            '```', embed=embed)
                     with open('userids.json', 'w') as f:
                         userids[user.id].append('aye')
                         json.dump(userids, f)
@@ -269,11 +284,19 @@ async def on_reaction_add(reaction, user):
                     with open('results.json') as f:
                         results = json.load(f)
                     results['nay'] = results['nay'] + 1
+                    with open('results.json', 'w') as f:
+                        json.dump(results, f)
                     await bot.remove_reaction(reaction.message, reaction.emoji, user)
+                    # with open('results.json') as f:
+                    #     results = json.load(f)
+                    makeChart(results, "Vote")
+                    chartmsg = await bot.send_file(bot.get_channel('549991724026691584'), "foo.png")
+                    embed = discord.Embed(title="Votes", description="", color=0x00ff00)
+                    embed.set_image(url=chartmsg.attachments[0]['url'])
                     await bot.edit_message(await bot.get_message(channel, voteId), '```python\n' +
                             str(results['aye']) + ' romans have voted AYE. (✅)\n' +
                             str(results['nay']) + ' romans have voted NAY. (❎)\n'
-                            '```')
+                            '```', embed=embed)
                     with open('userids.json', 'w') as f:
                         userids[user.id].append('nay')
                         json.dump(userids, f)
