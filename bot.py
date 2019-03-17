@@ -18,7 +18,7 @@ logging.basicConfig(filename="catoBot.log", level=logging.INFO)
 
 maxVotes = {"vote": 1,
             "consul": 2,
-            "senator": 3,
+            "senator": 4,
             "centurion": 5}
 emojis = ['🇦', '🇧', '🇨', '🇩', '🇪', '🇫',
           '🇬', '🇭', 'ℹ', '🇯', '🇰', '🇱',
@@ -668,8 +668,6 @@ async def absence():
 
     await bot.say('**In case there are no plans for return:**\n'
                   '\tImperator    ->    the imperator will always have an heir. Current order of succession:\n' +
-                  '\t\tUncreative Human\n' +
-                  '\t\tPesa\n' +
                   '\tConsul       ->     consular elections are planned instantly (preferably within 24 hours). The residing co-consul will oversee the elections. 1 new consul will be elected to serve alongside the remaining co-consul until the end of his consular term (even if this is only a week).' +
                   'If the consular term ends in less than 48 hours, there will be no election until the end of the term. In this case the residing co-consul will be the de facto leader alongside the imperator.\n' +
                   '\tSenator      ->   No action will be taken unless only half of the senatorial seats are filled. If this is the case, the spots will be filled with the current centurions (which centurions take the positions will be decided amongst the higher-ups)')
