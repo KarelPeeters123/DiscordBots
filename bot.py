@@ -71,6 +71,10 @@ async def on_ready():
     print('bot is ready')
     await my_background_task()
 
+@bot.command()
+async def logout():
+    await bot.logout()
+
 async def my_background_task():
     await bot.wait_until_ready()
     channel = bot.get_channel('476871636277264385')
@@ -660,17 +664,21 @@ async def conquer():
 
 @bot.command()
 async def absence():
-    await bot.say('**To avoid chaos in case one of the higher ups leaves, unexpectedly or not, the following guidelines will be followed. I’ll split them up in whether there is a plan for return or whether they will step down forever. If someone is inactive for 2 full weeks, they will be considered as resigned**\n' +
+    await bot.say('```'
+                  '**To avoid chaos in case one of the higher ups leaves, unexpectedly or not, the following guidelines will be followed. I’ll split them up in whether there is a plan for return or whether they will step down forever. If someone is inactive for 2 full weeks, they will be considered as resigned**\n' +
                   '**In case there are plans for return:**\n' +
                   '\tImperator    ->     appoints a dictator to act in his absence (citizens and subjects are not eligible for dictatorship)\n' +
                   '\tConsul       ->     the residing co-consul will be de facto ruler alongside the imperator\n' +
-                  '\tSenator      ->     no need for replacements\n')
+                  '\tSenator      ->     no need for replacements\n'
+                  '```')
 
-    await bot.say('**In case there are no plans for return:**\n'
+    await bot.say('```'
+                  '**In case there are no plans for return:**\n'
                   '\tImperator    ->    the imperator will always have an heir. Current order of succession:\n' +
                   '\tConsul       ->     consular elections are planned instantly (preferably within 24 hours). The residing co-consul will oversee the elections. 1 new consul will be elected to serve alongside the remaining co-consul until the end of his consular term (even if this is only a week).' +
                   'If the consular term ends in less than 48 hours, there will be no election until the end of the term. In this case the residing co-consul will be the de facto leader alongside the imperator.\n' +
-                  '\tSenator      ->   No action will be taken unless only half of the senatorial seats are filled. If this is the case, the spots will be filled with the current centurions (which centurions take the positions will be decided amongst the higher-ups)')
+                  '\tSenator      ->   No action will be taken unless only half of the senatorial seats are filled. If this is the case, the spots will be filled with the current centurions (which centurions take the positions will be decided amongst the higher-ups)'
+                  '```')
 @bot.command()
 async def spy():
     await bot.say('**Spies can pose a serious threat to our discord. They should be dealt with as fast as possible while simultaneously avoiding banning innocent romans. This procedure will focus on maximising damage control and giving the accused the ability to defend themselves.**\n' +
