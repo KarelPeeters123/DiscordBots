@@ -210,8 +210,9 @@ def isHigherUp(role):
 
 @bot.event
 async def on_member_join(member):
-    role = get(member.server.roles, name="Roman Subject")
-    await bot.add_roles(member, role)
+    for role in member.server.roles:
+        if role.name == "Roman Subject":
+            await bot.add_roles(member, role)
 
 @bot.event
 async def on_reaction_add(reaction, user):
