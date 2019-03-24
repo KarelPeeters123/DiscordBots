@@ -1,0 +1,9 @@
+*.txt
+*.json
+Rome\ Bot/
+httpTester.py
+test.py
+node_modules/
+GamesBot/
+catobot.log
+*.png
