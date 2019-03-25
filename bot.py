@@ -75,9 +75,10 @@ async def on_ready():
 async def logout():
     await bot.logout()
 
+
 async def my_background_task():
     await bot.wait_until_ready()
-    channel = bot.get_channel('476871636277264385')
+    channel = bot.get_channel('559359387009941524')
     while not bot.is_closed:
         if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "20:00:00":
             await bot.send_message(channel, "@everyone our weekly senate meeting commences now")
@@ -90,7 +91,7 @@ async def on_message(msg):
     content = msg.content
     response = ''
     words = content.split(' ')
-    if not msg.author.id == '502181308483633152' and re.search(r'[0-9]+ .*', content):
+    if not msg.author.id == '559469690812891138' and re.search(r'[0-9]+ .*', content):
         for i in range(1, len(words)):
             if re.search(r'inch', words[i]) and re.match(r'-?([0-9]\.)*[0-9]+', words[i-1]):
                 value = convert(words[i], float(words[i-1]))
@@ -113,7 +114,7 @@ async def on_message(msg):
                 index = random.randint(0, 5)
                 response += words[i - 1] + " " + words[i] + ' -> ' + str(value)[:5] + ' ' + units[index] + '.\n'
         await bot.send_message(msg.channel, response)
-    elif not msg.author.id == '502181308483633152' and re.search(r'[0-9]+(a|A|p|P)[mM] [a-zA-Z]', content):
+    elif not msg.author.id == '559469690812891138' and re.search(r'[0-9]+(a|A|p|P)[mM] [a-zA-Z]', content):
         for i in range(1, len(words)):
             if re.match(r'(CET|cet)', words[i]) and re.match(r'[0-9]+(a|A|p|P)[mM]', words[i - 1]):
                 value = convertTimezone(words[i], words[i - 1])
@@ -206,7 +207,7 @@ def convertTimezone(zone, value):
     return str(time24h) + ':00'
 
 def isHigherUp(role):
-    return  role == 'Imperator' or role == 'Consul' or role == 'Senator' or role == 'Centurion' or role == 'Heir to the Emperorship' or role == 'Dictator' or role == 'Praefectus' or role == 'Legatus'
+    return  role == 'Cabbage Farmer' or role == 'Imperator' or role == 'Consul' or role == 'Senator' or role == 'Centurion' or role == 'Heir to the Emperorship' or role == 'Dictator' or role == 'Praefectus' or role == 'Legatus'
 
 @bot.event
 async def on_member_join(member):
@@ -216,7 +217,7 @@ async def on_member_join(member):
 
 @bot.event
 async def on_reaction_add(reaction, user):
-    if not user.id == '502181308483633152':
+    if not user.id == '559469690812891138':
         with open('userids.json') as f:
             userids = json.load(f)
         channel = reaction.message.channel
