@@ -423,7 +423,7 @@ async def register(ctx):
     print(top_role)
     if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire' \
             or top_role == 'Roman Citizen' or top_role == 'Cabbage Farmer' or top_role == 'Frumentarius':
-        msg = ctx.message.content.encode('UTF-8')
+        msg = str(ctx.message.content)
         if re.search(r'@', msg) and (isHigherUp(top_role)):
             member = (await bot.get_user_info(msg.split('@')[1].split('>')[0])).name
             role = msg[10:].split(' ')[0]
@@ -473,14 +473,14 @@ async def register(ctx):
 @bot.command(pass_context = True)
 async def unregister(ctx):
     top_role = ctx.message.author.top_role.name
-    if re.search(r'all', ctx.message.content.encode('UTF-8')):
+    if re.search(r'all', str(ctx.message.content)):
         if isHigherUp(top_role):
             open('elections.txt', 'w').close()
             await bot.say('removed all candidates')
         else:
             await bot.say('you do not have the authority to unregister other candidates')
     else:
-        msg = ctx.message.content.encode('UTF-8')
+        msg = str(ctx.message.content)
         member = (await bot.get_user_info(str(ctx.message.author.id))).name
         role = msg[12:].split(' ')[0]
         error = False
@@ -526,7 +526,7 @@ async def candidates():
 async def vote(ctx):
     top_role = ctx.message.author.top_role.name
     if isHigherUp(top_role):
-        id = int(ctx.message.content.encode('UTF-8')[6:].lstrip())
+        id = int(str(ctx.message.content)[6:].lstrip())
         motion = ''
         with open("motions.txt", 'r') as file:
             for line in file:
@@ -554,7 +554,7 @@ async def vote(ctx):
 
 @bot.command(pass_context = True)
 async def motion(ctx):
-    msg = ctx.message.content.encode('UTF-8')[8:]
+    msg = str(ctx.message.content)[8:]
     num_lines = sum(1 for line in open('motions.txt'))
     num_lines += sum(1 for line in open('resolved.txt'))
     id = num_lines + 1
@@ -568,7 +568,7 @@ async def motion(ctx):
 @bot.command(pass_context = True)
 async def resolve(ctx):
     top_role = ctx.message.author.top_role.name
-    index = ctx.message.content.encode('UTF-8')
+    index = str(ctx.message.content)
     index = index.split(' ')[1]
     if index == 'all':
         lines = []
@@ -607,7 +607,7 @@ async def motions():
     motions = {}
     with open("motions.txt", 'r') as file:
         for line in file:
-            motions[line[1:].split(' | ')[0].encode('UTF-8')] = line
+            motions[str(line[1:].split(' | ')[0])] = line
     if len(motions) == 0:
         await bot.say('There are no standing motions right now')
     allMotions = ""
