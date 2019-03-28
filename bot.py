@@ -596,8 +596,6 @@ async def motions():
     motions = {}
     with open("motions.txt", 'rb') as file:
         for line in file:
-            print(line)
-            print(line.decode('UTF-8'))
             motions[str(line.decode('UTF-8')[1:].split(' | ')[0])] = line.decode('UTF-8')
     if len(motions) == 0:
         await bot.say('There are no standing motions right now')
