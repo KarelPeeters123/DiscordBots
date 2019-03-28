@@ -558,7 +558,7 @@ async def motion(ctx):
     num_lines = sum(1 for line in open('motions.txt'))
     num_lines += sum(1 for line in open('resolved.txt'))
     id = num_lines + 1
-    motion = '#' + str(id) + ' | ' + ctx.message.author.encode('UTF-8') + ' @ ' + \
+    motion = '#' + str(id) + ' | ' + str(ctx.message.author) + ' @ ' + \
              ctx.message.timestamp.strftime('%d/%m/%Y %H:%M:%S') + ' : ' + msg + '\n'
     with open('motions.txt', 'a') as file:
         file.write(motion)
