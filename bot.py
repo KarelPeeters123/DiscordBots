@@ -519,7 +519,7 @@ async def vote(ctx):
     if isHigherUp(top_role):
         id = int(str(ctx.message.content)[6:].lstrip())
         motion = ''
-        with open("motions.txt", 'r') as file:
+        with open("motions.txt", 'rb') as file:
             for line in file:
                 if '#' + str(id) + ' ' in line:
                     motion = line.split(' : ')[1]
@@ -561,21 +561,21 @@ async def resolve(ctx):
     index = index.split(' ')[1]
     if index == 'all':
         lines = []
-        with open('motions.txt', 'r') as file:
+        with open('motions.txt', 'rb') as file:
             for line in file:
                 if '#' not in line:
                     lines.append(line)
                 if '#' in line:
                     with open('resolved.txt', 'a') as file:
                         file.write(line)
-        with open('motions.txt', 'w') as file:
+        with open('motions.txt', 'wb') as file:
             file.writelines(lines)
         await bot.say('All motions are resolved.')
     else:
         resolvedMotion = ''
         index = int(index)
         lines = []
-        with open('motions.txt', 'r') as file:
+        with open('motions.txt', 'rb') as file:
             for line in file:
                 if '#' + str(index) not in line:
                     lines.append(line)
@@ -594,7 +594,7 @@ async def resolve(ctx):
 @bot.command()
 async def motions():
     motions = {}
-    with open("motions.txt", 'r') as file:
+    with open("motions.txt", 'rb') as file:
         for line in file:
             motions[str(line[1:].split(' | ')[0])] = line
     if len(motions) == 0:
