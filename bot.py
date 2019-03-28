@@ -248,9 +248,7 @@ async def on_reaction_add(reaction, user):
                 if line.startswith(voteType):
                     candidates.append(line[(len(voteType)+3):].strip('\n'))
         if voteId == reaction.message.id:
-            print(userids.keys())
             if user.id not in userids.keys():
-                print(user.id)
                 with open('userids.json', 'w') as f:
                     userids[user.id] = []
                     json.dump(userids, f)
@@ -258,7 +256,6 @@ async def on_reaction_add(reaction, user):
                 if reaction.emoji == emojis[i]:
 
                     if candidates[i] not in userids[user.id] and len(userids[user.id]) < maxVotes[voteType]:
-                        print('reached this point')
                         with open('results.json') as f:
                             results = json.load(f)
                         results[candidates[i]] = results[candidates[i]] + 1
@@ -266,7 +263,6 @@ async def on_reaction_add(reaction, user):
                             json.dump(results, f)
                         await bot.remove_reaction(reaction.message, reaction.emoji, user)
                         with open('userids.json', 'w') as f:
-                            print(candidates[i])
                             userids[user.id].append(candidates[i])
                             json.dump(userids, f)
                         scoreboard = '```python\n'
@@ -420,7 +416,6 @@ async def elections(ctx):
 @bot.command(pass_context = True)
 async def register(ctx):
     top_role = ctx.message.author.top_role.name
-    print(top_role)
     if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire' \
             or top_role == 'Roman Citizen' or top_role == 'Cabbage Farmer' or top_role == 'Frumentarius':
         msg = str(ctx.message.content)
@@ -452,7 +447,6 @@ async def register(ctx):
                 else:
                     canregister = False
             elif role == 'centurion':
-                print("centurion")
                 canregister = True
             if canregister:
                 if role == 'consul' or role == 'senator' or role == 'centurion':
@@ -465,7 +459,6 @@ async def register(ctx):
             else:
                 await bot.say('You are not eligible for this position!')
         elif not isHigherUp(top_role):
-            print('this shouldn\'t happen')
             await bot.say('You are not authorised to register other users for elections')
     else:
         await bot.say('You are not eligible for this position!')
@@ -497,8 +490,6 @@ async def unregister(ctx):
             with open('elections.txt', 'w') as file:
                 for line in lines:
                     if not line.startswith(text):
-                        print(text)
-                        print(line)
                         newlines.append(line)
                 file.writelines(newlines)
             await bot.say(member + ' is no longer running for ' + role)
@@ -532,7 +523,6 @@ async def vote(ctx):
             for line in file:
                 if '#' + str(id) + ' ' in line:
                     motion = line.split(' : ')[1]
-                    print(motion)
         emptyDict = {}
         emptyResultsDict = {"aye": 0, "nay": 0}
         with open('userids.json', 'w') as f:
@@ -562,7 +552,6 @@ async def motion(ctx):
              ctx.message.timestamp.strftime('%d/%m/%Y %H:%M:%S') + ' : ' + msg + '\n'
     with open('motions.txt', 'ab') as file:
         file.write(motion.encode('UTF-8'))
-    print(motion)
     # logging.info(motion)
     await bot.say("Motion is noted. view all motions with the [*motions] command")
 @bot.command(pass_context = True)
@@ -651,7 +640,6 @@ async def suggestion(ctx):
     for i in msg[12:].split(' ')[1:]:
         content += i + ' '
     suggestion = 'suggestion for ' + msg[12:].split(' ')[0] + ' : ' + content
-    print(suggestion)
     with open('suggestions.txt', 'a') as file:
         file.write(suggestion + '\n')
     await bot.say('suggestion is noted')
