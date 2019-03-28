@@ -572,20 +572,24 @@ async def resolve(ctx):
             file.writelines(lines)
         await bot.say('All motions are resolved.')
     else:
-        resolvedMotion = ''
+        resolvedMotion = ''.encode('UTF-8')
         index = int(index)
         lines = []
         with open('motions.txt', 'rb') as file:
             for line in file:
-                if '#' + str(index) not in line:
-                    lines.append(line)
-                if '#' + str(index) in line:
+                print('#' + str(index))
+                print(line.decode('UTF-8'))
+                if '#' + str(index) not in line.decode('UTF-8'):
+                    lines.append(line.decode('UTF-8'))
+                if '#' + str(index)in line.decode('UTF-8'):
                     resolvedMotion = line
-        owner = resolvedMotion.split(' ')[2]
+                    print(resolvedMotion)
+        print(resolvedMotion)
+        owner = resolvedMotion.decode('UTF-8').split(' ')[2]
         user = str(ctx.message.author)
         if isHigherUp(top_role) or owner == user:
             with open('resolved.txt', 'a') as file:
-                file.write(resolvedMotion)
+                file.write(resolvedMotion.decode('UTF-8'))
             with open('motions.txt', 'w') as file:
                 file.writelines(lines)
             await bot.say("Motion is resolved.")
