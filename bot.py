@@ -190,11 +190,6 @@ async def power(ctx):
                             power[gens.name] = power[gens.name] + 1
         makeChart(power, "Distribution of higher ups")
         await bot.send_file(ctx.message.channel, "foo.png")
-    # role = message[7:]
-    # print(role)
-    # for member in members:
-    #     for role in member.roles:
-    #         if role.name.startswith('Gens'):
 
 def convert(freedomUnit, value):
     if re.match(r'inch', freedomUnit):
@@ -577,14 +572,10 @@ async def resolve(ctx):
         lines = []
         with open('motions.txt', 'rb') as file:
             for line in file:
-                print('#' + str(index))
-                print(line.decode('UTF-8'))
                 if '#' + str(index) not in line.decode('UTF-8'):
                     lines.append(line.decode('UTF-8'))
                 if '#' + str(index)in line.decode('UTF-8'):
                     resolvedMotion = line
-                    print(resolvedMotion)
-        print(resolvedMotion)
         owner = resolvedMotion.decode('UTF-8').split(' ')[2]
         user = str(ctx.message.author)
         if isHigherUp(top_role) or owner == user:
