@@ -545,8 +545,8 @@ async def vote(ctx):
 @bot.command(pass_context = True)
 async def motion(ctx):
     msg = str(ctx.message.content)[8:]
-    num_lines = sum(1 for line in open('motions.txt', 'b'))
-    num_lines += sum(1 for line in open('resolved.txt', 'b'))
+    num_lines = sum(1 for line in open('motions.txt', 'rb'))
+    num_lines += sum(1 for line in open('resolved.txt', 'rb'))
     id = num_lines + 1
     motion = '#' + str(id) + ' | ' + str(ctx.message.author) + ' @ ' + \
              ctx.message.timestamp.strftime('%d/%m/%Y %H:%M:%S') + ' : ' + msg + '\n'
