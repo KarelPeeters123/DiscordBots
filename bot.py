@@ -560,8 +560,8 @@ async def motion(ctx):
     id = num_lines + 1
     motion = '#' + str(id) + ' | ' + str(ctx.message.author) + ' @ ' + \
              ctx.message.timestamp.strftime('%d/%m/%Y %H:%M:%S') + ' : ' + msg + '\n'
-    with open('motions.txt', 'a') as file:
-        file.write(motion)
+    with open('motions.txt', 'ab') as file:
+        file.write(motion.encode('UTF-8'))
     print(motion)
     # logging.info(motion)
     await bot.say("Motion is noted. view all motions with the [*motions] command")
