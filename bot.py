@@ -521,8 +521,8 @@ async def vote(ctx):
         motion = ''
         with open("motions.txt", 'rb') as file:
             for line in file:
-                if '#' + str(id) + ' ' in line:
-                    motion = line.split(' : ')[1]
+                if ('#' + str(id) + ' ').encode('UTF-8') in line:
+                    motion = line.decode('UTF-8').split(' : ')[1]
         emptyDict = {}
         emptyResultsDict = {"aye": 0, "nay": 0}
         with open('userids.json', 'w') as f:
