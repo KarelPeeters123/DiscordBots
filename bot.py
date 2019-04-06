@@ -18,7 +18,7 @@ from services.motionService import MotionService
 from services.electionService import ElectionService
 
 commandPrefix = '^'
-bot_id = 518797552305307649
+bot_id = 559469690812891138
 bot = commands.Bot(command_prefix=commandPrefix)
 motion_service = MotionService()
 election_service = ElectionService()
