@@ -5,5 +5,7 @@ httpTester.py
 test.py
 node_modules/
 GamesBot/
+*/__pycache__/
+__pycache__/
 catoBot.log
 *.png

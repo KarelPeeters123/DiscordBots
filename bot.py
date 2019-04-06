@@ -11,9 +11,22 @@ import json
 import logging
 import re
 import os
-commandPrefix = '*'
-bot_id = 559469690812891138
+
+from objects.motion import Motion
+from objects.election import Election
+from services.motionService import MotionService
+from services.electionService import ElectionService
+
+commandPrefix = '^'
+bot_id = 518797552305307649
 bot = commands.Bot(command_prefix=commandPrefix)
+motion_service = MotionService()
+election_service = ElectionService()
+
+eligible_for = {"consul": ['Cabbage Farmer', 'Imperator', 'Consul', 'Senator', 'Centurion', 'Heir to the Emperorship'],
+                "senator": ['Cabbage Farmer', 'Imperator', 'Consul', 'Senator', 'Centurion', 'Heir to the Emperorship', 'Marinus', 'Legionnaire', 'Explorator'],
+                "centurion": ['Cabbage Farmer', 'Imperator', 'Consul', 'Senator', 'Centurion', 'Heir to the Emperorship', 'Marinus', 'Legionnaire', 'Explorator', 'Roman Citizen']}
+
 
 maxVotes = {"vote": 1,
             "consul": 2,
@@ -28,46 +41,11 @@ letters = ['A', 'B', 'C', 'D', 'E', 'F',
            'M', 'N', 'O', 'P', 'Q', 'R',
            'S', 'T']
 
-ruleList = ['Rule 1: Enacted 13/8/18\n' +
-            'Usage of, “The N-Word”, as well as usage of its variants, is not permitted, with the exception of the variation, “nibba” for humorous purposes.\n',
-            'Rule 2: Enacted 13/8/18\n' +
-            'The video game, “Fortnite”, and all media and other objects related to it must be destroyed.\n',
-            'Rule 3: Enacted 13/8/18\n' +
-            'All barbarian peoples are forbidden from entering the Roman Province.\n',
-            'Rule 4: Enacted 13/8/18\n' +
-            'The city of Carthage, its holdings, and its allies must be destroyed.\n',
-            'Rule 5: Enacted 15/8/18\n' +
-            'Any media deemed, “Not Safe For Work”, may only be posted on the, “NSFW”, channel.\n',
-            'Rule 6: Enacted 24/8/18\n' +
-            'Roman citizens must behave and act in accordance to their status as members of the providence: civilized.\n',
-            'Rule 7: Enacted 30/8/18\n' +
-            'Any Roman citizen apprehended engaging in Fortnite-related activities is to be sentenced to exile from the Roman providence.\n',
-            'Rule 8: Enacted 31/8/18\n' +
-            'In accordance with the ideals of the Pax Romana, all racism within the Empire is forbidden, excluding that which pertains to barbarian peoples.\n',
-            'Rule 9: Enacted 2/9/2018\n' +
-            'All political subjects are confined to #politics due to the controversy that this posses.\n',
-            'Rule 10: Enacted  3/9/2018\n' +
-            'Continued harassment to other members of our community will not be tolerated.\n',
-            'Rule 11: Enacted 14/9/2018\n' +
-            'The act of civil revolts and and instigations of civil war is punishable by death  to protect the safety of the empire.\n',
-            'Rule 12: Enacted 21/9/2018\n' +
-            'Any member of a foreign community in the premises of rome can use the #alliance channel for discussion of international policies\n',
-            'Rule 13: Enacted 29/9/2018\n' +
-            'All political extremism is banned from our glorious empire\n',
-            'Rule 14: Enacted 2/10/2018\n' +
-            'Political parties are not allowed in the empire due to the  damage and anarchy they can cause.\n',
-            'Rule 15: Enacted 29/10/2018\n'
-            'The time zone that is to be used for official  matters will be GMT and Senate meetings will be held every Saturday at 8pm GMT.\n',
-            'Rule 16: Enacted 17/11/2018\n'
-            'Unsolicited advertising of gens will not be allowed through private channels, such as DMs.\n',
-            'Rule 17: Enacted 8/12/2018\n'
-            'Any citizen proposing insincere motions will be demoted by one rank.\n',
-            'Rule 18: Enacted 3/1/2019\n'
-            'Any attempt of electoral fraud is strictly forbidden.']
-
 @bot.event
 async def on_ready():
     print('bot is ready')
+    motion_service = MotionService()
+    election_service = ElectionService()
     await my_background_task()
 
 @bot.command()
@@ -148,6 +126,14 @@ def makeChart(input, h1):
 
     savefig("foo.png")
 
+def has_role(user, role):
+    return role in [str(user_role) for user_role in user.roles]
+def has_one_of_roles(user, roles):
+    for role in roles:
+        if has_role(user, role):
+            return True
+    return False
+
 @bot.command(pass_context = True)
 async def votechart(ctx):
     with open('results.json') as f:
@@ -219,7 +205,8 @@ def convertTimezone(zone, value):
 
 def isHigherUp(role):
     return  role == 'Cabbage Farmer' or role == 'Imperator' or role == 'Consul' or role == 'Senator' or role == 'Centurion' or role == 'Heir to the Emperorship' or role == 'Dictator' or role == 'Praefectus' or role == 'Legatus'
-
+# def is_higher_up(user):
+#     return has_role('Cabbage')
 @bot.event
 async def on_member_join(member):
     for role in member.server.roles:
@@ -228,92 +215,28 @@ async def on_member_join(member):
 
 @bot.event
 async def on_raw_reaction_add(payload):
+    print(payload.user_id)
+    print(bot_id)
     if not payload.user_id == bot_id:
-        with open('userids.json') as f:
-            userids = json.load(f)
-        channel = get(payload.channel_id)
-        with open('voteID.txt', 'r') as f:
-            text = f.read()
-            voteId = text.split('|')[0]
-            voteType = text.split('|')[1]
-        candidates = []
-        with open('elections.txt', 'r') as file:
-            for line in file.readlines():
-                if line.startswith(voteType):
-                    candidates.append(line[(len(voteType)+3):].strip('\n'))
-        if int(voteId) == payload.message_id:
-            if str(payload.user_id) not in userids.keys():
-                print('new voter')
-                with open('userids.json', 'w') as f:
-                    userids[str(payload.user_id)] = []
-                    json.dump(userids, f)
-            print(payload.emoji)
-            for i in range(len(emojis)):
-                if str(payload.emoji) == emojis[i]:
-                    if candidates[i] not in userids[str(payload.user_id)] and len(userids[str(payload.user_id)]) < maxVotes[voteType]:
-                        with open('results.json') as f:
-                            results = json.load(f)
-                        results[candidates[i]] = results[candidates[i]] + 1
-                        with open('results.json', 'w') as f:
-                            json.dump(results, f)
-                        await (await bot.get_channel(payload.channel_id).fetch_message(payload.message_id)).remove_reaction(payload.emoji, bot.get_user(payload.user_id))
-                        with open('userids.json', 'w') as f:
-                            userids[str(payload.user_id)].append(candidates[i])
-                            json.dump(userids, f)
-                        scoreboard = '```python\n'
-                        for i in range(len(candidates)):
-                            scoreboard = scoreboard + candidates[i] + ' has ' + str(results[candidates[i]]) + ' votes. (' + letters[i] + ')\n'
-                        scoreboard = scoreboard + '```'
-                        # with open('results.json') as f:
-                        #     results = json.load(f)
-                        makeChart(results, "Vote")
-                        chartmsg = await bot.get_channel(549991724026691584).send(file=discord.File("foo.png"))
-                        embed = discord.Embed(title="Votes", description="", color=0x00ff00)
-                        embed.set_image(url=chartmsg.attachments[0].url)
-                        await (await bot.get_channel(payload.channel_id).fetch_message(payload.message_id)).edit(content=scoreboard, embed=embed)
-                        with open('results.json', 'w') as f:
-                            json.dump(results, f)
-            if voteType == 'vote' and len(userids[str(payload.user_id)]) < 1:
-                with open('results.json') as f:
-                    results = json.load(f)
-                if str(payload.emoji) == '✅':
-                    results['aye'] = results['aye'] + 1
-                    with open('results.json', 'w') as f:
-                        json.dump(results, f)
-                    await (await bot.get_channel(payload.channel_id).fetch_message(payload.message_id)).remove_reaction(payload.emoji, bot.get_user(payload.user_id))
-                    # with open('results.json') as f:
-                    #     results = json.load(f)
-                    makeChart(results, "Vote")
-                    chartmsg = await bot.get_channel(549991724026691584).send(file=discord.File("foo.png"))
-                    embed = discord.Embed(title="Votes", description="", color=0x00ff00)
-                    embed.set_image(url=chartmsg.attachments[0].url)
-                    await (await bot.get_channel(payload.channel_id).fetch_message(voteId)).edit(content='```python\n' +
-                            str(results['aye']) + ' romans have voted AYE. (✅)\n' +
-                            str(results['nay']) + ' romans have voted NAY. (❎)\n'
-                            '```', embed=embed)
-                    with open('userids.json', 'w') as f:
-                        userids[str(payload.user_id)].append('aye')
-                        json.dump(userids, f)
-                elif str(payload.emoji) == '❎':
-                    results['nay'] = results['nay'] + 1
-                    with open('results.json', 'w') as f:
-                        json.dump(results, f)
-                    await (await bot.get_channel(payload.channel_id).fetch_message(payload.message_id)).remove_reaction(payload.emoji, bot.get_user(payload.user_id))
-                    # with open('results.json') as f:
-                    #     results = json.load(f)
-                    makeChart(results, "Vote")
-                    chartmsg = await bot.get_channel(549991724026691584).send(file=discord.File("foo.png"))
-                    embed = discord.Embed(title="Votes", description="", color=0x00ff00)
-                    embed.set_image(url=chartmsg.attachments[0].url)
-                    await (await bot.get_channel(payload.channel_id).fetch_message(voteId)).edit(content='```python\n' +
-                            str(results['aye']) + ' romans have voted AYE. (✅)\n' +
-                            str(results['nay']) + ' romans have voted NAY. (❎)\n'
-                            '```', embed=embed)
-                    with open('userids.json', 'w') as f:
-                        userids[str(payload.user_id)].append('nay')
-                        json.dump(userids, f)
-                with open('results.json', 'w') as f:
-                    json.dump(results, f)
+        user_ids = {}
+        with open('userids.json', 'r') as f:
+            user_ids = json.load(f)
+        if str(payload.emoji) == '✅':
+            for identifier in user_ids.keys():
+                print(user_ids[identifier]['id'])
+                await motion_service.vote(bot, payload, identifier, user_ids[identifier]['id'], 'aye')
+        elif str(payload.emoji) == '❌':
+            for identifier in user_ids.keys():
+                print(user_ids[identifier]['id'])
+                await motion_service.vote(bot, payload, identifier, user_ids[identifier]['id'], 'nay')
+        elif str(payload.emoji) in emojis:
+            for identifier in user_ids.keys():
+                id = user_ids[identifier]['id']
+                election = election_service.get_election(user_ids[identifier]['id'])
+                for i in range(0, len(emojis)):
+                    if emojis[i] == str(payload.emoji):
+                        await election_service.vote(bot, payload, identifier, user_ids[identifier]['id'], list(election.candidates.keys())[i])
+
 
 @bot.command(pass_context = True)
 async def commands(ctx):
@@ -370,285 +293,118 @@ async def gens(ctx):
     await ctx.channel.send(resultMsg)
 
 @bot.command(pass_context = True)
+async def setup(ctx):
+    msg = ctx.message.content
+    arr = msg.split(' ')
+    id = arr[1] + '-' + arr[2]
+    position = arr[1]
+    time = arr[2]
+
+    election = Election(id=id,
+                        position=position,
+                        candidates={})
+    election_service.add_election(election)
+
+    await ctx.channel.send(position + ' elections will take place at the end of ' + arr[2])
+@bot.command(pass_context = True)
 async def elections(ctx):
-    if isHigherUp(ctx.message.author.top_role.name):
+    allowed_roles = ['Cabbage Farmer', 'Imperator', 'Consul', 'Senator', 'Centurion', 'Heir to the Emperorship']
+    if has_one_of_roles(ctx.message.author, allowed_roles):
         msg = ctx.message.content
-        voteType = ''
-        if re.search(r'consul', msg):
-            voteType = 'consul'
-        if re.search(r'senator', msg):
-            voteType = 'senator'
-        if re.search(r'centurion', msg):
-            voteType = 'centurion'
-        candidates = []
-        with open('elections.txt', 'r') as file:
-            for line in file.readlines():
-                if line.startswith(voteType):
-                    candidates.append(line[(len(voteType) + 3):].strip('\n'))
-        emptyDict = {}
-        emptyResultsDict = {}
-        for candidate in candidates:
-            emptyResultsDict[candidate] = 0
-        with open('userids.json', 'w') as f:
-            json.dump(emptyDict, f)
-        with open('results.json', 'w') as f:
-            json.dump(emptyResultsDict, f)
-        scoreboard = '```python\n'
-        for i in range(len(candidates)):
-            scoreboard = scoreboard + candidates[i] + ' has 0 votes. (' + letters[i] + ')\n'
-        scoreboard = scoreboard + '```'
-        msg = await ctx.channel.send(scoreboard)
-        voteId = str(msg.id) + '|' + voteType
-        with open('voteID.txt', 'w') as f:
-            f.write(voteId)
-        for i in range(len(candidates)):
-            await msg.add_reaction(emojis[i])
+        id = msg.split(' ')[1]
+        election = election_service.get_election(id)
+        await election.setup_vote(bot, ctx)
     else:
         await ctx.channel.send('You are not authorised to organise a vote. Speak to a higher-up to organise a vote')
 
 @bot.command(pass_context = True)
 async def register(ctx):
-    top_role = ctx.message.author.top_role.name
-    if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire' \
-            or top_role == 'Roman Citizen' or top_role == 'Cabbage Farmer' or top_role == 'Frumentarius':
-        msg = str(ctx.message.content)
-        if re.search(r'@', msg) and (isHigherUp(top_role)):
-            member = (bot.get_user(int(msg.split('@')[1].split('>')[0]))).name
-            role = msg[10:].split(' ')[0]
-
-            text = role + ' : ' + member
-            if role == 'consul' or role == 'senator' or role == 'centurion':
-                with open('elections.txt', 'a') as file:
-                    file.write(text + '\n')
-                await ctx.channel.send('The following candidate has been registered:\n' + text)
-            else:
-                await ctx.channel.send('That\'s not a viable role!\n'
-                              'Type `*register consul`, `*register senator` or `*register centurion`')
-        elif not re.search(r'@', msg):
-            member = (await bot.get_user_info(str(ctx.message.author.id))).name
-            role = msg[10:]
-            text = role + ' : ' + member
-            canregister = False
-            if role == 'consul':
-                if isHigherUp(top_role):
-                    canregister = True
-                else:
-                    canregister = False
-            elif role == 'senator':
-                if isHigherUp(top_role) or top_role == 'Explorator' or top_role == 'Marinus' or top_role == 'Legionnaire' or top_role == 'Cabbage Farmer' or top_role == 'Frumentarius':
-                    canregister = True
-                else:
-                    canregister = False
-            elif role == 'centurion':
-                canregister = True
-            if canregister:
-                if role == 'consul' or role == 'senator' or role == 'centurion':
-                    with open('elections.txt', 'a') as file:
-                        file.write(text + '\n')
-                    await bot.say('The following candidate has been registered:\n' + text)
-                else:
-                    await bot.say('That\'s not a viable role!\n'
-                                  'Type `*register consul`, `*register senator` or `*register centurion`')
-            else:
-                await bot.say('You are not eligible for this position!')
-        elif not isHigherUp(top_role):
-            await ctx.channel.send('You are not authorised to register other users for elections')
+    user = ctx.message.author.name
+    msg = ctx.message.content
+    if len(msg.split(' ')) == 1:
+        await ctx.channel.send('please specify for which election you\'d like to register f.ex. `*register consul-nov18`')
+    elif msg.split(' ')[1] not in election_service.election_dict.keys():
+        await ctx.channel.send('That\'s not a valid election id')
     else:
-        await ctx.channel.send('You are not eligible for this position!')
+        election = election_service.get_election(msg.split(' ')[1])
+        if has_one_of_roles(ctx.message.author, eligible_for[election.position]):
+            election_service.register(election.id, user)
+            await ctx.channel.send(ctx.message.author.mention + ' has been registered as a candidate for the ' + election.position + ' elections of ' + election.id.split('-')[1])
+        else:
+            await ctx.channel.send('You are not eligible for the position of ' + election.position)
 
 @bot.command(pass_context = True)
 async def unregister(ctx):
-    top_role = ctx.message.author.top_role.name
-    if re.search(r'all', str(ctx.message.content)):
-        if isHigherUp(top_role):
-            open('elections.txt', 'w').close()
-            await ctx.channel.send('removed all candidates')
-        else:
-            await ctx.channel.send('you do not have the authority to unregister other candidates')
-    else:
-        msg = str(ctx.message.content)
-        member = (bot.get_user(int(ctx.message.author.id))).name
-        role = msg[12:].split(' ')[0]
-        error = False
-        if re.search(r'"', msg):
-            if isHigherUp(top_role):
-                member = msg[12:].split('"')[1].split('"')[0]
-            else:
-                error = True
-        if not error:
-            text = role + ' : ' + member + '\n'
-            newlines = []
-            with open('elections.txt', 'r') as file:
-                lines = file.readlines()
-            with open('elections.txt', 'w') as file:
-                for line in lines:
-                    if not line.startswith(text):
-                        newlines.append(line)
-                file.writelines(newlines)
-            await ctx.channel.send(member + ' is no longer running for ' + role)
-        else:
-            await ctx.channel.send('you are not authorised to unregister other users')
-@bot.command()
+    user = ctx.message.author.name
+    msg = ctx.message.content
+    if len(msg.split(' ')) == 1:
+        await ctx.channel.send('please specify for which election you\'d like to unregister f.ex.`*unregister consul-nov18`')
+    elif msg.split(' ')[1] not in election_service.election_dict.keys():
+        await ctx.channel.send('That\'s not a valid election id')
+    election = election_service.get_election(msg.split(' ')[1])
+    election_service.unregister(election.id, user)
+    await ctx.channel.send(ctx.message.author.mention + ' has been unregistered as a candidate for the ' + election.position + ' elections of ' + election.id.split('-')[1])
+
+@bot.command(pass_context = True)
 async def candidates(ctx):
-    consuls = '__***consular elections***__\n'
-    senators = '__***senatorial elections***__\n'
-    centurions = '__***centurion elections***__\n'
-    with open('elections.txt', 'r') as file:
-        for line in file.readlines():
-            if line.startswith('consul'):
-                consuls += line[9:]
-            elif line.startswith('senator'):
-                senators += line[10:]
-            elif line.startswith('centurion'):
-                centurions += line[12:]
-    await ctx.send(consuls + '\n' +
-            senators + '\n' +
-            centurions + '\n' +
-            '__***Consuls are only elected every other electoral cycle***__')
+    id = ctx.message.content.split(' ')[1]
+    embed = discord.Embed(title='Elections for ' + id, description="", color=0x00ff00)
+    for key in election_service.election_dict.keys():
+        if id in key:
+            role = key.split('-')[0]
+            candidates = ''
+            for candidate in election_service.get_election(key).candidates.keys():
+                candidates += candidate + '\n'
+            embed.add_field(name=role, value=candidates, inline=False)
+    embed.set_footer(text='Consuls are only elected every other electoral cycle')
+    await ctx.channel.send(embed=embed)
 
 @bot.command(pass_context = True)
 async def vote(ctx):
-    top_role = ctx.message.author.top_role.name
-    if isHigherUp(top_role):
-        id = int(str(ctx.message.content)[6:].lstrip())
-        motion = ''
-        with open("motions.txt", 'rb') as file:
-            for line in file:
-                if ('#' + str(id) + ' ').encode('UTF-8') in line:
-                    motion = line.decode('UTF-8').split(' : ')[1]
-        emptyDict = {}
-        emptyResultsDict = {"aye": 0, "nay": 0}
-        with open('userids.json', 'w') as f:
-            json.dump(emptyDict, f)
-        with open('results.json', 'w') as f:
-            json.dump(emptyResultsDict, f)
-        await ctx.channel.send('__***' + motion + '***__')
-        msg = await ctx.channel.send('```python\n' +
-                            '0 romans have voted AYE. (✅)\n' +
-                            '0 romans have voted NAY. (❎)\n'
-                            '```')
-        voteId = str(msg.id) + '|vote'
-        with open('voteID.txt', 'w') as f:
-            f.write(voteId)
-        await msg.add_reaction('✅')
-        await msg.add_reaction('❎')
+    if isHigherUp(ctx.message.author.top_role.name):
+        id = str(ctx.message.content)[6:].lstrip()
+        await motion_service.get_motion(id).setup_vote(bot, ctx)
     else:
         await ctx.channel.send('You are not authorised to organise a vote. Speak to a higher-up to organise a vote')
 
 @bot.command(pass_context = True)
 async def motion(ctx):
-    msg = str(ctx.message.content)[8:]
-    num_lines = sum(1 for line in open('motions.txt', 'rb'))
-    num_lines += sum(1 for line in open('resolved.txt', 'rb'))
-    id = num_lines + 1
-    motion = '#' + str(id) + ' | ' + str(ctx.message.author) + ' @ ' + \
-             ctx.message.created_at.strftime('%d/%m/%Y %H:%M:%S') + ' : ' + msg + '\n'
-    with open('motions.txt', 'ab') as file:
-        file.write(motion.encode('UTF-8'))
-    # logging.info(motion)
+    currentmotion = Motion(id=motion_service.generate_id(),
+                            content=str(ctx.message.content)[8:],
+                            author=str(ctx.message.author),
+                            created_at=str(ctx.message.created_at.strftime('%d/%m/%Y %H:%M:%S')))
+    motion_service.add(currentmotion)
     await ctx.channel.send("Motion is noted. view all motions with the [*motions] command")
+
 @bot.command(pass_context = True)
 async def resolve(ctx):
-    top_role = ctx.message.author.top_role.name
-    index = str(ctx.message.content)
-    index = index.split(' ')[1]
+    index = str(ctx.message.content).split(' ')[1]
     if index == 'all':
-        lines = []
-        with open('motions.txt', 'rb') as file:
-            for line in file:
-                if '#' not in line:
-                    lines.append(line)
-                if '#' in line:
-                    with open('resolved.txt', 'a') as file:
-                        file.write(line)
-        with open('motions.txt', 'wb') as file:
-            file.writelines(lines)
+        motion_service.resolve_all()
         await ctx.channel.send('All motions are resolved.')
     else:
-        resolvedMotion = ''.encode('UTF-8')
-        index = int(index)
-        lines = []
-        with open('motions.txt', 'rb') as file:
-            for line in file:
-                if '#' + str(index) not in line.decode('UTF-8'):
-                    lines.append(line)
-                if '#' + str(index)in line.decode('UTF-8'):
-                    resolvedMotion = line
-        owner = resolvedMotion.decode('UTF-8').split(' ')[2]
         user = str(ctx.message.author)
+        owner = Motion(motion_service.motion_dict[index]).author
+        top_role = ctx.message.author.top_role.name
         if isHigherUp(top_role) or owner == user:
-            with open('resolved.txt', 'ab') as file:
-                file.write(resolvedMotion)
-            with open('motions.txt', 'wb') as file:
-                file.writelines(lines)
+            motion_service.resolve(index)
             await ctx.channel.send("Motion is resolved.")
         else:
             await ctx.channel.send("You do not have the authority to resolve this motion")
 @bot.command()
 async def motions(ctx):
-    motions = {}
-    with open("motions.txt", 'rb') as file:
-        for line in file:
-            motions[int(str(line.decode('UTF-8')[1:].split(' | ')[0]))] = line.decode('UTF-8')
-    if len(motions) == 0:
+    response = motion_service.get_motions_embed()
+    if len(response.fields) == 0:
         await ctx.send('There are no standing motions right now')
-    allMotions = ""
-    keyList = motions.keys()
-    keyList = sorted(keyList)
-    for i in keyList:
-        allMotions += motions[i]
-    await ctx.send(allMotions)
-# @bot.command(pass_context = True)
-# async def resolved():
-#     motions = {}
-#     with open("catoBot.log", 'r') as file:
-#         for line in file:
-#             if "resolve" in line:
-#                 motions[str(line.split('#')[1].split(' | ')[0])] = line[10:]
-#     for i in motions:
-#         await bot.say(motions[i])
+    else:
+        await ctx.send(embed=response)
 
-# @bot.command(pass_context = True)
-# async def rule(ctx):
-#     index = str(ctx.message.content)
-#     index = int(index[5:].lstrip()) - 1
-#     await bot.say("```python\n" + ruleList[index] + "```")
-# @bot.command()
-# async def rules():
-#     output = ''
-#     for rule in ruleList:
-#         output += rule
-#     await bot.say("```python\n" + output + "```")
 @bot.command(pass_context = True)
 async def docs(ctx):
     if str(ctx.message.channel) == "temple-of-jupiter-optimus-maximus":
         await ctx.message.channel.send("https://drive.google.com/drive/folders/1W7A4sExEJCjSOEt4UFz-flP7JSH99ORS?usp=sharing")
     else:
         await ctx.message.channel.send("This information is top secret")
-
-@bot.command(pass_context = True)
-async def suggestion(ctx):
-    msg = str(ctx.message.content)
-    content = ''
-    for i in msg[12:].split(' ')[1:]:
-        content += i + ' '
-    suggestion = 'suggestion for ' + msg[12:].split(' ')[0] + ' : ' + content
-    with open('suggestions.txt', 'a') as file:
-        file.write(suggestion + '\n')
-    await bot.say('suggestion is noted')
-
-@bot.command(pass_context = True)
-async def suggestions(ctx):
-    mySuggestions = ''
-    author = ctx.message.author.name
-    with open('suggestions.txt', 'r') as file:
-        lines = file.readlines()
-        for line in lines:
-            if re.search('\[everyone]', line):
-                mySuggestions += line
-            if re.search(author.split(' ')[0], line):
-                mySuggestions += line
-    await bot.say(mySuggestions)
 
 @bot.command()
 async def conquer(ctx):
@@ -689,16 +445,3 @@ async def spy(ctx):
                   '**5.** In case he is proven innocent, he will be awarded his old ranks back and will receive a formal apology from the suspecting roman, the higher-up who demoted him and the consul who oversaw the case. If he is proven guilty, he will be banned from the discord\n' +
                   '**6.** If it is revealed who the culprit is spying for, they will be added to potential future war targets if they aren’t already. No rash decisions will be taken on the matter. Only the senate may declare war. It is a very real possibility that the spy was acting as a rogue agent')
 bot.run(os.environ.get('TOKEN'))
-
-# values = dict(question = motion, a0 = 'Aye', a1 = 'Nay')
-#         url = 'https://strawpoll.com/new'
-#         data = parse.urlencode(values)
-#         data = data.encode('utf-8')
-#         req = request.Request(url, data)
-#         req.add_header("Content-type", "application/x-www-form-urlencoded")
-#         with request.urlopen(req) as response:
-#             the_page = response.read().decode('utf-8')
-#         list = re.findall(r'https://strawpoll.com/.*\"', the_page)
-#         await bot.say(list[0][:-1])
-#     else:
-#         await bot.say('You are not authorised to organise a vote. Speak to a higher-up to organise a vote')
