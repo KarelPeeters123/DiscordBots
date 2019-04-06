@@ -17,7 +17,7 @@ from objects.election import Election
 from services.motionService import MotionService
 from services.electionService import ElectionService
 
-commandPrefix = '^'
+commandPrefix = '*'
 bot_id = 559469690812891138
 bot = commands.Bot(command_prefix=commandPrefix)
 motion_service = MotionService()
@@ -55,7 +55,7 @@ async def logout():
 
 async def my_background_task():
     await bot.wait_until_ready()
-    channel = bot.get_channel('559359387009941524')
+    channel = bot.get_channel(559359387009941524)
     while not bot.is_closed:
         if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "20:00:00":
             await channel.send("@everyone our weekly senate meeting commences now")
