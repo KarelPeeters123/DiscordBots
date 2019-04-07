@@ -60,6 +60,32 @@
                 The "*vote" command let's a user with the correct permissions start voting on the motion with the provided id. The results will be shown in an embed alongside the pie chart. Users can then react with 1 of the emojis to cast their vote.
             </p>
 		</article>
+        <article class="clearfix well well-lg">
+			<h4>Elections</h4>
+
+			<p>
+                <img src="img/setup.png" alt="example of a user declaring an election" style="padding: 5px;">
+                <br>
+				The "*setup" command let's a user with the right permissions declare an election to be held. Hereafter, users can register for this election if they posses the correct ranks. The command should be followed by the position "consul", "senator" and "centurion" and the time of the election ("apr19" f. ex. would mean elections are held at the end of april 2019). The time acts as a unique id and as such may not contain spaces " " or hyphens "-".
+			</p>
+            <p>
+                <img src="img/register.png" alt="example of a user viewing all standing motions" style="max-height: 300px;padding: 5px;">
+                <br><br><br><br>
+                The "*register" command let's a user register for the election provided, so they can be voted for when election time comes. A correct election-id consisting of the position followed by a hyphen "-" and the time of the election (f.ex. the consul elections that would take place at the end of november 2018, would have the id "consul-nov18")
+            </p>
+            <br><br><br>
+
+            <p>
+                <br><br>
+                <img src="img/unregister.png" alt="example of a user resolving a motion" style="padding: 5px; max-width: 700px;">
+                <br>
+                Similarly to "*register", the "*unregister" command requires an election-id. The command allows a user to unregister for a specific election in case he changes his mind or already won an election with a higher rank
+            </p>
+            <p>
+                <img src="img/candidates.png" alt="example of a user resolving a motion" class="pull-left" tyle="padding: 5px; max-width: 200px;">
+                The "*candidates" command lets the user get an overview of all candidates registered for the election cycle specified. A election-id without the position is required (i.e. "nov18" for the election cycle of november 2018, all positions). The user may choose to provide the full election id (f.ex. "consul-nov18") to get a more specific overview
+            </p>
+		</article>
 
 	</div>
 </div>
