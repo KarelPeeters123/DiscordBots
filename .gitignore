@@ -9,3 +9,5 @@ GamesBot/
 __pycache__/
 catoBot.log
 *.png
+.DS_Store
+img/.DS_Store
