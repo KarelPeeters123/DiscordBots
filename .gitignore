@@ -8,6 +8,6 @@ GamesBot/
 */__pycache__/
 __pycache__/
 catoBot.log
-*.png
+foo.png
 .DS_Store
 img/.DS_Store
