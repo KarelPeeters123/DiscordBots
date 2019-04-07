@@ -374,7 +374,7 @@ async def motion(ctx):
                             author=str(ctx.message.author),
                             created_at=str(ctx.message.created_at.strftime('%d/%m/%Y %H:%M:%S')))
     motion_service.add(currentmotion)
-    await ctx.channel.send("Motion is noted. view all motions with the [*motions] command")
+    await ctx.channel.send("Motion is noted. View all motions with the [*motions] command")
 
 @bot.command(pass_context = True)
 async def resolve(ctx):
