@@ -42,7 +42,7 @@ class MotionService:
             self.resolve(key)
 
     def generate_id(self):
-        return len(self.motion_dict) + len(self.resolved_dict) + 1
+        return str(len(self.motion_dict) + len(self.resolved_dict) + 1)
 
     def get_motion(self, motion_id):
         return Motion(json=self.motion_dict[str(motion_id)])

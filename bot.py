@@ -237,7 +237,12 @@ async def on_raw_reaction_add(payload):
                     if emojis[i] == str(payload.emoji):
                         await election_service.vote(bot, payload, identifier, user_ids[identifier]['id'], list(election.candidates.keys())[i])
 
-
+@bot.command()
+async def json(ctx):
+    await ctx.send(file=discord.File("motions.json"))
+    await ctx.send(file=discord.File("resolved.json"))
+    await ctx.send(file=discord.File("elections.json"))
+    await ctx.send(file=discord.File("userids.json"))
 @bot.command(pass_context = True)
 async def commands(ctx):
     await ctx.channel.send('```\n' +
