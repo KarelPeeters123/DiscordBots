@@ -33,8 +33,8 @@ class MotionService:
 
     def resolve(self, motion_id):
         self.read()
-        self.resolved_dict[motion_id] = self.motion_dict[motion_id]
-        del self.motion_dict[motion_id]
+        self.resolved_dict[str(motion_id)] = self.motion_dict[str(motion_id)]
+        del self.motion_dict[str(motion_id)]
         self.write()
 
     def resolve_all(self):
