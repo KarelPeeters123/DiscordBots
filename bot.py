@@ -389,7 +389,7 @@ async def resolve(ctx):
         await ctx.channel.send('All motions are resolved.')
     else:
         user = str(ctx.message.author)
-        owner = Motion(motion_service.motion_dict[str(index)]).author
+        owner = Motion(motion_service.get_motion(str(index))).author
         top_role = ctx.message.author.top_role.name
         if isHigherUp(top_role) or owner == user:
             motion_service.resolve(index)
