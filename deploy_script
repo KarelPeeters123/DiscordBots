@@ -1,9 +1,9 @@
-FILE=/tmp/deploy.pid  
+FILE=/tmp/deploy.pid
 if [ -f $FILE ]; then
    kill -15 $(cat $FILE)
-   BUILD_ID=dontKillMe nohup python3 /home/pi/.jenkins/workspace/cicero/bot.py &
+   BUILD_ID=dontKillMe nohup python3 /home/pi/.jenkins/workspace/cicero/bot.py > cicero.out 2>&1 &
    echo $! > /tmp/deploy.pid
 else
-   BUILD_ID=dontKillMe nohup python3 /home/pi/.jenkins/workspace/cicero/bot.py&
+   BUILD_ID=dontKillMe nohup python3 /home/pi/.jenkins/workspace/cicero/bot.py > cicero.out 2>&1 &
    echo $! > /tmp/deploy.pid
 fi
