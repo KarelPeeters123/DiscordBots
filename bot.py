@@ -238,7 +238,7 @@ async def on_raw_reaction_add(payload):
                         await election_service.vote(bot, payload, identifier, user_ids[identifier]['id'], list(election.candidates.keys())[i])
 
 @bot.command()
-async def json(ctx):
+async def getjson(ctx):
     await ctx.send(file=discord.File("motions.json"))
     await ctx.send(file=discord.File("resolved.json"))
     await ctx.send(file=discord.File("elections.json"))
