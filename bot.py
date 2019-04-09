@@ -352,6 +352,7 @@ async def unregister(ctx):
 
 @bot.command(pass_context = True)
 async def candidates(ctx):
+    print(ctx.message.content.split(' '))
     id = ctx.message.content.split(' ')[1]
     embed = discord.Embed(title='Elections for ' + id, description="", color=0x00ff00)
     for key in election_service.election_dict.keys():
