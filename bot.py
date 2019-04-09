@@ -358,7 +358,9 @@ async def candidates(ctx):
         if id in key:
             role = key.split('-')[0]
             candidates = ''
-            for candidate in election_service.get_election(key).candidates.keys():
+            keylist = election_service.get_election(key).candidates.keys()
+            keylist.sort()
+            for candidate in keylist:
                 candidates += candidate + '\n'
             embed.add_field(name=role, value=candidates, inline=False)
     embed.set_footer(text='Consuls are only elected every other electoral cycle')
