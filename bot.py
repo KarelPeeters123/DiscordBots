@@ -359,8 +359,7 @@ async def candidates(ctx):
         if id in key:
             role = key.split('-')[0]
             candidates = ''
-            keylist = election_service.get_election(key).candidates.keys()
-            keylist.sort()
+            keylist = sorted(election_service.get_election(key).candidates.keys())
             for candidate in keylist:
                 candidates += candidate + '\n'
             embed.add_field(name=role, value=candidates, inline=False)
