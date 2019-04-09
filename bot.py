@@ -354,17 +354,31 @@ async def unregister(ctx):
 async def candidates(ctx):
     print(ctx.message.content.split(' '))
     id = ctx.message.content.split(' ')[1]
-    embed = discord.Embed(title='Elections for ' + id, description="", color=0x00ff00)
-    for key in election_service.election_dict.keys():
-        if id in key:
-            role = key.split('-')[0]
-            candidates = ''
-            keylist = sorted(election_service.get_election(key).candidates.keys())
-            for candidate in keylist:
-                candidates += candidate + '\n'
-            embed.add_field(name=role, value=candidates, inline=False)
+    if '-' not in id:
+        embed = discord.Embed(title='Elections for ' + id, description="", color=0x00ff00)
+        embed = add_election_field_to_embed(embed, id, consul)
+        embed = add_election_field_to_embed(embed, id, senator)
+        embed = add_election_field_to_embed(embed, id, centurion)
+    else:
+        embed = discord.Embed(title='Elections for ' + id, description="", color=0x00ff00)
+        for key in election_service.election_dict.keys():
+            if id in key:
+                role = key.split('-')[0]
+                candidates = ''
+                keylist = sorted(election_service.get_election(key).candidates.keys())
+                for candidate in keylist:
+                    candidates += candidate + '\n'
+                embed.add_field(name=role, value=candidates, inline=False)
     embed.set_footer(text='Consuls are only elected every other electoral cycle')
     await ctx.channel.send(embed=embed)
+
+def add_election_field_to_embed(embed, id, position):
+    candidates = ''
+    keylist = sorted(election_service.get_election(position + '-' + id).candidates.keys())
+    for candidate in keylist:
+        candidates += candidate + '\n'
+    embed.add_field(name=position, value=candidates, inline=False)
+    return embed
 
 @bot.command(pass_context = True)
 async def vote(ctx):
