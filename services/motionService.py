@@ -49,8 +49,10 @@ class MotionService:
 
     def get_motions_embed(self):
         embed=discord.Embed(title="Motions:", color=0x932092)
-        for key in [str(mykey) for mykey in self.motion_dict.keys()].sort():
-            motion = Motion(json=self.motion_dict[key])
+        motion_keys = [int(mykey) for mykey in self.motion_dict.keys()]
+        motion_keys.sort()
+        for key in motion_keys:
+            motion = Motion(json=self.motion_dict[str(key)])
             embed.add_field(name=motion.id, value=motion.to_string(), inline=False)
         return embed
 
