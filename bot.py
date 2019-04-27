@@ -56,8 +56,8 @@ async def logout():
 async def my_background_task():
     await bot.wait_until_ready()
     channel = bot.get_channel(559359387009941524)
-    while not bot.is_closed:
-        if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "20:00:00":
+    while not bot.is_closed():
+        if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "21:00:00":
             await channel.send("@everyone our weekly senate meeting commences now")
             await asyncio.sleep(1)
         else:
