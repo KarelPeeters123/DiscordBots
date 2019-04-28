@@ -43,9 +43,11 @@ class Motion:
         await msg.add_reaction('❌')
 
     def can_vote(self, payload, vote_id):
+        print("votecheck")
         user_ids = {}
         with open('userids.json', 'r') as f:
             user_ids = json.load(f)
+        print(user_ids[vote_id]['votes'].keys())
         return str(payload.user_id) not in user_ids[vote_id]['votes'].keys()
 
     async def vote(self, bot, payload, vote_id, selected):

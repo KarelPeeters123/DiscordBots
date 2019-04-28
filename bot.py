@@ -19,6 +19,8 @@ from services.electionService import ElectionService
 
 commandPrefix = '*'
 bot_id = 559469690812891138
+#for testing
+# bot_id = 518797552305307649
 bot = commands.Bot(command_prefix=commandPrefix)
 motion_service = MotionService()
 election_service = ElectionService()
@@ -223,19 +225,24 @@ async def on_raw_reaction_add(payload):
             user_ids = json.load(f)
         if str(payload.emoji) == '✅':
             for identifier in user_ids.keys():
+                # print(identifier)
                 print(user_ids[identifier]['id'])
-                await motion_service.vote(bot, payload, identifier, user_ids[identifier]['id'], 'aye')
+                if not re.match(r'[a-z]*-[a-z]{3}[0-9]*', user_ids[identifier]['id']):
+                    print("aye")
+                    await motion_service.vote(bot, payload, identifier, user_ids[identifier]['id'], 'aye')
         elif str(payload.emoji) == '❌':
             for identifier in user_ids.keys():
                 print(user_ids[identifier]['id'])
-                await motion_service.vote(bot, payload, identifier, user_ids[identifier]['id'], 'nay')
+                if not re.match(r'[a-z]*-[a-z]{3}[0-9]*', user_ids[identifier]['id']):
+                    await motion_service.vote(bot, payload, identifier, user_ids[identifier]['id'], 'nay')
         elif str(payload.emoji) in emojis:
             for identifier in user_ids.keys():
-                id = user_ids[identifier]['id']
-                election = election_service.get_election(user_ids[identifier]['id'])
-                for i in range(0, len(emojis)):
-                    if emojis[i] == str(payload.emoji):
-                        await election_service.vote(bot, payload, identifier, user_ids[identifier]['id'], list(election.candidates.keys())[i])
+                if re.match(r'[a-z]*-[a-z]{3}[0-9]*', user_ids[identifier]['id']):
+                    id = user_ids[identifier]['id']
+                    election = election_service.get_election(user_ids[identifier]['id'])
+                    for i in range(0, len(emojis)):
+                        if emojis[i] == str(payload.emoji):
+                            await election_service.vote(bot, payload, identifier, user_ids[identifier]['id'], list(election.candidates.keys())[i])
 
 @bot.command()
 async def getjson(ctx):
