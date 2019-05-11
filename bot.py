@@ -61,7 +61,7 @@ async def my_background_task():
     while not bot.is_closed():
         if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "21:00:00":
             await channel.send("@everyone our weekly senate meeting commences now")
-            await asyncio.sleep(1)
+            await asyncio.sleep(5)
         else:
             await asyncio.sleep(1)
 
