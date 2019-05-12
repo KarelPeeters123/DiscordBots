@@ -49,13 +49,16 @@ class MotionService:
 
     def get_motions_embed(self):
         embed=discord.Embed(title="Motions:", color=0x932092)
-        for key in self.motion_dict.keys():
-            motion = Motion(json=self.motion_dict[key])
+        motion_keys = [int(mykey) for mykey in self.motion_dict.keys()]
+        motion_keys.sort()
+        for key in motion_keys:
+            motion = Motion(json=self.motion_dict[str(key)])
             embed.add_field(name=motion.id, value=motion.to_string(), inline=False)
         return embed
 
     async def vote(self, bot, payload, vote_id, motion_id, selected):
         self.read()
+        print("voting")
         print(self.get_motion(motion_id).can_vote(payload, vote_id))
         if self.get_motion(motion_id).can_vote(payload, vote_id):
             await self.get_motion(motion_id).vote(bot, payload, vote_id, selected)

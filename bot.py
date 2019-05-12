@@ -237,7 +237,7 @@ async def on_raw_reaction_add(payload):
                         await motion_service.vote(bot, payload, identifier, user_ids[identifier]['id'], 'nay')
         elif str(payload.emoji) in emojis:
             for identifier in user_ids.keys():
-                if re.match(r'[a-z]*-[a-z]{3}[0-9]*', user_ids[identifier]['id']) and int(identifier) == payload.message_id:
+                if re.match(r'[a-z]*-[a-z]{3}[0-9]*', user_ids[identifier]['id']):
                     id = user_ids[identifier]['id']
                     election = election_service.get_election(user_ids[identifier]['id'])
                     for i in range(0, len(emojis)):

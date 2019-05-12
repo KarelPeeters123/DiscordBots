@@ -9,6 +9,8 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
 	<link rel="stylesheet" href="style.css" type="text/css">
 	<meta charset="UTF-8">
@@ -16,7 +18,7 @@
 </head>
 <header>
 	<nav class="navbar navbar-default"></nav>
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-expand">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Cicero Bot</a>
@@ -24,11 +26,16 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="index.html">The project</a></li>
 				<li><a href="commands.html">Commands</a></li>
+				<li>
+					<a href="rrf.html">
+						<img src="img/RRF_black.png" alt="The icon of the Rough Roman Memes discord server" style="max-width:50px; margin: -15px;">
+					</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
 </header>
-<body>
+<body onload="showmotions();">
 <div class="col-sm-2"></div>
 <div class="col-sm-8">
 	<h2>About the project</h2>
@@ -50,6 +57,9 @@
 	</article>
 </div>
 <div class="col-sm-2"></div>
+<script type="text/javascript" src="js/readRules.js">
+
+</script>
 
 
 </body>
