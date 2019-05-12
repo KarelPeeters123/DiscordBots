@@ -19,6 +19,8 @@ from services.electionService import ElectionService
 
 commandPrefix = '*'
 bot_id = 559469690812891138
+#for testing
+# bot_id = 518797552305307649
 bot = commands.Bot(command_prefix=commandPrefix)
 motion_service = MotionService()
 election_service = ElectionService()
@@ -30,8 +32,8 @@ eligible_for = {"consul": ['Cabbage Farmer', 'Imperator', 'Consul', 'Senator', '
 
 maxVotes = {"vote": 1,
             "consul": 2,
-            "senator": 4,
-            "centurion": 5}
+            "senator": 3,
+            "centurion": 4}
 emojis = ['🇦', '🇧', '🇨', '🇩', '🇪', '🇫',
           '🇬', '🇭', 'ℹ', '🇯', '🇰', '🇱',
           '🇲', '🇳', '🇴', '🇵', '🇶', '🇷',
@@ -56,10 +58,10 @@ async def logout():
 async def my_background_task():
     await bot.wait_until_ready()
     channel = bot.get_channel(559359387009941524)
-    while not bot.is_closed:
-        if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "20:00:00":
+    while not bot.is_closed():
+        if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "21:00:00":
             await channel.send("@everyone our weekly senate meeting commences now")
-            await asyncio.sleep(1)
+            await asyncio.sleep(5)
         else:
             await asyncio.sleep(1)
 
@@ -223,22 +225,27 @@ async def on_raw_reaction_add(payload):
             user_ids = json.load(f)
         if str(payload.emoji) == '✅':
             for identifier in user_ids.keys():
-                print(user_ids[identifier]['id'])
-                await motion_service.vote(bot, payload, identifier, user_ids[identifier]['id'], 'aye')
+                if not re.match(r'[a-z]*-[a-z]{3}[0-9]*', user_ids[identifier]['id']):
+                    if int(identifier) == payload.message_id:
+                        print("aye")
+                        await motion_service.vote(bot, payload, identifier, user_ids[identifier]['id'], 'aye')
         elif str(payload.emoji) == '❌':
             for identifier in user_ids.keys():
-                print(user_ids[identifier]['id'])
-                await motion_service.vote(bot, payload, identifier, user_ids[identifier]['id'], 'nay')
+                print("motionid: " + user_ids[identifier]['id'])
+                if not re.match(r'[a-z]*-[a-z]{3}[0-9]*', user_ids[identifier]['id']):
+                    if int(identifier) == payload.message_id:
+                        await motion_service.vote(bot, payload, identifier, user_ids[identifier]['id'], 'nay')
         elif str(payload.emoji) in emojis:
             for identifier in user_ids.keys():
-                id = user_ids[identifier]['id']
-                election = election_service.get_election(user_ids[identifier]['id'])
-                for i in range(0, len(emojis)):
-                    if emojis[i] == str(payload.emoji):
-                        await election_service.vote(bot, payload, identifier, user_ids[identifier]['id'], list(election.candidates.keys())[i])
+                if re.match(r'[a-z]*-[a-z]{3}[0-9]*', user_ids[identifier]['id']) and int(identifier) == payload.message_id:
+                    id = user_ids[identifier]['id']
+                    election = election_service.get_election(user_ids[identifier]['id'])
+                    for i in range(0, len(emojis)):
+                        if emojis[i] == str(payload.emoji):
+                            await election_service.vote(bot, payload, identifier, user_ids[identifier]['id'], list(election.candidates.keys())[i])
 
 @bot.command()
-async def json(ctx):
+async def getjson(ctx):
     await ctx.send(file=discord.File("motions.json"))
     await ctx.send(file=discord.File("resolved.json"))
     await ctx.send(file=discord.File("elections.json"))
@@ -352,17 +359,33 @@ async def unregister(ctx):
 
 @bot.command(pass_context = True)
 async def candidates(ctx):
+    print(ctx.message.content.split(' '))
     id = ctx.message.content.split(' ')[1]
-    embed = discord.Embed(title='Elections for ' + id, description="", color=0x00ff00)
-    for key in election_service.election_dict.keys():
-        if id in key:
-            role = key.split('-')[0]
-            candidates = ''
-            for candidate in election_service.get_election(key).candidates.keys():
-                candidates += candidate + '\n'
-            embed.add_field(name=role, value=candidates, inline=False)
+    if '-' not in id:
+        embed = discord.Embed(title='Elections for ' + id, description="", color=0x00ff00)
+        embed = add_election_field_to_embed(embed, id, 'consul')
+        embed = add_election_field_to_embed(embed, id, 'senator')
+        embed = add_election_field_to_embed(embed, id, 'centurion')
+    else:
+        embed = discord.Embed(title='Elections for ' + id, description="", color=0x00ff00)
+        for key in election_service.election_dict.keys():
+            if id in key:
+                role = key.split('-')[0]
+                candidates = ''
+                keylist = sorted(election_service.get_election(key).candidates.keys())
+                for candidate in keylist:
+                    candidates += candidate + '\n'
+                embed.add_field(name=role, value=candidates, inline=False)
     embed.set_footer(text='Consuls are only elected every other electoral cycle')
     await ctx.channel.send(embed=embed)
+
+def add_election_field_to_embed(embed, id, position):
+    candidates = ''
+    keylist = sorted(election_service.get_election(position + '-' + id).candidates.keys())
+    for candidate in keylist:
+        candidates += candidate + '\n'
+    embed.add_field(name=position, value=candidates, inline=False)
+    return embed
 
 @bot.command(pass_context = True)
 async def vote(ctx):
