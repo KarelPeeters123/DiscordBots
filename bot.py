@@ -67,7 +67,7 @@ async def my_background_task():
         if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "21:00:00":
             for member in members:
                 for role in member.roles:
-                    if isHigherUp(role):
+                    if isHigherUp(role.name):
                         await member.send("Our weekly senate meeting commences shortly! Hurry to #the-senate and notify the curia!")
                         await asyncio.sleep(5)
         else:
