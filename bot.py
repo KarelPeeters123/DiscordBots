@@ -20,6 +20,7 @@ from services.electionService import ElectionService
 commandPrefix = os.environ.get('PREFIX')
 
 bot_id = int(os.environ.get('ID'))
+server_id = int(os.environ.get('SERVER'))
 #for testing
 # bot_id = 518797552305307649
 bot = commands.Bot(command_prefix=commandPrefix)
@@ -47,6 +48,7 @@ letters = ['A', 'B', 'C', 'D', 'E', 'F',
 @bot.event
 async def on_ready():
     print('bot is ready')
+    print(bot.guilds)
     motion_service = MotionService()
     election_service = ElectionService()
     await my_background_task()
@@ -57,7 +59,7 @@ async def logout():
 
 
 async def my_background_task():
-    members = ctx.message.guild.members
+    members = bot.get_guild(server_id).members
     await bot.wait_until_ready()
     #TEST
     #channel = bot.get_channel(502765027426697218)
@@ -67,7 +69,7 @@ async def my_background_task():
                 for role in member.roles:
                     if isHigherUp(role):
                         await member.send("Our weekly senate meeting commences shortly! Hurry to #the-senate and notify the curia!")
-            await asyncio.sleep(5)
+                        await asyncio.sleep(5)
         else:
             await asyncio.sleep(1)
 
