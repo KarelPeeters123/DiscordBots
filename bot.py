@@ -17,8 +17,9 @@ from objects.election import Election
 from services.motionService import MotionService
 from services.electionService import ElectionService
 
-commandPrefix = '*'
-bot_id = 559469690812891138
+commandPrefix = os.environ.get('PREFIX')
+
+bot_id = int(os.environ.get('ID'))
 #for testing
 # bot_id = 518797552305307649
 bot = commands.Bot(command_prefix=commandPrefix)
@@ -56,13 +57,16 @@ async def logout():
 
 
 async def my_background_task():
+    members = ctx.message.guild.members
     await bot.wait_until_ready()
-    channel = bot.get_channel(559359387009941524)
     #TEST
     #channel = bot.get_channel(502765027426697218)
     while not bot.is_closed():
         if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "21:00:00":
-            await channel.send("@everyone our weekly senate meeting commences now")
+            for member in members:
+                for role in member.roles:
+                    if isHigherUp(role):
+                        await member.send("Our weekly senate meeting commences shortly! Hurry to #the-senate and notify the curia!")
             await asyncio.sleep(5)
         else:
             await asyncio.sleep(1)
