@@ -365,6 +365,8 @@ async def unregister(ctx):
 async def candidates(ctx):
     print(ctx.message.content.split(' '))
     id = ctx.message.content.split(' ')[1]
+    if len(id) == 0:
+        ctx.message.channel.send('try specifying a specific election `*candidates senator-may2019` or an election cycle `*candidates may2019`')
     if '-' not in id:
         embed = discord.Embed(title='Elections for ' + id, description="", color=0x00ff00)
         for key in election_service.election_dict.keys():
