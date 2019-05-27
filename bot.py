@@ -365,6 +365,7 @@ async def unregister(ctx):
 async def candidates(ctx):
     print(ctx.message.content.split(' '))
     messaglist = ctx.message.content.split(' ')
+    id = messaglist[1]
     if len(messaglist) < 2:
         await ctx.message.channel.send('try specifying a specific election `*candidates senator-may2019` or an election cycle `*candidates may2019`')
     if '-' not in id:
