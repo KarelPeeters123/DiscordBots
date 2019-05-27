@@ -367,9 +367,13 @@ async def candidates(ctx):
     id = ctx.message.content.split(' ')[1]
     if '-' not in id:
         embed = discord.Embed(title='Elections for ' + id, description="", color=0x00ff00)
-        embed = add_election_field_to_embed(embed, id, 'consul')
-        embed = add_election_field_to_embed(embed, id, 'senator')
-        embed = add_election_field_to_embed(embed, id, 'centurion')
+        for key in election_service.election_dict.keys():
+            if key == 'consul-' + id:
+                embed = add_election_field_to_embed(embed, id, 'consul')
+            if key == 'senator-' + id:
+                embed = add_election_field_to_embed(embed, id, 'senator')
+            if key == 'centurion-' + id:
+                embed = add_election_field_to_embed(embed, id, 'centurion')
     else:
         embed = discord.Embed(title='Elections for ' + id, description="", color=0x00ff00)
         for key in election_service.election_dict.keys():
