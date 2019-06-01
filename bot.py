@@ -34,8 +34,8 @@ eligible_for = {"consul": ['Cabbage Farmer', 'Imperator', 'Consul', 'Senator', '
 
 maxVotes = {"vote": 1,
             "consul": 2,
-            "senator": 3,
-            "centurion": 4}
+            "senator": 2,
+            "centurion": 3}
 emojis = ['🇦', '🇧', '🇨', '🇩', '🇪', '🇫',
           '🇬', '🇭', 'ℹ', '🇯', '🇰', '🇱',
           '🇲', '🇳', '🇴', '🇵', '🇶', '🇷',
