@@ -17,8 +17,8 @@ class Election:
                   '🇸', '🇹']
         self.maxVotes = {"vote": 1,
                     "consul": 2,
-                    "senator": 4,
-                    "centurion": 5}
+                    "senator": 2,
+                    "centurion": 3}
 
     def register(self, user):
         self.candidates[user] = 0
