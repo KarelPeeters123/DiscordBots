@@ -18,7 +18,7 @@ from services.motionService import MotionService
 from services.electionService import ElectionService
 
 commandPrefix = os.environ.get('PREFIX')
-
+print(" ")
 bot_id = int(os.environ.get('ID'))
 server_id = int(os.environ.get('SERVER'))
 #for testing
