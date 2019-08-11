@@ -64,7 +64,7 @@ async def my_background_task():
     #channel = bot.get_channel(502765027426697218)
     while not bot.is_closed():
         if datetime.date.today().strftime("%A") == "Saturday" and datetime.datetime.now().strftime("%H:%M:%S") == "21:00:00":
-            await client.get_channel(559359387009941524).send("@Curia Iulia senate meeting time! Sorry for the spam")
+            await bot.get_channel(559359387009941524).send("@Curia Iulia senate meeting time! Sorry for the spam")
         else:
             await asyncio.sleep(1)
 
