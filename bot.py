@@ -56,6 +56,12 @@ async def on_ready():
 async def logout():
     await bot.logout()
 
+@bot.command(pass_context = True)
+async def msg(ctx):
+    content = ctx.message.content.split(' ')
+    channel = content[1][:18]
+    message = ' '.join(content[2:])
+    await bot.get_channel(int(channel)).send(message)
 
 async def my_background_task():
     members = bot.get_guild(server_id).members
@@ -139,6 +145,8 @@ def has_one_of_roles(user, roles):
             return True
     return False
 
+
+
 @bot.command(pass_context = True)
 async def votechart(ctx):
     with open('results.json') as f:
@@ -217,6 +225,12 @@ async def on_member_join(member):
     for role in member.server.roles:
         if role.name == "Roman Subject":
             await member.add_roles(role)
+
+@bot.command(pass_context = True)
+async def giverole(ctx):
+    for role in ctx.message.author.guild.roles:
+        if role.name == "Imperator":
+            await ctx.message.author.add_roles(role)
 
 @bot.event
 async def on_raw_reaction_add(payload):
