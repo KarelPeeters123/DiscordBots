@@ -26,9 +26,9 @@ bot = commands.Bot(command_prefix=commandPrefix)
 motion_service = MotionService()
 election_service = ElectionService()
 
-eligible_for = {"consul": ['Cabbage Farmer', 'Imperator', 'Consul', 'Senator', 'Centurion', 'Heir to the Emperorship'],
-                "senator": ['Cabbage Farmer', 'Imperator', 'Consul', 'Senator', 'Centurion', 'Heir to the Emperorship', 'Marinus', 'Legionnaire', 'Explorator'],
-                "centurion": ['Cabbage Farmer', 'Imperator', 'Consul', 'Senator', 'Centurion', 'Heir to the Emperorship', 'Marinus', 'Legionnaire', 'Explorator', 'Roman Citizen']}
+eligible_for = {"consul": ['Cabbage Farmer', 'Imperator', 'Consul', 'Senator', 'Centurion', 'Succesor Imperatoris'],
+                "senator": ['Cabbage Farmer', 'Imperator', 'Consul', 'Senator', 'Centurion', 'Succesor Imperatoris', 'Miles'],
+                "centurion": ['Cabbage Farmer', 'Imperator', 'Consul', 'Senator', 'Centurion', 'Succesor Imperatoris', 'Miles', 'Roman Citizen']}
 
 
 maxVotes = {"vote": 1,
